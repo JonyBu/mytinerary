@@ -1,0 +1,26 @@
+#logo {
+  height: 200px;
+}
+
+.centrar {
+ display: block;
+ text-align: center;
+ padding: 10px;
+}
+
+#flecha{
+  height: 100px;
+}
+
+#home{
+  height: 60px;
+  padding-top: 40px;
+}
+
+.link a{
+  margin:40px;
+}
+
+.centrar p{
+  font-size: 20px;
+}
