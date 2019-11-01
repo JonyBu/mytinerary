@@ -5,22 +5,27 @@
 .centrar {
  display: block;
  text-align: center;
- padding: 10px;
+ width: 600px;
+ margin: auto;
 }
 
 #flecha{
   height: 100px;
 }
 
-#home{
-  height: 60px;
+.home{
+  height: 100px;
   padding-top: 40px;
 }
 
-.link a{
-  margin:40px;
+.logoMenu{
+  height: 20px;
 }
 
-.centrar p{
-  font-size: 20px;
+.logoUser{
+  height: 30px;
+}
+
+#li{
+  list-style:none
 }

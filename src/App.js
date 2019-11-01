@@ -1,24 +1,27 @@
 import React from 'react';
-import BodyText from './components/texto_body';
-import Head from './components/header';
-import Account from './components/account';
-import BodyImage from './components/imagen_body';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+import Users from './components/user';
+import Login from './components/login';
 import Home from './components/home';
+
 
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <Head />
-        <BodyText />
-        <BodyImage />
-        <Account />
-        <Home />
-      </div>
+      <Router>
+        
+        <div className="centrar">
+
+          <Route path="/users" component={Users} />
+          <Route path="/login" component={Login} />
+          <Route exact path="/" component={Home} />
+          
+        </div>
+        
+      </Router>
     );
   }
 }
 
 export default App;
-
