@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 class Menu extends React.Component {
     render() {
         return (
-            <div id="li">
+            <div className="li">
                 <Navbar>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav >
                             <img className="logoUser" src={imagenUser} alt="" />
                         </DropdownToggle>
-                        <DropdownMenu left>
+                        <DropdownMenu >
                             <DropdownItem>
                                 <Link to="/users">Create Account</Link>
                             </DropdownItem>

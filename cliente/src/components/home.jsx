@@ -11,6 +11,7 @@ class Home extends React.Component {
       <div >
         <Menu/>
         <div className="margen">
+          
           <img id="logo" src={imageLogo} alt="" />
           <p>Find your perfect trip, designed by insiders who know and love teir cities.</p>
           <h2>Start browsing</h2>

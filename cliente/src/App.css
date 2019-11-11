@@ -26,6 +26,14 @@
   height: 30px;
 }
 
-#li{
-  list-style:none
+.li{
+  list-style:none;
+}
+
+.inputSearch{
+  margin: 20px 0;
+}
+
+.li .navbar{
+  padding: 0;
 }

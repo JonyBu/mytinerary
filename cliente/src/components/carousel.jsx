@@ -43,7 +43,7 @@ const items = [
 ];
 
 
-const ImageCarousel = (props) => {
+const ImageCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 

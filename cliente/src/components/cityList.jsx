@@ -1,6 +1,7 @@
 import React from 'react';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 
-const CityList = ({ cities }) =>
-  cities.map((city, i) => <li key={i}>{city.name} {city.country}</li>)
+const CityList = (props) =>
+  props.citiesReducer.map((city, i) => <ListGroup><ListGroupItem key={i}>{city.name} {city.country}</ListGroupItem></ListGroup>)
 
 export default CityList;
