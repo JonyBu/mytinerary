@@ -30,5 +30,5 @@ app.post('/app/cities', cors(), function (req, res) {
 })
 
 app.listen(8080, function () {
-    console.log('servidor escucha el puerto 8080')
+    console.log('servidor escucha el puerto 8080 desde cityApi')
 });

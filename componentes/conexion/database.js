@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
-const server = 'jonathan:48570487@mytinerary-ehihp.mongodb.net'; 
-const database = 'MYtinerary?retryWrites=true&w=majority';     
+const server = 'jonathan:48570487@mytinerary-ehihp.mongodb.net'; // REPLACE WITH YOUR DB SERVER
+const database = 'MYtinerary?retryWrites=true&w=majority';      // REPLACE WITH YOUR DB NAME
 
 class Database {
   constructor() {
@@ -9,7 +9,7 @@ class Database {
   }
   
 _connect() {
-     mongoose.connect(`mongodb+srv://${server}/${database}`,{ useNewUrlParser: true })
+     mongoose.connect(`mongodb+srv://${server}/${database}`,{ useNewUrlParser: true, useUnifiedTopology: true })
        .then(() => {
          console.log('Database connection successful')
        })
