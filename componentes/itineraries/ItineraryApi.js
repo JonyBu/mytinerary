@@ -1,10 +1,9 @@
 var express = require('express');
-var app = express();
-var cors = require('cors');
-const bodyParser = require('body-parser');
+var router = express.Router();
+
 var itineraryModel = require('./itinerarySchema');
 
-app.get('/app/itineraries', cors(), function (req, res) {
+router.get('/itineraries', function (req, res) {
     itineraryModel.find()
         .then(
             function (datos) {
@@ -13,10 +12,8 @@ app.get('/app/itineraries', cors(), function (req, res) {
         )
 })
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.post('/app/itineraries', cors(), function (req, res) {
+router.post('/itineraries', function (req, res) {
+    console.log(req.body);
     var newModel = new itineraryModel({
         title: req.body.title,
         profilePic: req.body.profilePic,
@@ -32,7 +29,4 @@ app.post('/app/itineraries', cors(), function (req, res) {
             }
         )
 })
-
-app.listen(8000, function () {
-    console.log('servidor escucha el puerto 8000 desde itineraryApi')
-});
+module.exports=router

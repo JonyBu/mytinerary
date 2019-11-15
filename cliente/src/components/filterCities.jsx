@@ -12,14 +12,13 @@ class FilterForm extends React.Component {
         this.setState({
             cityFilter: e.target.value
         })
-        console.log(e.target.value);
 
         this.props.onChange(e.target.value)
     }
 
     render() {
         return (
-            <div class="inputSearch">
+            <div className="inputSearch">
                 <input type="text" id="filter"
                     placeholder="Filter our current cities"
                     //value={this.state.cityFilter} 

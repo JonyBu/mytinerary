@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import citiesReducer from './reducers/citiesReducer';
+import itinerariesReducer from './reducers/itinerariesReducer';
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
-    citiesReducer
+    citiesReducer,
+    itinerariesReducer
 });
 
 const store = createStore(

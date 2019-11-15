@@ -1,5 +1,5 @@
 export const type = 'citiesAction';
-const QUOTE_SERVICE_URL = 'http://localhost:8080/app/cities';
+const QUOTE_SERVICE_URL = 'http://localhost:8080/api/cities';
 
 const citiesAction = () => async (dispatch)=> {
 

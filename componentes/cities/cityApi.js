@@ -1,10 +1,9 @@
 var express = require('express');
-var app = express();
-var cors = require('cors');
-const bodyParser = require('body-parser');
+var router = express.Router();
+
 var cityModel = require('./citySchema');
 
-app.get('/app/cities', cors(), function (req, res) {
+router.get('/cities', function (req, res) {
     cityModel.find()
         .then(
             function (datos) {
@@ -13,10 +12,11 @@ app.get('/app/cities', cors(), function (req, res) {
         )
 })
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+router.get('/cities/:name', function (req, res) {
+    res.send('Ciudad ' + req.params.name);
+});
 
-app.post('/app/cities', cors(), function (req, res) {
+router.post('/cities', function (req, res) {
     var newModel = new cityModel({
         name: req.body.name,
         country: req.body.country
@@ -29,6 +29,4 @@ app.post('/app/cities', cors(), function (req, res) {
         )
 })
 
-app.listen(8080, function () {
-    console.log('servidor escucha el puerto 8080 desde cityApi')
-});
+module.exports = router

@@ -29,10 +29,10 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <Link to="/cities">Cities</Link>
+                                <Link to="/cities">Cities</Link>                               
                             </DropdownItem>
                             <DropdownItem>
-
+                              <Link to="/itineraries">Itineraries</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
