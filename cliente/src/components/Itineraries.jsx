@@ -22,8 +22,12 @@ class Itinerary extends React.Component {
     render() {
         return (
             <div >
+                
                 <h1>Listado de itinerarios</h1>
                 <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
+                <br/>
+                <a href="./cities">Elige otra ciudad</a>
+                <br/>
                 <a href="./"><img className="home" src={image} alt="imagen de home" /></a>
             </div>
         )
