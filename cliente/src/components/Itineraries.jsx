@@ -1,7 +1,7 @@
 import React from 'react';
 import image from '../imagenes/homeIcon.png';
 import ItineraryList from './ItineraryList';
-
+import { Jumbotron } from 'reactstrap';
 import { connect } from 'react-redux';
 import itinerariesAction from '../redux/actions/itinerariesAction';
 
@@ -22,8 +22,11 @@ class Itinerary extends React.Component {
     render() {
         return (
             <div >
-                
-                <h1>Listado de itinerarios</h1>
+                <Jumbotron>
+                    Ciudad
+                </Jumbotron>
+                <h3 className="izquierda">Listado de itinerarios</h3>
+                <br/>
                 <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
                 <br/>
                 <a href="./cities">Elige otra ciudad</a>

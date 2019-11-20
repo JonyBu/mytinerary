@@ -9,4 +9,5 @@ let itinerarySchema = new mongoose.Schema({
     hashtag: Array
 })
 
+
 module.exports = mongoose.model('itineraries', itinerarySchema)

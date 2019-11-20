@@ -41,3 +41,9 @@
 .imageProfile{
   height: 200px;
 }
+
+.izquierda{
+  display: block;
+  text-align: left;
+  margin: auto;
+}

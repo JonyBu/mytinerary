@@ -12,6 +12,15 @@ router.get('/itineraries', function (req, res) {
         )
 })
 
+router.put('/itineraries/:id', function(req,res){
+    updateModel.findByIdAndUpdate({_id:req.params.id},req.body)
+    .then(function(){
+        updateModel.findOne({_id:req.params.id}).then(function(datos){
+            res.send(datos);
+        })
+    })
+})
+
 router.post('/itineraries', function (req, res) {
     console.log(req.body);
     var newModel = new itineraryModel({
