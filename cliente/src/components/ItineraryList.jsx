@@ -40,8 +40,10 @@ const ItineraryList = (props) => {
                                         <CardBody>
                                             <h5 className="izquierda">Activities</h5>
                                             <br />
-                                            {Activities}
+                                            <Activities />
+                                            <br />
                                             <h5 className="izquierda">Coments</h5>
+                                            <br />
                                             <InputGroup>
                                                 <Input />
                                                 <InputGroupAddon addonType="append">

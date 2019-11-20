@@ -20,7 +20,7 @@ class Home extends React.Component {
           <h2>Popular MYtineraries</h2>
           
           <ImageCarousel />
-          
+
         </div>
       </div>
     )
