@@ -59,18 +59,14 @@ const Activities = (props) => {
       >
         <div className="imagenCarousel">
             <img src={item.src} alt={item.altText} />
-            <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+            <CarouselCaption captionText={item.caption} />
         </div>
       </CarouselItem>
     );
   });
 
   return (
-    <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-    >
+    <Carousel activeIndex={activeIndex} next={next} previous={previous}>
       <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />

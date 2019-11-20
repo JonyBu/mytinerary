@@ -1,9 +1,11 @@
 import React from 'react';
+import {Link } from 'react-router-dom';
 import image from '../imagenes/homeIcon.png';
 import ItineraryList from './ItineraryList';
 import { Jumbotron } from 'reactstrap';
 import { connect } from 'react-redux';
 import itinerariesAction from '../redux/actions/itinerariesAction';
+
 
 
 class Itinerary extends React.Component {
@@ -29,9 +31,9 @@ class Itinerary extends React.Component {
                 <br/>
                 <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
                 <br/>
-                <a href="./cities">Elige otra ciudad</a>
+                <Link to="../cities">Elige otra ciudad</Link>
                 <br/>
-                <a href="./"><img className="home" src={image} alt="imagen de home" /></a>
+                <Link to="../"><img className="home" src={image} alt="imagen de home" /></Link>
             </div>
         )
     }

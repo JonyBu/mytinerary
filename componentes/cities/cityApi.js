@@ -12,9 +12,18 @@ router.get('/cities', function (req, res) {
         )
 })
 
-router.get('/cities/:name', function (req, res) {
-    res.send('Ciudad ' + req.params.name);
+router.get('/cities/:name', (req,res)=>{
+    let cityRequested = req.params.name;
+    cityModel.findOne({name:cityRequested})
+    .then(city=>{
+        res.send(city)
+    })
+    .catch(err => console.log(err));
 });
+
+// router.get('/cities/:name', function (req, res) {
+//     res.send('Ciudad ' + req.params.name);
+// });
 
 router.post('/cities', function (req, res) {
     var newModel = new cityModel({
