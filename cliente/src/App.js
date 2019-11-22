@@ -17,9 +17,14 @@ class App extends React.Component {
         <Router>
           <div className="centrar">
             <Route path="/cities" component={Cities} />
+<<<<<<< HEAD
             <Route path="/itineraries/London" component={Itineraries} />
             <Route path="/itineraries/:city" component={Other} />
             <Route path="/users" component={createAccount} />
+=======
+            <Route path="/itineraries/:_id" component={Itineraries} />
+            <Route path="/users" component={Users} />
+>>>>>>> 69dadbd40600b6264a060c302273a141126a6f28
             <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </div>
