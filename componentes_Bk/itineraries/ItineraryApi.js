@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var itineraryModel = require('./itinerarySchema');
 
 router.get('/itineraries', function (req, res) {
@@ -12,10 +11,19 @@ router.get('/itineraries', function (req, res) {
         )
 })
 
-router.put('/itineraries/:id', function(req,res){
-    updateModel.findByIdAndUpdate({_id:req.params.id},req.body)
+router.get('/itineraries/:_id', (req,res)=>{
+    let itineraryRequested = req.params._id;
+    itineraryModel.findById({_id:itineraryRequested})
+    .then(itinerary=>{
+        res.send(itinerary)
+    })
+    .catch(err => console.log(err));
+});
+
+router.put('/itineraries/:_id', function(req,res){
+    itineraryModel.findByIdAndUpdate({_id:req.params.id},req.body)
     .then(function(){
-        updateModel.findOne({_id:req.params.id}).then(function(datos){
+        itineraryModel.findOne({_id:req.params.id}).then(function(datos){
             res.send(datos);
         })
     })

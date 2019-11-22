@@ -7,9 +7,9 @@ import {
   CarouselCaption
 } from 'reactstrap';
 
-import barcelona from '../imagenes/ciudades/barcelona.jpg';
-import barcelona1 from '../imagenes/ciudades/barcelona1.jpg';
-import barcelona2 from '../imagenes/ciudades/barcelona2.jpg';
+import barcelona from '../../imagenes/ciudades/barcelona.jpg';
+import barcelona1 from '../../imagenes/ciudades/barcelona1.jpg';
+import barcelona2 from '../../imagenes/ciudades/barcelona2.jpg';
 
 const items = [
   {
@@ -29,7 +29,7 @@ const items = [
   }
 ];
 
-const Activities = (props) => {
+const CarouselActivities = (props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -59,18 +59,14 @@ const Activities = (props) => {
       >
         <div className="imagenCarousel">
             <img src={item.src} alt={item.altText} />
-            <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+            <CarouselCaption captionText={item.caption} />
         </div>
       </CarouselItem>
     );
   });
 
   return (
-    <Carousel
-      activeIndex={activeIndex}
-      next={next}
-      previous={previous}
-    >
+    <Carousel activeIndex={activeIndex} next={next} previous={previous}>
       <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
       {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
@@ -79,4 +75,4 @@ const Activities = (props) => {
   );
 }
 
-export default Activities;
+export default CarouselActivities;

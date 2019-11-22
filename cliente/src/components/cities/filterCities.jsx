@@ -21,7 +21,6 @@ class FilterForm extends React.Component {
             <div className="inputSearch">
                 <input type="text" id="filter"
                     placeholder="Filter our current cities"
-                    //value={this.state.cityFilter} 
                     onChange={(e) => this.handleChange(e, this)} />
             </div>
         )

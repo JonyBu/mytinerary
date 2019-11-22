@@ -1,13 +1,14 @@
 import React from 'react';
-import image from '../imagenes/homeIcon.png';
+import Footer from '../footer';
 
 class Login extends React.Component {
     render() {
         return (
             <div >
+                <br/>
                 <h1>log in</h1>
-
-                <a href="./"><img className="home" src={image} alt="imagen de home" /></a>
+                <br/>
+                <Footer/>
             </div>
         )
     }

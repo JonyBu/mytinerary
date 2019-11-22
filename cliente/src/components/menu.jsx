@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import imagenUser from '../imagenes/user.png';
 import imagenMenu from '../imagenes/menu.png';
-import { Link } from 'react-router-dom';
+
 
 class Menu extends React.Component {
     render() {
@@ -29,10 +30,10 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <Link to="/cities">Cities</Link>                               
+                                <Link to="/cities">Cities</Link>
                             </DropdownItem>
                             <DropdownItem>
-                              <Link to="/itineraries">Itineraries</Link>
+                                <Link to="/itineraries/:_id">Itineraries</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

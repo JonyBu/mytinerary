@@ -1,10 +1,9 @@
 import React from 'react';
-import image from '../imagenes/homeIcon.png';
+import { connect } from 'react-redux';
 import CityList from './cityList.jsx';
 import FilterForm from './filterCities.jsx';
-
-import { connect } from 'react-redux';
-import citiesAction from '../redux/actions/citiesAction';
+import citiesAction from '../../redux/actions/citiesAction';
+import Footer from '../footer';
 
 
 class Cities extends React.Component {
@@ -40,7 +39,7 @@ class Cities extends React.Component {
                 <h1>Listado de ciudades</h1>
                 <FilterForm match={this.props.match} onChange={this.filterCities} />
                 <CityList citiesReducer={this.state.filteredCities} />
-                <a href="./"><img className="home" src={image} alt="imagen de home" /></a>
+                <Footer/>
             </div>
         )
     }

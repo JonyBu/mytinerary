@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import imageLogo from '../imagenes/MYtineraryLogo.png';
 import imageFlecha from '../imagenes/circled-right-2.png';
 import '../App.css';
@@ -15,7 +16,7 @@ class Home extends React.Component {
           <img id="logo" src={imageLogo} alt="" />
           <p>Find your perfect trip, designed by insiders who know and love teir cities.</p>
           <h2>Start browsing</h2>
-          <a href="./cities"><img id="flecha" src={imageFlecha} alt="cities" /></a>
+          <Link to="./cities"><img id="flecha" src={imageFlecha} alt="cities" /></Link>
           
           <h2>Popular MYtineraries</h2>
           

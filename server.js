@@ -1,4 +1,4 @@
-require('./componentes/conexion/database');
+require('./componentes_Bk/conexion/database');
 
 const bodyParser = require('body-parser');
 var cors = require('cors');
@@ -9,8 +9,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const cityApi = require("./componentes/cities/cityApi");
-const itineraryApi = require("./componentes/itineraries/ItineraryApi");
+const cityApi = require("./componentes_Bk/cities/cityApi");
+const itineraryApi = require("./componentes_Bk/itineraries/ItineraryApi");
 
 app.use("/api",cityApi);
 app.use("/api",itineraryApi);

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import Users from './components/user';
-import Login from './components/login';
+import createAccount from './components/user/createAccount';
+import Login from './components/user/login';
 import Home from './components/home';
-import Cities from './components/cities';
-import Itineraries from './components/Itineraries';
+import Cities from './components/cities/cities';
+import Itineraries from './components/itineraries/Itineraries';
+import Other from './components/cities/OtherCity';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -16,8 +17,9 @@ class App extends React.Component {
         <Router>
           <div className="centrar">
             <Route path="/cities" component={Cities} />
-            <Route path="/itineraries" component={Itineraries} />
-            <Route path="/users" component={Users} />
+            <Route path="/itineraries/London" component={Itineraries} />
+            <Route path="/itineraries/:city" component={Other} />
+            <Route path="/users" component={createAccount} />
             <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </div>

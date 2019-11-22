@@ -10,7 +10,7 @@ function reducer(state = defaultCity, action) {
                 ...state,
                 cities:action.payload
             } 
-        
+            
         default:
             return state;
     }
