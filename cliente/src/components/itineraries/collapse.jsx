@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Collapse, CardBody, Card, InputGroup, InputGroupText, InputGroupAddon, Input, Button } from 'reactstrap';
-import CarouselActivities from './carouselActivities';
+import { Collapse, CardBody, Card, Button } from 'reactstrap';
+import CarouselActivities from '../details/carouselActivities';
+import CommentsForm from './commentsForm';
 
 const CollapseIt = (props) => {
 
@@ -17,14 +18,7 @@ const CollapseIt = (props) => {
                         <br />
                         <CarouselActivities />
                         <br />
-                        <h5 className="izquierda">Coments</h5>
-                        <br />
-                        <InputGroup>
-                            <Input />
-                            <InputGroupAddon addonType="append">
-                                <InputGroupText>></InputGroupText>
-                            </InputGroupAddon>
-                        </InputGroup>
+                        <CommentsForm />
                     </CardBody>
                 </Card>
             </Collapse>

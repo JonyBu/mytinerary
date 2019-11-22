@@ -35,6 +35,9 @@ class Menu extends React.Component {
                             <DropdownItem>
                                 <Link to="/itineraries/:_id">Itineraries</Link>
                             </DropdownItem>
+                            <DropdownItem>
+                                <Link to="/activities">Comments</Link>
+                            </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
 
