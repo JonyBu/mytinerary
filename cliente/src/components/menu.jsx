@@ -38,6 +38,9 @@ class Menu extends React.Component {
                             <DropdownItem>
                                 <Link to="/activities">Comments</Link>
                             </DropdownItem>
+                            <DropdownItem>
+                                <Link to="/details">details</Link>
+                            </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
 

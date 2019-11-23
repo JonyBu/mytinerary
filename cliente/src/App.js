@@ -7,6 +7,7 @@ import Cities from './components/cities/cities';
 import Itineraries from './components/itineraries/Itineraries';
 import Other from './components/cities/OtherCity';
 import Activities from './components/activities/activities';
+import Details from './components/details/details';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -18,6 +19,7 @@ class App extends React.Component {
         <Router>
           <div className="centrar">
             <Route path="/activities" component={Activities} />
+            <Route path="/details" component={Details}/>
             <Route path="/cities" component={Cities} />
             <Route path="/itineraries/London" component={Itineraries} />
             <Route path="/itineraries/:city" component={Other} />
