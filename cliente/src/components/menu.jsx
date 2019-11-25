@@ -43,7 +43,6 @@ class Menu extends React.Component {
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
-
                 </Navbar>
             </div>
         );
