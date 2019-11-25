@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DetailList from './detailsList';
+import RoutesActivities from './routesActivities';
 import detailsAction from '../../redux/actions/detailsAction';
 
 class details extends React.Component {
@@ -20,6 +21,7 @@ class details extends React.Component {
         return (
             <div>
                 <DetailList detailsReducer= {this.props.detailsReducer}/>
+                {/* <RoutesActivities detailsReducer= {this.props.detailsReducer}/> */}
             </div>
         )
     }

@@ -32,7 +32,7 @@ class Slide extends Component {
           </div>
         </div>
       </Router>
-    );
+      )
   }
 }
  
