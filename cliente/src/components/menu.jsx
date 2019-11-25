@@ -41,6 +41,7 @@ class Menu extends React.Component {
                             <DropdownItem>
                                 <Link to="/details">details</Link>
                             </DropdownItem>
+                            
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Navbar>

@@ -8,7 +8,7 @@ import Itineraries from './components/itineraries/Itineraries';
 import Other from './components/cities/OtherCity';
 import Activities from './components/activities/activities';
 import Details from './components/details/details';
-import slick from './components/details/slick';
+import slide from './components/details/slide';
 
 import { Provider } from 'react-redux';
 import store from './redux/store';
@@ -20,7 +20,7 @@ class App extends React.Component {
       <Provider store={store} >
         <Router>
           <div className="centrar">
-            <Route path='/slick' component={slick}/>
+            <Route path='/slide' component={slide}/>
             <Route path="/activities" component={Activities} />
             <Route path="/details" component={Details}/>
             <Route path="/cities" component={Cities} />

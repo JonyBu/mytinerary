@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Footer extends React.Component {
     render() {
         return (
-            <div className="centrar">
+            <div >
                 <Link to="/"><img className="home" src={image} alt="imagen de home" /></Link>
             </div>
         );

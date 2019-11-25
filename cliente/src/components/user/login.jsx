@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../footer';
 import axios from 'axios';
+import { Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 
 class Login extends React.Component {
     constructor(props) {
@@ -24,23 +25,33 @@ class Login extends React.Component {
     }
 
     render() {
+
         return (
-            <div>
-                <h1>login</h1>
-                <form action=''>
-                    <label htmlFor="">
-                        UserName:
-                    <input name="userName" value={this.state.userName} type="text" onChange={this.onChange} />
-                    </label>
-                    <label htmlFor="">
-                        password:
-                    <input name="password" value={this.state.password} type="password" onChange={this.onChange} />
-                    </label>
-                </form>
-                <button >Ok</button>
-                <Footer/>
+            <div className="footer" >
+                <br/>
+                <br/>
+                <Jumbotron>
+                <Form >
+                    <FormGroup row >
+                        <Label for="user" sm={2}>User</Label>
+                        <Col sm={10}>
+                            <Input type="text" name="userName" id="user"  />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Label for="password" sm={2}>Password</Label>
+                        <Col sm={10}>
+                            <Input type="password" name="password" id="password" />
+                        </Col>
+                    </FormGroup>
+                    <Button>Submit</Button>
+                </Form>
+                </Jumbotron>
+                <Footer />
             </div>
+
         )
+
     }
 }
 

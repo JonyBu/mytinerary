@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, CardBody, Card, Button } from 'reactstrap';
-import CarouselActivities from '../details/carouselActivities';
+import Slide from '../details/slide';
 import CommentsForm from './commentsForm';
 
 const CollapseIt = (props) => {
@@ -16,7 +16,7 @@ const CollapseIt = (props) => {
                     <CardBody>
                         <h5 className="izquierda">Activities</h5>
                         <br />
-                        <CarouselActivities />
+                        <Slide />
                         <br />
                         <CommentsForm />
                     </CardBody>
@@ -24,7 +24,6 @@ const CollapseIt = (props) => {
             </Collapse>
         </div>
     )
-
 }
 
 export default CollapseIt;
