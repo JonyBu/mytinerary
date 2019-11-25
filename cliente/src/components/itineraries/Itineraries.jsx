@@ -21,7 +21,7 @@ class Itinerary extends React.Component {
         return (
             <div >
                 <div>
-                    <img className="imagenHead" src={HeadImage} alt="London" />
+                    <img src={HeadImage} className="img-fluid" alt="London"/>                   
                 </div>
                 <br />
                 <h3 className="izquierda">Listado de itinerarios</h3>
