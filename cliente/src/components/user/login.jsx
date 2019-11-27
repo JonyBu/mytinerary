@@ -24,6 +24,10 @@ class Login extends React.Component {
         axios.post()
     }
 
+    signGoogle = () => {
+        window.location.href = "http://localhost:8080/api/auth/google"
+    }
+
     render() {
 
         return (
@@ -47,6 +51,11 @@ class Login extends React.Component {
                     <Button>Submit</Button>
                 </Form>
                 </Jumbotron>
+                <div>
+                    <button onClick={this.signGoogle}>
+                        Google
+                    </button>
+                </div>
                 <Footer />
             </div>
 

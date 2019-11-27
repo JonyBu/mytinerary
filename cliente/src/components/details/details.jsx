@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DetailList from './detailsList';
 import RoutesActivities from './routesActivities';
 import detailsAction from '../../redux/actions/detailsAction';
+import View from '../details/view';
 
 class details extends React.Component {
     constructor(){
@@ -18,10 +19,12 @@ class details extends React.Component {
     }
 
     render(){
+        
         return (
             <div>
-                <DetailList detailsReducer= {this.props.detailsReducer}/>
-                {/* <RoutesActivities detailsReducer= {this.props.detailsReducer}/> */}
+                {/* <View detailsReducer = {this.props.detailsReducer}/> */}
+                {/* <DetailList detailsReducer= {this.props.detailsReducer}/> */}
+                <RoutesActivities detailsReducer= {this.props.detailsReducer}/> 
             </div>
         )
     }

@@ -16,9 +16,11 @@ const detailsApi = require('./componentes_Bk/details/detailsApi');
 const routerUser = require('./componentes_Bk/controladores/controladorUser');
 const passport = require('./componentes_Bk/auth/passport');
 
+
 require('./componentes_Bk/auth/passport');
 
 //app.use("/api",passport.authenticate("jwt",{session:false}),cityApi);
+app.use("/api",require('./componentes_BK/auth/authApi'));//otra forma sin constante
 app.use("/api", cityApi);
 app.use("/api",itineraryApi);
 app.use("/api",activitiesApi);

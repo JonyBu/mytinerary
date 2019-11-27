@@ -1,7 +1,7 @@
 import React from 'react';
-import View from './view';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SwipeableRoutes from "react-swipeable-routes";
+import View from './view';
 
 const RoutesActivities = (props) => {
     return (
@@ -10,10 +10,10 @@ const RoutesActivities = (props) => {
                 <Router>
                     <div className="Slide">
                         <SwipeableRoutes>
-                            <Route path={details.activityPic} component={View}/>
+                            <Route path={`/${details.activityPic}`} component={View} />
                         </SwipeableRoutes>
                         <div>
-                            <Link to={details.activityPic}>{details.title}</Link> |
+                            <Link to={`/${details.activityPic}`}>{details.title}</Link> |
                         </div>
                     </div>
                 </Router>

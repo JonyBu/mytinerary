@@ -11,7 +11,7 @@ function reducer(state = defaultDetails, action){
                 details:action.payload
             }
         default:
-            return state;    
+            return state;
     }
 }
 
