@@ -1,24 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import SwipeableRoutes from "react-swipeable-routes";
-import View from './view';
+import Whirligig from 'react-whirligig';
+import { Button } from 'reactstrap';
 
 const RoutesActivities = (props) => {
+    let whirligig
+    const next = () => whirligig.next()
+    const prev = () => whirligig.prev()
     return (
-        props.detailsReducer.map((details, i) =>
-            <div key={i}>
-                <Router>
-                    <div className="Slide">
-                        <SwipeableRoutes>
-                            <Route path={`/${details.activityPic}`} component={View} />
-                        </SwipeableRoutes>
-                        <div>
-                            <Link to={`/${details.activityPic}`}>{details.title}</Link> |
-                        </div>
-                    </div>
-                </Router>
+        <div>
+            <div className="separar">
+                <Button outline color="primary" onClick={prev}>Prev</Button>
+                <h5>Activities</h5>
+                <Button outline color="primary" onClick={next}>Next</Button>
             </div>
-        )
+            <br />
+            <Whirligig visibleSlides={3} gutter="30em" ref={(_whirligigInstance) => { whirligig = _whirligigInstance }}>
+                {props.detailsReducer.map((details, i) =>
+                    <div className="centrar" id={i}>
+                        <img className="imagenSlide" src={require(`../../imagenes/detalles/London/${details.activityPic}.jpg`)} />
+                        <br />
+                        <h5 >{details.title}</h5>
+                    </div>
+                )}
+            </Whirligig>
+        </div>
     )
 }
 

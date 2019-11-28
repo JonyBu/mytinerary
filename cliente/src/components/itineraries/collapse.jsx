@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Collapse, CardBody, Card, Button } from 'reactstrap';
-import Slide from '../details/slide';
+import Slide from '../details/details';
 import CommentsForm from './commentsForm';
 
-const CollapseIt = (props) => {
+
+const CollapseIt = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -14,8 +15,6 @@ const CollapseIt = (props) => {
             <Collapse isOpen={isOpen}>
                 <Card>
                     <CardBody>
-                        <h5 className="izquierda">Activities</h5>
-                        <br />
                         <Slide />
                         <br />
                         <CommentsForm />

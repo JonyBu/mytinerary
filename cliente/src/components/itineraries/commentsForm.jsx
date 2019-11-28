@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, InputGroup, InputGroupAddon, Input } from 'reactstrap';
 
-const CommentsForm = (props) => {
+const CommentsForm = () => {
     return (
         <div className="">
             <h5 className="izquierda">Coments</h5>

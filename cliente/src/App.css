@@ -49,6 +49,11 @@
   margin: auto;
 }
 
-.imagenCarousel{
+.imagenSlide{
   height: 300px;
+}
+
+.separar{
+  display: flex;
+  justify-content: space-around
 }

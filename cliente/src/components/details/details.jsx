@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DetailList from './detailsList';
 import RoutesActivities from './routesActivities';
 import detailsAction from '../../redux/actions/detailsAction';
-import View from '../details/view';
+
+
 
 class details extends React.Component {
     constructor(){
@@ -19,12 +19,9 @@ class details extends React.Component {
     }
 
     render(){
-        
         return (
             <div>
-                {/* <View detailsReducer = {this.props.detailsReducer}/> */}
-                {/* <DetailList detailsReducer= {this.props.detailsReducer}/> */}
-                <RoutesActivities detailsReducer= {this.props.detailsReducer}/> 
+                 <RoutesActivities detailsReducer= {this.props.detailsReducer}/>  
             </div>
         )
     }
