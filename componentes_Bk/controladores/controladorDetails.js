@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var detailModel = require('./detailsSchema');
+var detailModel = require('../modelos/detailsModel');
 
 router.get('/details', function (req, res){
     detailModel.find()

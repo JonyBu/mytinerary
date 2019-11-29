@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import itinerariesAction from '../../redux/actions/itinerariesAction';
 import ItineraryList from './ItineraryList';
-import HeadImage from '../../imagenes/itinerarios/London/londres.jpg';
 
 class Itinerary extends React.Component {
     constructor() {
@@ -13,16 +12,14 @@ class Itinerary extends React.Component {
         }
     }
     async componentDidMount() {
+        console.log(this.props.match.params.idCity);
         this.setState({ ...this.state, isFetching: true })
-        await this.props.itinerariesAction();
+        await this.props.itinerariesAction(this.props.match.params.idCity);
     }
 
     render() {
         return (
             <div >
-                <div>
-                    <img src={HeadImage} className="img-fluid" alt="London"/>                   
-                </div>
                 <br />
                 <h3 className="izquierda">Listado de itinerarios</h3>
                 <br />
@@ -41,8 +38,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        itinerariesAction: () => {
-            return dispatch(itinerariesAction())
+        itinerariesAction: (data) => {
+            return dispatch(itinerariesAction(data))
         },
     };
 };

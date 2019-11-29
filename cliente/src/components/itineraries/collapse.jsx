@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Collapse, CardBody, Card, Button } from 'reactstrap';
-import Slide from '../details/details';
-import CommentsForm from './commentsForm';
+
+import Activity from '../itineraries/activities/activities';
 
 
 const CollapseIt = () => {
@@ -15,9 +15,7 @@ const CollapseIt = () => {
             <Collapse isOpen={isOpen}>
                 <Card>
                     <CardBody>
-                        <Slide />
-                        <br />
-                        <CommentsForm />
+                        <Activity />
                     </CardBody>
                 </Card>
             </Collapse>

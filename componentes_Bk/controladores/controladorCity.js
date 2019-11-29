@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var cityModel = require('./citySchema');
+var cityModel = require('../modelos/cityModel');
 
 router.get('/cities', function (req, res) {
     cityModel.find()

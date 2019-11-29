@@ -2,7 +2,7 @@ import React from 'react';
 import Whirligig from 'react-whirligig';
 import { Button } from 'reactstrap';
 
-const RoutesActivities = (props) => {
+const Slide = (props) => {
     let whirligig
     const next = () => whirligig.next()
     const prev = () => whirligig.prev()
@@ -17,7 +17,7 @@ const RoutesActivities = (props) => {
             <Whirligig visibleSlides={3} gutter="30em" ref={(_whirligigInstance) => { whirligig = _whirligigInstance }}>
                 {props.detailsReducer.map((details, i) =>
                     <div className="centrar" id={i}>
-                        <img className="imagenSlide" src={require(`../../imagenes/detalles/London/${details.activityPic}.jpg`)} />
+                        <img className="imagenSlide" src={require(`../../../../imagenes/detalles/London/${details.activityPic}.jpg`)} alt={details.title} />
                         <br />
                         <h5 >{details.title}</h5>
                     </div>
@@ -27,4 +27,4 @@ const RoutesActivities = (props) => {
     )
 }
 
-export default RoutesActivities;
+export default Slide;

@@ -3,11 +3,11 @@ import { CardBody, Card } from 'reactstrap';
 import { Media } from 'reactstrap';
 import CollapseIt from './collapse';
 
-
 const ItineraryList = (props) => {
     return (
         props.itineraryReducer.map((itinerary, i) =>
             <div key={i}>
+                
                 <Card>
                     <CardBody >
                         <Media>

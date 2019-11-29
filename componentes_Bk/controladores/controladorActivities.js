@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var activitiesModel = require('./activitiesSchema');
+var activitiesModel = require('../modelos/activitiesModel');
 
 router.get('/activities',function(req,res){
     activitiesModel.find()

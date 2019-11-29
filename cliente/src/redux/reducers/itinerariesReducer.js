@@ -9,8 +9,7 @@ function reducer(state = defaultItinerary, action) {
             return {
                 ...state,
                 itineraries:action.payload
-            } 
-        
+            }         
         default:
             return state;
     }

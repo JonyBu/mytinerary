@@ -6,7 +6,8 @@ let itinerarySchema = new mongoose.Schema({
     rating: Number,
     duration: Number,
     cost: Number,
-    hashtag: Array
+    hashtag: Array,
+    idCity: mongoose.Schema.Types.ObjectId
 })
 
 

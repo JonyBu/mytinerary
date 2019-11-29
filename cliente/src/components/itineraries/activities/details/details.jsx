@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RoutesActivities from './routesActivities';
-import detailsAction from '../../redux/actions/detailsAction';
-
-
+import Slide from './slide';
+import detailsAction from '../../../../redux/actions/detailsAction';
 
 class details extends React.Component {
     constructor(){
@@ -21,7 +19,7 @@ class details extends React.Component {
     render(){
         return (
             <div>
-                 <RoutesActivities detailsReducer= {this.props.detailsReducer}/>  
+                 <Slide detailsReducer= {this.props.detailsReducer}/>  
             </div>
         )
     }

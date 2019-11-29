@@ -8,7 +8,7 @@ const CityList = (props) =>
         <div key={i}>
             <ListGroup>
                 <ListGroupItem >
-                    <Link to={`/itineraries/${city.name}`}>{city.name} {city.country}</Link>
+                    <Link to={`/itineraries/${city._id}`}>{city.name} {city.country}</Link>
                 </ListGroupItem>
             </ListGroup>
         </div>

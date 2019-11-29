@@ -3,6 +3,8 @@ const defaultDetails = {
 }
 
 function reducer(state = defaultDetails, action){
+    console.log('action');
+    
     console.log(action)
     switch (action.type){
         case 'detailsAction':

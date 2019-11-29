@@ -36,7 +36,7 @@ class Menu extends React.Component {
                                 <Link to="/itineraries/:_id">Itineraries</Link>
                             </DropdownItem>
                             <DropdownItem>
-                                <Link to="/activities">Comments</Link>
+                                <Link to="/comments">Comments</Link>
                             </DropdownItem>
                             <DropdownItem>
                                 <Link to="/details">details</Link>
