@@ -4,6 +4,7 @@ import Slide from './slide';
 import detailsAction from '../../../../redux/actions/detailsAction';
 
 class details extends React.Component {
+    
     constructor(){
         super()
         this.state = {
@@ -11,6 +12,7 @@ class details extends React.Component {
             isFetching: false
         }
     }
+
     async componentDidMount() {
         this.setState({...this.state, isFetching: true})
         await this.props.detailsAction();

@@ -6,16 +6,18 @@ import Details from './details/details';
 import CommentsForm from './commentsForm';
 
 class activities extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             comments: [],
             isFetching: false
         }
     }
     async componentDidMount() {
+        console.log("aca");       
+        console.log(this.props.idItinerary);
         this.setState({ ...this.state, isFetching: true })
-        await this.props.activitiesAction(this.props.match.params.idItinerary);
+        await this.props.activitiesAction(this.props.idItinerary);
     }
 
     render() {

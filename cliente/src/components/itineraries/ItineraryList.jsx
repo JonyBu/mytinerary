@@ -28,7 +28,7 @@ const ItineraryList = (props) => {
                                 <br />
                             </Media>
                         </Media>
-                        <CollapseIt />
+                        <CollapseIt idItinerary={itinerary._id}/>
                         <br />
                     </CardBody>
                 </Card>

@@ -7,7 +7,7 @@ const Slide = (props) => {
     const next = () => whirligig.next()
     const prev = () => whirligig.prev()
     return (
-        <div>
+        <div >
             <div className="separar">
                 <Button outline color="primary" onClick={prev}>Prev</Button>
                 <h5>Activities</h5>

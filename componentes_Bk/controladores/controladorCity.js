@@ -21,10 +21,6 @@ router.get('/cities/:name', (req,res)=>{
     .catch(err => console.log(err));
 });
 
-// router.get('/cities/:name', function (req, res) {
-//     res.send('Ciudad ' + req.params.name);
-// });
-
 router.post('/cities', function (req, res) {
     var newModel = new cityModel({
         name: req.body.name,

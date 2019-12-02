@@ -16,7 +16,7 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu >
                             <DropdownItem>
-                                <Link to="/users">Create Account</Link>
+                                <Link to="/createAccount">Create Account</Link>
                             </DropdownItem>
                             <DropdownItem>
                                 <Link to="/login">log in</Link>

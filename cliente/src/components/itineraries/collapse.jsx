@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Collapse, CardBody, Card, Button } from 'reactstrap';
 
-import Activity from '../itineraries/activities/activities';
+import Activities from '../itineraries/activities/activities';
 
 
-const CollapseIt = () => {
+const CollapseIt = (props) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -15,7 +15,7 @@ const CollapseIt = () => {
             <Collapse isOpen={isOpen}>
                 <Card>
                     <CardBody>
-                        <Activity />
+                        <Activities idItinerary={props.idItinerary}/>
                     </CardBody>
                 </Card>
             </Collapse>
