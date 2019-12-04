@@ -2,15 +2,12 @@ const defaultDetails = {
     details: []
 }
 
-function reducer(state = defaultDetails, action){
-    console.log('action');
-    
-    console.log(action)
-    switch (action.type){
+function reducer(state = defaultDetails, action) {
+    switch (action.type) {
         case 'detailsAction':
             return {
                 ...state,
-                details:action.payload
+                details: action.payload
             }
         default:
             return state;

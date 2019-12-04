@@ -1,15 +1,15 @@
 const defaultItinerary = {
-    itineraries: []  
+    itineraries: []
 }
 
 function reducer(state = defaultItinerary, action) {
-    console.log(action)
+
     switch (action.type) {
-        case 'itinerariesAction': 
+        case 'itinerariesAction':
             return {
                 ...state,
-                itineraries:action.payload
-            }         
+                itineraries: action.payload
+            }
         default:
             return state;
     }

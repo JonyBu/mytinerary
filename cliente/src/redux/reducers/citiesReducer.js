@@ -1,16 +1,15 @@
 const defaultCity = {
-    cities: []  
+    cities: []
 }
 
 function reducer(state = defaultCity, action) {
-    console.log(action)
     switch (action.type) {
-        case 'citiesAction': 
+        case 'citiesAction':
             return {
                 ...state,
-                cities:action.payload
-            } 
-            
+                cities: action.payload
+            }
+
         default:
             return state;
     }

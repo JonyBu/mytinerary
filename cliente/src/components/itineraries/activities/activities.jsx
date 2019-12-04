@@ -10,33 +10,48 @@ class activities extends React.Component {
         super(props)
         this.state = {
             comments: [],
-            isFetching: false
+            isFetching: false,
+            activities: []
         }
     }
     async componentDidMount() {
-        console.log("aca");       
-        console.log(this.props.idItinerary);
         this.setState({ ...this.state, isFetching: true })
         await this.props.activitiesAction(this.props.idItinerary);
+        this.setState({ activities: this.props.activitiesReducer })
     }
 
     render() {
         return (
             <div>
-                <Details />
-                <br/>
+                {this.state.activities.map((activities) => <Details idActivity={activities._id} />) }
+                <br />
                 <div>
-                    <CommentList activitiesReducer={this.props.activitiesReducer} />
+                     <CommentList activitiesReducer={this.state.activities} />
                 </div>
-                <br/>
+                <br />
                 <CommentsForm />
             </div>
+
+            // <div>
+            //     {this.state.activities
+            //         ? this.state.activities.map((activities) => <Details idActivity={activities._id} />)
+            //         : <div></div>
+            //     }
+            //     <br />
+            //     <div>
+            //         {this.state.activities
+            //             ? <CommentList activitiesReducer={this.state.activities} />
+            //             : <div></div>
+            //         }
+            //     </div>
+            //     <br />
+            //     <CommentsForm />
+            // </div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         activitiesReducer: state.activitiesReducer.activities,
     }

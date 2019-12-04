@@ -11,6 +11,15 @@ router.get('/details', function (req, res){
     )
 })
 
+router.get('/details/:activityId', function (req, res){
+    detailModel.find({idActivity:req.params.activityId})
+    .then(
+        function (datos) {
+            return res.send(datos)
+        }
+    )
+})
+
 router.post('/details', function (req, res){
     console.log(req.body);
     var newModel = new detailModel({

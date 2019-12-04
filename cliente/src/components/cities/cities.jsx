@@ -46,7 +46,6 @@ class Cities extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         citiesReducer: state.citiesReducer.cities,
     };

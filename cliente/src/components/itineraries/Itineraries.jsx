@@ -12,7 +12,6 @@ class Itinerary extends React.Component {
         }
     }
     async componentDidMount() {
-        console.log(this.props.match.params.idCity);
         this.setState({ ...this.state, isFetching: true })
         await this.props.itinerariesAction(this.props.match.params.idCity);
     }
@@ -30,7 +29,6 @@ class Itinerary extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     return {
         itinerariesReducer: state.itinerariesReducer.itineraries,
     };

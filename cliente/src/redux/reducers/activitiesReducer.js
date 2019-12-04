@@ -2,13 +2,12 @@ const defaultActivities = {
     activities: []
 }
 
-function reducer(state = defaultActivities, action){
-    console.log(action)
-    switch (action.type){
+function reducer(state = defaultActivities, action) {
+    switch (action.type) {
         case 'activitiesAction':
-            return{
+            return {
                 ...state,
-                activities:action.payload
+                activities: action.payload
             }
         default:
             return state;

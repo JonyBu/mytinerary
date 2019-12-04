@@ -4,31 +4,31 @@ import Slide from './slide';
 import detailsAction from '../../../../redux/actions/detailsAction';
 
 class details extends React.Component {
-    
-    constructor(){
-        super()
+
+    constructor(props) {
+        super(props)
         this.state = {
             details: [],
-            isFetching: false
+            isFetching: false,
         }
     }
 
     async componentDidMount() {
-        this.setState({...this.state, isFetching: true})
-        await this.props.detailsAction();
+        this.setState({ ...this.state, isFetching: true })
+        await this.props.detailsAction(this.props.idActivity);
+        this.setState({ details: this.props.detailsReducer })
     }
 
-    render(){
+    render() {
         return (
             <div>
-                 <Slide detailsReducer= {this.props.detailsReducer}/>  
+                <Slide detailsReducer={this.state.details} />
             </div>
         )
     }
 }
 
 const mapStatetoProps = (state) => {
-    console.log(state)
     return {
         detailsReducer: state.detailsReducer.details,
     }
@@ -36,8 +36,8 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        detailsAction: () => {
-            return dispatch(detailsAction())
+        detailsAction: (data) => {
+            return dispatch(detailsAction(data))
         }
     }
 }
