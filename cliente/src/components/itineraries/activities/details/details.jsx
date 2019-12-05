@@ -15,7 +15,7 @@ class details extends React.Component {
 
     async componentDidMount() {
         this.setState({ ...this.state, isFetching: true })
-        await this.props.detailsAction(this.props.idActivity);
+        await this.props.detailsAction(this.props.idItinerary);
         this.setState({ details: this.props.detailsReducer })
     }
 

@@ -47,6 +47,7 @@ const ImageCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+
   const next = () => {
     if (animating) return;
     const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
@@ -83,7 +84,6 @@ const ImageCarousel = () => {
                 >
                   <img
                     src={image.src}
-                    key={i}
                     alt={image.altText}
                     className='img-fluid w-100 rounded'
                     style={{ height: '9rem' }}
@@ -93,7 +93,6 @@ const ImageCarousel = () => {
             })}
           </Row>
         </Container>
-
       </CarouselItem>
     );
   });

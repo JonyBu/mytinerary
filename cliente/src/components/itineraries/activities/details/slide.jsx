@@ -18,7 +18,7 @@ const Slide = (props) => {
 
                 
                     {props.detailsReducer.map((details, i) =>
-                        <div className="centrar" id={i}>
+                        <div className="centrar" key={i}>
                             <img className="imagenSlide" src={require(`../../../../imagenes/detalles/London/${details.activityPic}.jpg`)} alt={details.title} />
                             <br />
                             <h5 >{details.title}</h5>

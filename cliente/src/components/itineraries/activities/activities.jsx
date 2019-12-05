@@ -23,7 +23,8 @@ class activities extends React.Component {
     render() {
         return (
             <div>
-                {this.state.activities.map((activities) => <Details idActivity={activities._id} />) }
+                {/* {this.state.activities.map((itineraries) => <Details idItinerary={itineraries._id} />) } */}
+                <Details idItinerary={this.props.idItinerary} />                
                 <br />
                 <div>
                      <CommentList activitiesReducer={this.state.activities} />

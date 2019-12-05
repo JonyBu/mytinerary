@@ -11,8 +11,8 @@ router.get('/details', function (req, res){
     )
 })
 
-router.get('/details/:activityId', function (req, res){
-    detailModel.find({idActivity:req.params.activityId})
+router.get('/details/:itineraryId', function (req, res){
+    detailModel.find({idItinerary:req.params.itineraryId})
     .then(
         function (datos) {
             return res.send(datos)

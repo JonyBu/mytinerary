@@ -32,16 +32,6 @@ class Menu extends React.Component {
                             <DropdownItem>
                                 <Link to="/cities">Cities</Link>
                             </DropdownItem>
-                            <DropdownItem>
-                                <Link to="/itineraries/:_id">Itineraries</Link>
-                            </DropdownItem>
-                            <DropdownItem>
-                                <Link to="/comments">Comments</Link>
-                            </DropdownItem>
-                            <DropdownItem>
-                                <Link to="/details">details</Link>
-                            </DropdownItem>
-                            
                         </DropdownMenu>
                     </UncontrolledDropdown>
                 </Navbar>

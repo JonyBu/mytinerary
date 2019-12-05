@@ -7,7 +7,6 @@ const ItineraryList = (props) => {
     return (
         props.itineraryReducer.map((itinerary, i) =>
             <div key={i}>
-                
                 <Card>
                     <CardBody >
                         <Media>
