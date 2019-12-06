@@ -16,9 +16,7 @@ const routerDetails = require('./componentes_Bk/controladores/controladorDetails
 const routerUser = require('./componentes_Bk/controladores/controladorUser');
 const passport = require('./componentes_Bk/auth/passport');
 
-
 require('./componentes_Bk/auth/passport');
-
 
 //app.use("/api",passport.authenticate("jwt",{session:false}),cityApi);
 app.use("/api", require('./componentes_BK/auth/authApi'));//otra forma sin constante

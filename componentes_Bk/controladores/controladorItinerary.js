@@ -22,7 +22,6 @@ router.get('/itineraries/:idCity', (req,res)=>{
 
 
 router.post('/itineraries', function (req, res) {
-    console.log(req.body);
     var newModel = new itineraryModel({
         title: req.body.title,
         profilePic: req.body.profilePic,

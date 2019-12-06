@@ -57,3 +57,7 @@
   display: flex;
   justify-content: space-around
 }
+
+.userLogo{
+  height: 10em;
+}
