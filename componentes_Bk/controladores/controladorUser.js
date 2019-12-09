@@ -6,6 +6,7 @@ const key = require('./secretKey');
 
 const { check, validationResult } = require('express-validator');
 
+
 router.post('/user/login', function (req, res) {
     const userName = req.body.userName;
 
@@ -47,15 +48,17 @@ router.post('/user/login', function (req, res) {
         })
 })
 
-router.post('/user/createAccount', [
-    check('email').isEmail(),
-    check('password').isLength({ min: 5 })
-    ], function (req, res) {
+// router.post('/user/createAccount', [
+//     check('email').isEmail(),
+//     check('password').isLength({ min: 5 })
+//     ], function (req, res) {
 
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(422).json({ errors: errors.array() });
-        }
+//         const errors = validationResult(req);
+//         if (!errors.isEmpty()) {
+//             return res.status(422).json({ errors: errors.array() });
+//         }
+
+router.post('/user/createAccount', function (req, res) {
 
     var newModel = new usuarioModel({
         userName: req.body.userName,
@@ -73,6 +76,5 @@ router.post('/user/createAccount', [
             }
         )
 })
-
 
 module.exports = router;

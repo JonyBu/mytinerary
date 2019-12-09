@@ -28,11 +28,29 @@ class createAccount extends React.Component {
         this.setState({
           [name]: value
         });
+        console.log(this.state);
       }
-
-      handleSubmit(event) {
+     
+      async handleSubmit(event) {
+        const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/createAccount';
+        var payload = {...this.state};
+        console.log("console"+this.state);
+        
+        var data = new FormData();
+        data.append( "json", JSON.stringify( payload ) ); 
         alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
+        await fetch(QUOTE_SERVICE_URL,{
+            method: 'POST',
+            //body: new FormData(document.getElementById('formulario')),
+            body: data,
+            headers:{
+                'Content-Type': 'application/x-www-form-urlencoded'
+              }
+        })
+        .then(response => response.json())
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response, data));
       }
 
     render() {
@@ -42,7 +60,7 @@ class createAccount extends React.Component {
                 <h3>Create Account</h3>
                 <br />
                 <Jumbotron>
-                    <Form onSubmit={this.handleSubmit}>
+                    <Form onSubmit={this.handleSubmit} action='/user/createAccount' method='post' id='formulario'>
                         <img src={imagenUser} alt="sin imagen usuario" className="userLogo" />
                         <br />
                         <FormText color="muted">
@@ -50,21 +68,21 @@ class createAccount extends React.Component {
                         </FormText>
                         <br />
                         <FormGroup row>
-                            <Label for="exampleFile" sm={3}>File</Label>
+                            <Label for="profilePic" sm={3}>File</Label>
                             <Col sm={9}>
-                                <Input type="file" name="file" id="exampleFile" value={this.state.file} onChange={this.handleInputChange} />
+                                <Input type="file" name="profilePic" id="profilePic" value={this.state.profilePic} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="userName" sm={3}>User Name:</Label>
                             <Col sm={9}>
-                                <Input type="text" name="userName" id="userName" value={this.state.userName} onChange={this.handleInputChange} />
+                                <Input type="text" name="userName" id="userName" autoComplete="userName" value={this.state.userName} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="password" sm={3}>Password:</Label>
                             <Col sm={9}>
-                                <Input type="password" name="password" id="password" value={this.state.password} onChange={this.handleInputChange}/>
+                                <Input type="password" name="password" id="password" autoComplete="password" value={this.state.password} onChange={this.handleInputChange}/>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -86,9 +104,9 @@ class createAccount extends React.Component {
                             </Col>
                         </FormGroup>
                         <FormGroup row>
-                            <Label for="select" sm={3}>Country:</Label>
+                            <Label for="country" sm={3}>Country:</Label>
                             <Col sm={5}>
-                                <Input type="select" name="select" id="select" value={this.state.select} onChange={this.handleInputChange}>
+                                <Input type="select" name="country" id="country" value={this.state.select} onChange={this.handleInputChange}>
                                     <option value=""></option>
                                     <option value="london">London</option>
                                     <option value="spain">Spain</option>
@@ -110,7 +128,7 @@ class createAccount extends React.Component {
                         </FormGroup>
                         <br />
                         <FormGroup check row>
-                            <Button color="primary">Submit</Button>
+                            <Button onClick={this.handleSubmit} color="primary">Submit</Button>
                         </FormGroup>
                     </Form>
                 </Jumbotron>
