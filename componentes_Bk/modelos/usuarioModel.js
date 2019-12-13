@@ -7,7 +7,8 @@ const userSchema = mongoose.Schema({
     profilePic:String,
     firsName: String,
     lastName: String,
-    country: String
+    country: String,
+    checkbox: Boolean
 })
 
 module.exports = mongoose.model('User', userSchema);

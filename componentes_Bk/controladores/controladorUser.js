@@ -3,13 +3,14 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const usuarioModel = require('../modelos/usuarioModel');
 const key = require('./secretKey');
-
 const { check, validationResult } = require('express-validator');
+
+var bcryptjs = require('bcryptjs');
 
 
 router.post('/user/login', function (req, res) {
     const userName = req.body.userName;
-
+    // bcryptjs.compareSync(password,hash);
     usuarioModel.findOne({ userName: userName })
         .then(user => {
             if (!user) {
@@ -48,17 +49,21 @@ router.post('/user/login', function (req, res) {
         })
 })
 
-// router.post('/user/createAccount', [
-//     check('email').isEmail(),
-//     check('password').isLength({ min: 5 })
-//     ], function (req, res) {
+router.post('/user/createAccount', 
+    [
+    check('email').isEmail(),
+    check('checkbox').not().isIn([false]),
+    check('password').isLength({ min: 5 })
+    ], function (req, res) {
+        // var salt = bcryptjs.genSaltSync(10);
+        // var hash = bcryptjs.hashSync(req.body.password,salt);
 
-//         const errors = validationResult(req);
-//         if (!errors.isEmpty()) {
-//             return res.status(422).json({ errors: errors.array() });
-//         }
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(422).json({ errors: errors.array() });
+        }
 
-router.post('/user/createAccount', function (req, res) {
+// router.post('/user/createAccount', function (req, res) {
 
     var newModel = new usuarioModel({
         userName: req.body.userName,
@@ -67,7 +72,8 @@ router.post('/user/createAccount', function (req, res) {
         profilePic: req.body.profilePic,
         firsName: req.body.firsName,
         lastName: req.body.lastName,
-        country: req.body.country
+        country: req.body.country,
+        checkbox: req.body.checkbox
     })
     newModel.save()
         .then(

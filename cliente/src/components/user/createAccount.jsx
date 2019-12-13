@@ -1,11 +1,12 @@
 import React from 'react';
 import { Col, Jumbotron, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Footer from '../footer';
-import imagenUser from '../../imagenes/userLogin.png'
+import imagenUser from '../../imagenes/userLogin.png';
+import axios from 'axios';
 
 class createAccount extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             userName: [],
             password: [],
@@ -14,7 +15,7 @@ class createAccount extends React.Component {
             firstName: [],
             lastName: [],
             country: [],
-            isFetching: false
+            checkbox: false
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,38 +25,35 @@ class createAccount extends React.Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-    
         this.setState({
-          [name]: value
+            [name]: value
         });
-        console.log(this.state);
-      }
-     
-      async handleSubmit(event) {
+    //    console.log(this.state);
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
         const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/createAccount';
-        var payload = {...this.state};
-        console.log("console"+this.state);
+        const userObject = {
+            userName: this.state.userName,
+            password: this.state.password,
+            email: this.state.email,
+            profilePic: this.state.profilePic,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            country: this.state.country,
+            checkbox: this.state.checkbox
+          };
         
-        var data = new FormData();
-        data.append( "json", JSON.stringify( payload ) ); 
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-        await fetch(QUOTE_SERVICE_URL,{
-            method: 'POST',
-            //body: new FormData(document.getElementById('formulario')),
-            body: data,
-            headers:{
-                'Content-Type': 'application/x-www-form-urlencoded'
-              }
-        })
-        .then(response => response.json())
-        .catch(error => console.error('Error:', error))
-        .then(response => console.log('Success:', response, data));
-      }
+        await axios.post(QUOTE_SERVICE_URL, userObject)
+            .catch(error => console.log('error: ' + error))
+            .then(response => console.log('succes: ' + response))
+        this.setState({ userName: '', password: '', email: '', profilePic: '', firstName: '', lastName: '', country: '', checkbox: '' })
+    }
 
     render() {
         return (
-            <div >
+            <div className=" wrapper ">
                 <br />
                 <h3>Create Account</h3>
                 <br />
@@ -65,7 +63,7 @@ class createAccount extends React.Component {
                         <br />
                         <FormText color="muted">
                             Add Photo
-                        </FormText>
+                                </FormText>
                         <br />
                         <FormGroup row>
                             <Label for="profilePic" sm={3}>File</Label>
@@ -82,25 +80,25 @@ class createAccount extends React.Component {
                         <FormGroup row>
                             <Label for="password" sm={3}>Password:</Label>
                             <Col sm={9}>
-                                <Input type="password" name="password" id="password" autoComplete="password" value={this.state.password} onChange={this.handleInputChange}/>
+                                <Input type="password" name="password" id="password" autoComplete="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="email" sm={3}>Email:</Label>
                             <Col sm={9}>
-                                <Input type="email" name="email" id="email" value={this.state.email} onChange={this.handleInputChange}/>
+                                <Input type="email" name="email" id="email" value={this.state.email} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="firstName" sm={3}>First Name:</Label>
                             <Col sm={9}>
-                                <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleInputChange}/>
+                                <Input type="text" name="firstName" id="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="lastName" sm={3}>Last Name:</Label>
                             <Col sm={9}>
-                                <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleInputChange}/>
+                                <Input type="text" name="lastName" id="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -120,7 +118,7 @@ class createAccount extends React.Component {
                             <Col >
                                 <FormGroup check>
                                     <Label check>
-                                        <Input type="checkbox" id="checkbox2" value={this.state.checkbox} onChange={this.handleInputChange} />{' '}
+                                        <Input type="checkbox" name="checkbox" id="checkbox" value={this.state.checkbox} onChange={this.handleInputChange} required />{' '}
                                         I agree to MyItinerary <a href="/termsAndConditions">Terms & Conditions</a>
                                     </Label>
                                 </FormGroup>
@@ -137,5 +135,6 @@ class createAccount extends React.Component {
         )
     }
 }
+
 
 export default createAccount;
