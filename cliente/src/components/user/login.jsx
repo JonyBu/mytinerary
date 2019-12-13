@@ -17,7 +17,7 @@ class Login extends React.Component {
     onChange = (e) => {
         var state = this.state;
         state[e.target.name] = e.target.value;
-        console.log(state)
+        console.log(state);
         this.setState(state);
     }
 

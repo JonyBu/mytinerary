@@ -10,7 +10,10 @@ var bcryptjs = require('bcryptjs');
 
 router.post('/user/login', function (req, res) {
     const userName = req.body.userName;
-    // bcryptjs.compareSync(password,hash);
+    var password = req.body.password;
+    var salt = bcryptjs.genSaltSync(10);
+    var hash = bcryptjs.hashSync(password,salt);
+    bcryptjs.compareSync(password,hash);
     usuarioModel.findOne({ userName: userName })
         .then(user => {
             if (!user) {
@@ -55,15 +58,13 @@ router.post('/user/createAccount',
     check('checkbox').not().isIn([false]),
     check('password').isLength({ min: 5 })
     ], function (req, res) {
-        // var salt = bcryptjs.genSaltSync(10);
-        // var hash = bcryptjs.hashSync(req.body.password,salt);
-
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });
         }
 
 // router.post('/user/createAccount', function (req, res) {
+//post sin check
 
     var newModel = new usuarioModel({
         userName: req.body.userName,
