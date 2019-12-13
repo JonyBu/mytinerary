@@ -7,13 +7,14 @@ const { check, validationResult } = require('express-validator');
 
 var bcryptjs = require('bcryptjs');
 
-
 router.post('/user/login', function (req, res) {
+    console.log('body login: ', req.body);
+    
     const userName = req.body.userName;
     var password = req.body.password;
     var salt = bcryptjs.genSaltSync(10);
-    var hash = bcryptjs.hashSync(password,salt);
-    bcryptjs.compareSync(password,hash);
+    var hash = bcryptjs.hashSync(password, salt);
+    bcryptjs.compareSync(password, hash);
     usuarioModel.findOne({ userName: userName })
         .then(user => {
             if (!user) {
@@ -52,36 +53,36 @@ router.post('/user/login', function (req, res) {
         })
 })
 
-router.post('/user/createAccount', 
+router.post('/user/createAccount',
     [
-    check('email').isEmail(),
-    check('checkbox').not().isIn([false]),
-    check('password').isLength({ min: 5 })
+        check('email').isEmail(),
+        check('checkbox').not().isIn([false]),
+        check('password').isLength({ min: 5 })
     ], function (req, res) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(422).json({ errors: errors.array() });
         }
 
-// router.post('/user/createAccount', function (req, res) {
-//post sin check
+        // router.post('/user/createAccount', function (req, res) {
+        //post sin check
 
-    var newModel = new usuarioModel({
-        userName: req.body.userName,
-        password: req.body.password,
-        email: req.body.email,
-        profilePic: req.body.profilePic,
-        firsName: req.body.firsName,
-        lastName: req.body.lastName,
-        country: req.body.country,
-        checkbox: req.body.checkbox
+        var newModel = new usuarioModel({
+            userName: req.body.userName,
+            password: req.body.password,
+            email: req.body.email,
+            profilePic: req.body.profilePic,
+            firsName: req.body.firsName,
+            lastName: req.body.lastName,
+            country: req.body.country,
+            checkbox: req.body.checkbox
+        })
+        newModel.save()
+            .then(
+                function (datos) {
+                    return res.send(datos)
+                }
+            )
     })
-    newModel.save()
-        .then(
-            function (datos) {
-                return res.send(datos)
-            }
-        )
-})
 
 module.exports = router;

@@ -1,13 +1,12 @@
 import React from 'react';
 import Footer from '../footer';
 import axios from 'axios';
-import { FormText ,Jumbotron, Button, Form, FormGroup, Label, Input, Col} from 'reactstrap';
+import { FormText, Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
             userName: '',
             password: ''
@@ -21,8 +20,24 @@ class Login extends React.Component {
         this.setState(state);
     }
 
-    onSave = () => {
-        axios.post()
+    onSave = (e) => {
+        // axios.post()
+        e.preventDefault();
+        const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/login';
+        const userObject = {
+            userName: this.state.userName,
+            password: this.state.password
+        }
+        axios.post(QUOTE_SERVICE_URL, userObject)
+        .then(response => {
+            console.log('respueta a login: ', response);
+            
+            localStorage.setItem('usertoken', response.data)
+            return response.data
+          })
+          .catch(err => {
+            console.log(err)
+          })
     }
 
     signGoogle = () => {
@@ -30,7 +45,6 @@ class Login extends React.Component {
     }
 
     render() {
-
         return (
             <div className="footer" >
                 <br />
@@ -41,13 +55,13 @@ class Login extends React.Component {
                         <FormGroup row >
                             <Label for="user" sm={3}>User Name:</Label>
                             <Col sm={9}>
-                                <Input type="text" name="userName" id="user" />
+                                <Input type="text" name="userName" id="user" onChange={this.onChange.bind(this)} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
                             <Label for="password" sm={3}>Password:</Label>
                             <Col sm={9}>
-                                <Input type="password" name="password" id="password" />
+                                <Input type="password" name="password" id="password" onChange={this.onChange.bind(this)}/>
                             </Col>
                         </FormGroup>
                         <FormGroup row>
@@ -62,7 +76,7 @@ class Login extends React.Component {
                         </FormGroup>
                         <br />
                         <FormGroup check row>
-                            <Button color="primary">Submit</Button>
+                            <Button onClick={this.onSave} color="primary">Submit</Button>
                         </FormGroup>
                     </Form>
                 </Jumbotron>
@@ -72,7 +86,7 @@ class Login extends React.Component {
                         Google
                     </button>
                 </div>
-                <br/>
+                <br />
                 <FormText color="muted">
                     Don´t have a MYtinerary account yet?
                     You should create one It´s totally rfee
@@ -80,7 +94,7 @@ class Login extends React.Component {
                 </FormText>
 
                 <Link to="./createAccount">Create Account</Link>
-                
+
                 <Footer />
             </div>
 

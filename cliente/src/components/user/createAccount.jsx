@@ -28,7 +28,7 @@ class createAccount extends React.Component {
         this.setState({
             [name]: value
         });
-    //    console.log(this.state);
+        //    console.log(this.state);
     }
 
     async handleSubmit(e) {
@@ -43,8 +43,8 @@ class createAccount extends React.Component {
             lastName: this.state.lastName,
             country: this.state.country,
             checkbox: this.state.checkbox
-          };
-        
+        };
+
         await axios.post(QUOTE_SERVICE_URL, userObject)
             .catch(error => console.log('error: ' + error))
             .then(response => console.log('succes: ' + response))
