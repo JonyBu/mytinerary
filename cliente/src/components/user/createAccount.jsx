@@ -8,47 +8,44 @@ class createAccount extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: [],
-            password: [],
-            email: [],
-            profilePic: [],
-            firstName: [],
-            lastName: [],
-            country: [],
+            userName: '',
+            password: '',
+            email: '',
+            profilePic: '',
+            firstName: '',
+            lastName: '',
+            country: '',
             checkbox: false
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+         this.handleInputChange = this.handleInputChange.bind(this);
+         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleInputChange(event) {
+    handleInputChange = (event) => {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
         this.setState({
             [name]: value
         });
-        //    console.log(this.state);
     }
 
-    async handleSubmit(e) {
+    handleSubmit = (e) => {
         e.preventDefault();
         const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/createAccount';
         const userObject = {
+            profilePic: this.state.profilePic,
             userName: this.state.userName,
             password: this.state.password,
             email: this.state.email,
-            profilePic: this.state.profilePic,
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             country: this.state.country,
             checkbox: this.state.checkbox
-        };
-
-        await axios.post(QUOTE_SERVICE_URL, userObject)
-            .catch(error => console.log('error: ' + error))
+        }
+        axios.post(QUOTE_SERVICE_URL, userObject)
             .then(response => console.log('succes: ' + response))
-        this.setState({ userName: '', password: '', email: '', profilePic: '', firstName: '', lastName: '', country: '', checkbox: '' })
+            .catch(error => console.log('error: ' + error))
     }
 
     render() {
@@ -58,7 +55,7 @@ class createAccount extends React.Component {
                 <h3>Create Account</h3>
                 <br />
                 <Jumbotron>
-                    <Form onSubmit={this.handleSubmit} action='/user/createAccount' method='post' id='formulario'>
+                    <Form  >
                         <img src={imagenUser} alt="sin imagen usuario" className="userLogo" />
                         <br />
                         <FormText color="muted">
@@ -110,6 +107,7 @@ class createAccount extends React.Component {
                                     <option value="spain">Spain</option>
                                     <option value="french">French</option>
                                     <option value="italy">Italy</option>
+                                    <option value="other">Other</option>
                                 </Input>
                             </Col>
                         </FormGroup>

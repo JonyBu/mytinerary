@@ -65,7 +65,7 @@ router.post('/user/createAccount',
         }
 
         // router.post('/user/createAccount', function (req, res) {
-        //post sin check
+        //post sin check express validator
 
         var newModel = new usuarioModel({
             userName: req.body.userName,

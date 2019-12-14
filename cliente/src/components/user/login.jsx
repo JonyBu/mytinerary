@@ -16,12 +16,10 @@ class Login extends React.Component {
     onChange = (e) => {
         var state = this.state;
         state[e.target.name] = e.target.value;
-        console.log(state);
         this.setState(state);
     }
 
     onSave = (e) => {
-        // axios.post()
         e.preventDefault();
         const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/login';
         const userObject = {
@@ -29,15 +27,12 @@ class Login extends React.Component {
             password: this.state.password
         }
         axios.post(QUOTE_SERVICE_URL, userObject)
-        .then(response => {
-            console.log('respueta a login: ', response);
-            
-            localStorage.setItem('usertoken', response.data)
-            return response.data
-          })
-          .catch(err => {
-            console.log(err)
-          })
+            .then(response => {
+                console.log('respueta a login: ', response);
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     signGoogle = () => {
@@ -61,7 +56,7 @@ class Login extends React.Component {
                         <FormGroup row>
                             <Label for="password" sm={3}>Password:</Label>
                             <Col sm={9}>
-                                <Input type="password" name="password" id="password" onChange={this.onChange.bind(this)}/>
+                                <Input type="password" name="password" id="password" onChange={this.onChange.bind(this)} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
