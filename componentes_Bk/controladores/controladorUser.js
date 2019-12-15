@@ -4,11 +4,24 @@ const jwt = require('jsonwebtoken');
 const usuarioModel = require('../modelos/usuarioModel');
 const key = require('./secretKey');
 const { check, validationResult } = require('express-validator');
+const passport = require('../auth/passport');
 
 var bcryptjs = require('bcryptjs');
 
+router.get(
+    "/user/login",
+    passport.authenticate("jwt", { session: false }),
+    (req, res) => {
+      usuarioModel
+        .findOne({ _id: req.user.id })
+        .then(user => {
+          res.json(user);
+        })
+        .catch(err => res.status(404).json({ error: "User does not exist!" }));
+    }
+  )
+
 router.post('/user/login', function (req, res) {
-    console.log('body login: ', req.body);
     
     const userName = req.body.userName;
     var password = req.body.password;

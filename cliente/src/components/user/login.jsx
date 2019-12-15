@@ -3,6 +3,7 @@ import Footer from '../footer';
 import axios from 'axios';
 import { FormText, Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import  GoogleButton from 'react-google-button' 
 
 class Login extends React.Component {
     constructor(props) {
@@ -76,10 +77,8 @@ class Login extends React.Component {
                     </Form>
                 </Jumbotron>
 
-                <div>
-                    <button onClick={this.signGoogle}>
-                        Google
-                    </button>
+                <div >
+                    <GoogleButton className="centrar" onClick={this.signGoogle} />
                 </div>
                 <br />
                 <FormText color="muted">

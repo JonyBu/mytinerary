@@ -25,20 +25,20 @@ const items = [
   [
     { src: paris, altText: "Slide 1", caption: "Slide 1" },
     { src: barcelona, altText: "Slide 2", caption: "Slide 2" },
-    { src: newyork, altText: "Slide 3", caption: "Slide 3" },
-    { src: amsterdam, altText: "Slide 4", caption: "Slide 4" }
+    { src: newyork, altText: "Slide 3", caption: "Slide 3"},
+    { src: amsterdam, altText: "Slide 4", caption: "Slide 4"}
   ],
   [
-    { src: paris1, altText: "Slide 5", caption: "Slide 5" },
-    { src: barcelona1, altText: "Slide 6", caption: "Slide 6" },
-    { src: newyork1, altText: "Slide 7", caption: "Slide 7" },
-    { src: amsterdam1, altText: "Slide 8", caption: "Slide 8" }
+    { src: paris1, altText: "Slide 5", caption: "Slide 5"},
+    { src: barcelona1, altText: "Slide 6", caption: "Slide 6"},
+    { src: newyork1, altText: "Slide 7", caption: "Slide 7"},
+    { src: amsterdam1, altText: "Slide 8", caption: "Slide 8"}
   ],
   [
-    { src: paris2, altText: "Slide 9", caption: "Slide 9" },
-    { src: barcelona2, altText: "Slide 10", caption: "Slide 10" },
-    { src: newyork2, altText: "Slide 11", caption: "Slide 11" },
-    { src: amsterdam2, altText: "Slide 12", caption: "Slide 12" }
+    { src: paris2, altText: "Slide 9", caption: "Slide 9"},
+    { src: barcelona2, altText: "Slide 10", caption: "Slide 10"},
+    { src: newyork2, altText: "Slide 11", caption: "Slide 11"},
+    { src: amsterdam2, altText: "Slide 12", caption: "Slide 12"}
   ]
 ];
 
@@ -65,7 +65,8 @@ const ImageCarousel = () => {
     setActiveIndex(newIndex);
   }
 
-  const slides = items.map((item, i) => {
+  const slides =  items.map((item, i) => {
+    
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
@@ -75,6 +76,7 @@ const ImageCarousel = () => {
         <Container>
           <Row>
             {item.map((image, i) => {
+              
               return (
                 <Col
                   xs={{ size: 6 }}
