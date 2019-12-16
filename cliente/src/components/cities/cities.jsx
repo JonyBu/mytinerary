@@ -5,7 +5,6 @@ import FilterForm from './filterCities.jsx';
 import citiesAction from '../../redux/actions/citiesAction';
 import Footer from '../footer';
 
-
 class Cities extends React.Component {
     constructor() {
         super()
@@ -39,7 +38,7 @@ class Cities extends React.Component {
                 <h1>Listado de ciudades</h1>
                 <FilterForm match={this.props.match} onChange={this.filterCities} />
                 <CityList citiesReducer={this.state.filteredCities} />
-                <Footer/>
+                <Footer />
             </div>
         )
     }

@@ -9,7 +9,7 @@ const passport = require('../auth/passport');
 var bcryptjs = require('bcryptjs');
 
 router.get(
-    "/user/login",
+    "/",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
       usuarioModel

@@ -1,8 +1,8 @@
 import React from 'react';
+import axios from 'axios';
 import { Col, Jumbotron, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Footer from '../footer';
 import imagenUser from '../../imagenes/userLogin.png';
-import axios from 'axios';
 
 class createAccount extends React.Component {
     constructor(props) {
@@ -17,8 +17,8 @@ class createAccount extends React.Component {
             country: '',
             checkbox: false
         }
-         this.handleInputChange = this.handleInputChange.bind(this);
-         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputChange = (event) => {
@@ -50,7 +50,7 @@ class createAccount extends React.Component {
 
     render() {
         return (
-            <div className=" wrapper ">
+            <div >
                 <br />
                 <h3>Create Account</h3>
                 <br />
@@ -134,5 +134,4 @@ class createAccount extends React.Component {
     }
 }
 
-
-export default createAccount;
+export default (createAccount);
