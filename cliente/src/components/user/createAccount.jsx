@@ -46,7 +46,8 @@ class createAccount extends React.Component {
         axios.post(QUOTE_SERVICE_URL, userObject)
             .then(response => console.log('succes: ' + response))
             .catch(error => console.log('error: ' + error))
-    }
+            this.props.history.push("/login")    
+    } 
 
     render() {
         return (

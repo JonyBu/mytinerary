@@ -1,8 +1,8 @@
 import axios from 'axios';
-const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/login';
+const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/profile';
 
-const startLogin = user => dispatch => {
-    axios.post(QUOTE_SERVICE_URL, user, {
+const outLogin = user => dispatch => {
+    axios.get(QUOTE_SERVICE_URL, user, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -11,7 +11,7 @@ const startLogin = user => dispatch => {
         .then(response => {
             console.log('respueta a login: ', response.data);
             if (response.data.secess) {
-                localStorage.setItem("token", response.data.token)
+                localStorage.removeItem('token')
             } else {
                 alert(response.data.message + " vuelva a loguearse")
             }
@@ -21,4 +21,4 @@ const startLogin = user => dispatch => {
         })
 }
 
-export default startLogin;
+export default outLogin;

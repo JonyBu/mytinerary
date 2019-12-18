@@ -19,7 +19,10 @@ class Menu extends React.Component {
                                 <Link to="/createAccount">Create Account</Link>
                             </DropdownItem>
                             <DropdownItem>
-                                <Link to="/login">log in</Link>
+                                <Link to="/login">login</Link>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <Link to="/logout">logout</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -31,9 +34,6 @@ class Menu extends React.Component {
                         <DropdownMenu right>
                             <DropdownItem>
                                 <Link to="/cities">Cities</Link>
-                            </DropdownItem>
-                            <DropdownItem>
-                                <Link to="/session">session</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

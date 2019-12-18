@@ -5,7 +5,6 @@ import { FormText, Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import  startLogin  from '../../redux/actions/loginAction';
-//https://levelup.gitconnected.com/using-jwt-in-your-react-redux-app-for-authorization-d31be51a50d2
 
 
 class Login extends React.Component {
@@ -25,7 +24,8 @@ class Login extends React.Component {
 
     onSave = (e) => {
         e.preventDefault();
-        this.props.startLogin(this.state);
+        this.props.startLogin(this.state)
+        this.props.history.push("/")
     }
 
     signGoogle = () => {
@@ -88,8 +88,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogin: (data) => dispatch(startLogin(data))
+    startLogin: (data) => dispatch(startLogin(data) )
 })
 
 export default connect(null,mapDispatchToProps)(Login);
-// export default Login;

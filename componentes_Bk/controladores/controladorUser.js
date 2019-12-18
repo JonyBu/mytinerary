@@ -77,9 +77,6 @@ router.post('/user/createAccount',
             return res.status(422).json({ errors: errors.array() });
         }
 
-        // router.post('/user/createAccount', function (req, res) {
-        //post sin check express validator
-
         var newModel = new usuarioModel({
             userName: req.body.userName,
             password: req.body.password,
