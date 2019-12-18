@@ -1,5 +1,8 @@
 import React from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 import createAccount from './components/user/createAccount';
 import Login from './components/user/login';
 import Home from './components/home';
@@ -7,16 +10,24 @@ import Cities from './components/cities/cities';
 import Itineraries from './components/itineraries/Itineraries';
 import Other from './components/cities/OtherCity';
 import TemsAndConditions from './components/user/tems&conditions';
+import session from './components/user/session';
 
-import { Provider } from 'react-redux';
-import store from './redux/store';
+
+// import { connect } from 'react-redux';
+// import getProfileAction from './redux/actions/profileAction';
 
 class App extends React.Component {
+
+  // componentDidMount = () => {
+  //   this.props.getProfileAction()
+  // }
+
   render() {
     return (
-      <Provider store={store} >
+      <Provider store={store}>
         <Router>
           <div className="centrar">
+            <Route path="/session" component={session}/>
             <Route path="/termsAndConditions" component={TemsAndConditions}/>
             <Route path="/cities" component={Cities} />
             <Route path="/itineraries/:idCity" component={Itineraries} />
@@ -31,4 +42,9 @@ class App extends React.Component {
   }
 }
 
+// const mapDispatchToProps = dispatch => ({
+//   getProfileAction: () => dispatch(getProfileAction())
+// })
+
+// export default connect(null, mapDispatchToProps)(App);
 export default App;

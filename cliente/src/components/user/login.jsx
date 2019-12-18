@@ -1,9 +1,12 @@
 import React from 'react';
 import Footer from '../footer';
-import axios from 'axios';
+import  GoogleButton from 'react-google-button' 
 import { FormText, Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import  GoogleButton from 'react-google-button' 
+import { connect } from 'react-redux';
+import  startLogin  from '../../redux/actions/loginAction';
+//https://levelup.gitconnected.com/using-jwt-in-your-react-redux-app-for-authorization-d31be51a50d2
+
 
 class Login extends React.Component {
     constructor(props) {
@@ -22,18 +25,7 @@ class Login extends React.Component {
 
     onSave = (e) => {
         e.preventDefault();
-        const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/login';
-        const userObject = {
-            userName: this.state.userName,
-            password: this.state.password
-        }
-        axios.post(QUOTE_SERVICE_URL, userObject)
-            .then(response => {
-                console.log('respueta a login: ', response);
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        this.props.startLogin(this.state);
     }
 
     signGoogle = () => {
@@ -95,4 +87,9 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+    startLogin: (data) => dispatch(startLogin(data))
+})
+
+export default connect(null,mapDispatchToProps)(Login);
+// export default Login;

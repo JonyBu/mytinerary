@@ -7,6 +7,7 @@ import ImageCarousel from '../components/carousel';
 import Menu from '../components/menu';
 
 class Home extends React.Component {
+
   render() {
     return (
       <div >
