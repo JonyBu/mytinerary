@@ -14,9 +14,15 @@ const startLogin = user => dispatch => {
             console.log('respueta a login: ', response.data);
             if (response.data.secess) {
                 localStorage.setItem("token", response.data.token)
+                console.log(user);
+
+                dispatch({
+                    type: 'LOGIN_USER',
+                    payload: user
+                })
                 var token = localStorage.getItem("token");
                 var decode = jwt_decode(token);
-                alert("Bienvenido "+ decode.userName)
+                alert("Bienvenido " + decode.userName)
             } else {
                 alert(response.data.message + " vuelva a loguearse")
             }
@@ -25,5 +31,6 @@ const startLogin = user => dispatch => {
             console.log(err)
         })
 }
+
 
 export default startLogin;
