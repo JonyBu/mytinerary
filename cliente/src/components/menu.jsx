@@ -6,6 +6,13 @@ import imagenMenu from '../imagenes/menu.png';
 
 
 class Menu extends React.Component {
+
+    handleClick = event => {
+        event.preventDefault()
+        localStorage.removeItem("token")
+        alert(" Success logging out ")
+      }
+
     render() {
         return (
             <div className="li">
@@ -21,9 +28,7 @@ class Menu extends React.Component {
                             <DropdownItem>
                                 <Link to="/login">login</Link>
                             </DropdownItem>
-                            <DropdownItem>
-                                <Link to="/logout">logout</Link>
-                            </DropdownItem>
+
                         </DropdownMenu>
                     </UncontrolledDropdown>
 
@@ -33,7 +38,10 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <Link to="/cities">Cities</Link>
+                                <Link to="/citis">Cities</Link>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <Link onClick={this.handleClick}>logout</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
