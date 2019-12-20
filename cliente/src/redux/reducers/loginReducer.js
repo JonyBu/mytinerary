@@ -10,8 +10,16 @@ function reducer(state = initiaState, action) {
                 currentUser: action.payload
             }
         case 'LOGOUT_USER':
-            return { ...state, 
-                currentUser: {} }
+            return { 
+                ...state, 
+                currentUser: action.payload
+            }
+        case 'GET_USER':
+            return {
+                ...state,
+                currentUser: {}
+            }
+
         default:
             return state;
     }

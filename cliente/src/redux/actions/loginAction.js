@@ -14,8 +14,9 @@ const startLogin = user => dispatch => {
             console.log('respueta a login: ', response.data);
             if (response.data.secess) {
                 localStorage.setItem("token", response.data.token)
+                user.connected = true;
                 console.log(user);
-
+                
                 dispatch({
                     type: 'LOGIN_USER',
                     payload: user

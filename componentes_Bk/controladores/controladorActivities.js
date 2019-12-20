@@ -23,7 +23,8 @@ router.get('/activities/:idItinerary',function(req,res){
 router.post('/activities', function (req, res){
     console.log(req.body);
     var newModel = new activitiesModel({
-        comments: req.body.comments
+        comments: req.body.comments,
+        idItinerary: req.body.idItinerary
     });
     newModel.save()
     .then(
@@ -31,6 +32,10 @@ router.post('/activities', function (req, res){
             return res.send(datos)
         }
     )
+})
+
+router.put('/activities', function (req, res){
+    
 })
 
 module.exports=router

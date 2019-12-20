@@ -12,7 +12,8 @@ class Login extends React.Component {
         super(props)
         this.state = {
             userName: '',
-            password: ''
+            password: '',
+            connected: false
         }
     }
 
@@ -25,7 +26,7 @@ class Login extends React.Component {
     onSave = (e) => {
         e.preventDefault();
         this.props.startLogin(this.state)
-        this.props.history.push("/")
+        this.props.history.push("/profile")
     }
 
     signGoogle = () => {
@@ -64,7 +65,7 @@ class Login extends React.Component {
                         </FormGroup>
                         <br />
                         <FormGroup check row>
-                            <Button onClick={this.onSave} color="primary">Submit</Button>
+                            <Button onClick={this.onSave.bind(this)} color="primary">Submit</Button>
                         </FormGroup>
                     </Form>
                 </Jumbotron>

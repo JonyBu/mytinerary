@@ -9,20 +9,22 @@ import outLogin from '../redux/actions/logoutAction';
 
 class Menu extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             userName: '',
-            secess: []
+            connected: ''
         }
     }
+
+    // async componentDidMount() {
+    //     this.setState({ ...this.state })
+    // }
 
     handleClick = event => {
         event.preventDefault()
         this.props.outLogin(this.state)
-        
-        //localStorage.removeItem("token")
-        //alert(" Success logging out ")
-      }
+    }
+
 
     render() {
         return (
@@ -52,7 +54,7 @@ class Menu extends React.Component {
                                 <Link to="/citis">Cities</Link>
                             </DropdownItem>
                             <DropdownItem>
-                                <Link onClick={this.handleClick}>logout</Link>
+                                <Link onClick={this.handleClick.bind(this)}>logout</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>
@@ -61,10 +63,15 @@ class Menu extends React.Component {
         );
     }
 }
+const mapStateToProps = (state) => {
+    console.log(state.loginReducer.currentUser);
+    return {
+        currentUser: state.loginReducer.currentUser
+    };
+};
 
 const mapDispatchToProps = (dispatch) => ({
-    outLogin: (data) => dispatch(outLogin(data) )
+    outLogin: (data) => dispatch(outLogin(data))
 })
 
-export default connect(null,mapDispatchToProps)(Menu);
-//export default Menu;
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

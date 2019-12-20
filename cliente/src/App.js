@@ -10,6 +10,8 @@ import Cities from './components/cities/cities';
 import Itineraries from './components/itineraries/Itineraries';
 import Other from './components/cities/OtherCity';
 import TemsAndConditions from './components/user/tems&conditions';
+import Profile from './components/user/profile';
+import Favorite from './components/itineraries/favorite';
 
 class App extends React.Component {
 
@@ -18,6 +20,8 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <div className="centrar">
+            <Route path="/favorite" component={Favorite}/>
+            <Route path="/profile" component={Profile}/>
             <Route path="/termsAndConditions" component={TemsAndConditions}/>
             <Route path="/cities" component={Cities} />
             <Route path="/itineraries/:idCity" component={Itineraries} />
