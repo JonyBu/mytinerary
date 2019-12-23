@@ -51,10 +51,13 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <Link to="/citis">Cities</Link>
+                                <Link to="/citis">Chose your itinerary</Link>
                             </DropdownItem>
                             <DropdownItem>
                                 <Link onClick={this.handleClick.bind(this)}>logout</Link>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <Link to="/profile">Profile</Link>
                             </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

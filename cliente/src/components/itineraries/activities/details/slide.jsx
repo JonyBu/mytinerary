@@ -15,7 +15,6 @@ const Slide = (props) => {
             </div>
             <br />
             <Whirligig visibleSlides={3} gutter="30em" ref={(_whirligigInstance) => { whirligig = _whirligigInstance }}>
-
                 
                     {props.detailsReducer.map((details, i) =>
                         <div className="centrar" key={i}>
@@ -24,15 +23,6 @@ const Slide = (props) => {
                             <h5 >{details.title}</h5>
                         </div>
                     )}
-
-                {/* {props.detailsReducer ?
-                    props.detailsReducer.map((details, i) =>
-                        <div className="centrar" id={i}>
-                            <img className="imagenSlide" src={require(`../../../../imagenes/detalles/London/${details.activityPic}.jpg`)} alt={details.title} />
-                            <br />
-                            <h5 >{details.title}</h5>
-                        </div>
-                    ) : <div></div>} */}
 
             </Whirligig>
         </div>
