@@ -78,11 +78,11 @@ router.post('/user/createAccount',
         }
 
         var newModel = new usuarioModel({
+            profilePic: req.body.profilePic,
             userName: req.body.userName,
             password: req.body.password,
             email: req.body.email,
-            profilePic: req.body.profilePic,
-            firsName: req.body.firsName,
+            firstName: req.body.firstName,
             lastName: req.body.lastName,
             country: req.body.country,
             checkbox: req.body.checkbox

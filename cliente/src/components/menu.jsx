@@ -9,24 +9,24 @@ import outLogin from '../redux/actions/logoutAction';
 
 class Menu extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
-            userName: '',
-            connected: ''
+            currentUser: [],
+            isConected: [],
         }
     }
 
-    // async componentDidMount() {
-    //     this.setState({ ...this.state })
-    // }
+    componentDidMount() {
+        this.setState({ currentUser: this.props.currentUser.currentUser, isConected: this.props.currentUser.isConected })
+    }
 
     handleClick = event => {
         event.preventDefault()
         this.props.outLogin(this.state)
     }
 
-
     render() {
+        console.log(this.state);
         return (
             <div className="li">
                 <Navbar>
@@ -51,10 +51,10 @@ class Menu extends React.Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                             <DropdownItem>
-                                <Link to="/citis">Chose your itinerary</Link>
+                                <Link to="/cities">Chose your itinerary</Link>
                             </DropdownItem>
                             <DropdownItem>
-                                <Link onClick={this.handleClick.bind(this)}>logout</Link>
+                                <Link to="/" onClick={this.handleClick.bind(this)}>logout</Link>
                             </DropdownItem>
                             <DropdownItem>
                                 <Link to="/profile">Profile</Link>
@@ -67,9 +67,8 @@ class Menu extends React.Component {
     }
 }
 const mapStateToProps = (state) => {
-    console.log(state.loginReducer.currentUser);
     return {
-        currentUser: state.loginReducer.currentUser
+        currentUser: state.loginReducer
     };
 };
 

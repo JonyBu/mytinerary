@@ -3,7 +3,7 @@ import {
   Carousel,
   CarouselItem,
   CarouselControl,
-  CarouselIndicators,
+  // CarouselIndicators,
   Container,
   Row,
   Col
@@ -21,24 +21,25 @@ import barcelona2 from '../imagenes/ciudades/barcelona2.jpg';
 import newyork2 from '../imagenes/ciudades/ny2.jpg';
 import paris2 from '../imagenes/ciudades/paris2.jpg';
 
+
 const items = [
   [
-    { src: paris, altText: "Slide 1", caption: "Slide 1" },
-    { src: barcelona, altText: "Slide 2", caption: "Slide 2" },
-    { src: newyork, altText: "Slide 3", caption: "Slide 3"},
-    { src: amsterdam, altText: "Slide 4", caption: "Slide 4"}
+    { src: paris, altText: "Paris", caption: "Slide 1", key:'1', clave:'20' },
+    { src: barcelona, altText: "Barcelona", caption: "Slide 2", key:'2' },
+    { src: newyork, altText: "New York", caption: "Slide 3", key:'3'},
+    { src: amsterdam, altText: "Amsterdam", caption: "Slide 4", key:'4'},
   ],
   [
-    { src: paris1, altText: "Slide 5", caption: "Slide 5"},
-    { src: barcelona1, altText: "Slide 6", caption: "Slide 6"},
-    { src: newyork1, altText: "Slide 7", caption: "Slide 7"},
-    { src: amsterdam1, altText: "Slide 8", caption: "Slide 8"}
+    { src: paris1, altText: "Paris 2", caption: "Slide 5", key:'5'},
+    { src: barcelona1, altText: "Barcelona 2", caption: "Slide 6", key:'6', clave:'21'},
+    { src: newyork1, altText: "New York 2", caption: "Slide 7", key:'7'},
+    { src: amsterdam1, altText: "Amsterdam 2", caption: "Slide 8", key:'8'}
   ],
   [
-    { src: paris2, altText: "Slide 9", caption: "Slide 9"},
-    { src: barcelona2, altText: "Slide 10", caption: "Slide 10"},
-    { src: newyork2, altText: "Slide 11", caption: "Slide 11"},
-    { src: amsterdam2, altText: "Slide 12", caption: "Slide 12"}
+    { src: paris2, altText: "Paris 3", caption: "Slide 9", key:'9'},
+    { src: barcelona2, altText: "Barcelona 3", caption: "Slide 10", key:'10'},
+    { src: newyork2, altText: "New York 3", caption: "Slide 11", key:'11', clave:'22'},
+    { src: amsterdam2, altText: "Amsterdam 3", caption: "Slide 12", key:'12'}
   ]
 ];
 
@@ -60,27 +61,26 @@ const ImageCarousel = () => {
     setActiveIndex(nextIndex);
   }
 
-  const goToIndex = (newIndex) => {
-    if (animating) return;
-    setActiveIndex(newIndex);
-  }
+  // const goToIndex = (newIndex) => {
+  //   if (animating) return;
+  //   setActiveIndex(newIndex);
+  // }
 
   const slides =  items.map((item, i) => {
-    
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={i}
+        key={item[i].clave}
       >
-        <Container>
-          <Row>
+        <Container >
+          <Row >
             {item.map((image, i) => {
-              
               return (
+                
                 <Col
                   xs={{ size: 6 }}
-                  key={i}
+                  key={image.key}
                   style={{ maxHeight: '10rem' }}
                   className='p-1'
                 >
@@ -98,14 +98,14 @@ const ImageCarousel = () => {
       </CarouselItem>
     );
   });
-
+ 
   return (
     <Carousel
       activeIndex={activeIndex}
       next={next}
       previous={previous}
     >
-      <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
+      {/* <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} /> */}
       {slides}
       <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
       <CarouselControl direction="next" directionText="Next" onClickHandler={next} />

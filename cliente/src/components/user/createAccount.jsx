@@ -8,10 +8,10 @@ class createAccount extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            profilePic: '',
             userName: '',
             password: '',
             email: '',
-            profilePic: '',
             firstName: '',
             lastName: '',
             country: '',
@@ -23,8 +23,9 @@ class createAccount extends React.Component {
 
     handleInputChange = (event) => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.type === 'checkbox' ? target.checked : target.value ;
         const name = target.name;
+        
         this.setState({
             [name]: value
         });
@@ -44,12 +45,14 @@ class createAccount extends React.Component {
             checkbox: this.state.checkbox
         }
         axios.post(QUOTE_SERVICE_URL, userObject)
-            .then(response => console.log('succes: ' + response))
-            .catch(error => console.log('error: ' + error))
+            .then(response => console.log('succes: ' , response.data))
+            .catch(error => console.log('error: ' , error))
             this.props.history.push("/login")    
     } 
 
     render() {
+        console.log(this.state);
+        
         return (
             <div >
                 <br />

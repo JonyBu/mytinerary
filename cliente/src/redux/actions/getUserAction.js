@@ -1,8 +1,8 @@
 import axios from 'axios';
 const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/profile';
 
-const getUser = user => dispatch => {
-    axios.get(QUOTE_SERVICE_URL, {
+const getUser = user => async dispatch => {
+    await axios.get(QUOTE_SERVICE_URL, {
         headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
@@ -10,14 +10,15 @@ const getUser = user => dispatch => {
         }
     })
         .then(response => {
-            console.log(response.data)
             dispatch({
                 type: 'GET_USER',
-                payload: user,
+                payload: response.data,
             })
+            //console.log(user);
+            //user.isConected = true
+            //console.log("respuesta al get User" , response.data)
         })
-        .catch(e => console.log(e));
-    
+        .catch(e => { console.log(e) })
 }
 
 export default getUser;

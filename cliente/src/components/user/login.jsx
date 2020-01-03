@@ -1,18 +1,18 @@
 import React from 'react';
 import Footer from '../footer';
-import  GoogleButton from 'react-google-button' 
+import GoogleButton from 'react-google-button'
 import { FormText, Jumbotron, Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import  startLogin  from '../../redux/actions/loginAction';
+import startLogin from '../../redux/actions/loginAction';
 
 
 class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userName: '',
-            connected: false
+            userName: [],
+            isConected: []
         }
     }
 
@@ -88,7 +88,7 @@ class Login extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startLogin: (data) => dispatch(startLogin(data) )
+    startLogin: (data) => dispatch(startLogin(data))
 })
 
-export default connect(null,mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

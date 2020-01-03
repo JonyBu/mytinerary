@@ -1,5 +1,6 @@
 const initiaState = {
-    currentUser: {}
+    currentUser: [],
+    isConected: []
 }
 
 function reducer(state = initiaState, action) {
@@ -7,19 +8,20 @@ function reducer(state = initiaState, action) {
         case 'LOGIN_USER':
             return {
                 ...state,
-                currentUser: action.payload
-            }
-        case 'LOGOUT_USER':
-            return { 
-                ...state, 
-                currentUser: action.payload
+                currentUser: action.payload,
+                isConected: true
             }
         case 'GET_USER':
             return {
                 ...state,
-                currentUser: {}
+                currentUser: action.payload,
+                isConected: true
             }
-
+        case 'LOGOUT_USER':
+            return {
+                ...state,
+                currentUser: {},
+            }
         default:
             return state;
     }
