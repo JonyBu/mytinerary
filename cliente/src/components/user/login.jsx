@@ -12,8 +12,19 @@ class Login extends React.Component {
         super(props)
         this.state = {
             userName: [],
-            isConected: []
+            isConected: [],
         }
+    }
+
+    esperar = () => {
+        this.cronometro = setInterval(() => {
+            if (localStorage.token) {
+                this.props.history.push("/profile")
+                clearInterval(this.cronometro);
+            } else {
+                console.log("no funciona", this.state);
+            }
+        }, 1000);
     }
 
     onChange = (e) => {
@@ -24,8 +35,8 @@ class Login extends React.Component {
 
     onSave = (e) => {
         e.preventDefault();
-        this.props.startLogin(this.state)
-        this.props.history.push("/profile")
+        this.props.startLogin(this.state);
+        this.esperar();
     }
 
     signGoogle = () => {
@@ -33,6 +44,8 @@ class Login extends React.Component {
     }
 
     render() {
+        console.log(this.state);
+
         return (
             <div className="footer" >
                 <br />

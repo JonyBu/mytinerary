@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import outLogin from '../../redux/actions/logoutAction';
 import getUser from '../../redux/actions/getUserAction';
 
-// let img = `../../imagenes/itinerarios/London/${this.props.loginReducer.profilePic}`
 
 class Profile extends React.Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class Profile extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         await this.props.getUser(this.state)
         this.setState({ currentUser: this.props.loginReducer.currentUser, isConected: this.props.loginReducer.isConected })
     }
@@ -33,15 +32,16 @@ class Profile extends React.Component {
         console.log(this.state);
         return (
             <div >
+                {/* <img src={require(this.state.profilePic)} alt="algo"/> */}
                 <br />
                 <Jumbotron fluid>
                     <Container fluid>
                         <h1 className="display-3">WELCOME</h1>
                         <p className="lead">{this.state.currentUser.userName}  </p>
-                        {/* <p className="lead">{this.props.loginReducer.userName} {this.props.loginReducer.lastName} </p> */}
+                        <p className="lead">{this.props.loginReducer.userName} {this.props.loginReducer.lastName} </p>
                         <Card>
-                            {/* <CardImg width="100%" object src={require(`../../imagenes/itinerarios/London/${this.props.loginReducer.profilePic}`)} alt={this.props.loginReducer.profilePic} /> */}
-                            {/* <CardImg width="100%" object src= {require(img)}alt={this.props.loginReducer.profilePic} /> */}
+                            {/* <CardImg width="100%" object src={require(this.state.currentUser.profilePic)} alt={this.state.currentUser.profilePic} /> */}
+                            
                             <CardBody>
                                 <CardText>Your Name: {this.state.currentUser.firstName} {this.state.currentUser.lastName}</CardText>
                                 <CardText>Email: {this.state.currentUser.email} </CardText>

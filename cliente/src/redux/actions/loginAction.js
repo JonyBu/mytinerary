@@ -16,7 +16,6 @@ const startLogin = user => async dispatch => {
 
             if (response.data.secess) {
                 localStorage.setItem("token", response.data.token)
-                //user.isConected = true
                 dispatch({
                     type: 'LOGIN_USER',
                     payload: user
