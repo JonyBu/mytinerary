@@ -20,7 +20,11 @@ class activities extends React.Component {
         this.setState({ activities: this.props.activitiesReducer })
     }
 
+
+
     render() {
+        console.log(this.state);
+        
         return (
             <div>
                 {/* {this.state.activities.map((itineraries) => <Details idItinerary={itineraries._id} />) } */}
@@ -30,7 +34,7 @@ class activities extends React.Component {
                      <CommentList activitiesReducer={this.state.activities} />
                 </div>
                 <br />
-                <CommentsForm />
+                <CommentsForm idItinerary={this.props.idItinerary} />
             </div>
 
             // <div>

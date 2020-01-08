@@ -16,7 +16,7 @@ router.get('/activities/:idItinerary',function(req,res){
     .then(
         function (datos){
             return res.send(datos);
-        }
+        },
     );
 });
 
@@ -34,8 +34,13 @@ router.post('/activities', function (req, res){
     )
 })
 
-router.put('/activities', function (req, res){
-    
+router.delete('/activities', function (req, res){
+    activitiesModel.findById({idComment:req.params.idComment})
+    .then(
+        function (datos){
+            return res.send(datos);
+        }
+    );
 })
 
 module.exports=router

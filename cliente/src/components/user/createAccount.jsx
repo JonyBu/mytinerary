@@ -31,6 +31,13 @@ class createAccount extends React.Component {
         });
     }
 
+    handleInputImage = (event) => {
+        event.preventDefault();
+        const { files } = event.target;
+        const localImageUrl =  URL.createObjectURL(files[0]);
+        document.querySelector('img').src = localImageUrl
+      }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/createAccount';
@@ -51,6 +58,7 @@ class createAccount extends React.Component {
     } 
 
     render() {
+        
         console.log(this.state);
         
         return (
@@ -69,7 +77,7 @@ class createAccount extends React.Component {
                         <FormGroup row>
                             <Label for="profilePic" sm={3}>File</Label>
                             <Col sm={9}>
-                                <Input type="file" name="profilePic" id="profilePic" value={this.state.profilePic} onChange={this.handleInputChange} />
+                                <Input type="file" name="profilePic" id="profilePic" onChange={this.handleInputImage.bind(this)} />
                             </Col>
                         </FormGroup>
                         <FormGroup row>
