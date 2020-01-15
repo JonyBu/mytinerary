@@ -1,18 +1,15 @@
 import axios from 'axios'
-export const type = 'ADD_COMMENT';
+export const type = 'DELETE_COMMENT';
 
 const QUOTE_SERVICE_URL = 'http://localhost:8080/api/activities';
 
-const commentAction = data => dispatch => {
-    const userObject = {
-        comments: data.comments,
-        idItinerary: data.idItinerary
-    }
-    axios.post(QUOTE_SERVICE_URL, userObject)
+const commentAction = id => dispatch => {
+    const data = { _id: id }
+    axios.delete(QUOTE_SERVICE_URL, { data })
         .then(response => {
             dispatch({
-                type: 'ADD_COMMENT',
-                payload: response.data
+                type: 'DELETE_COMMENT',
+                payload: id
             })
             console.log('succes: ', response.data)
         })

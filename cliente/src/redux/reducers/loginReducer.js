@@ -12,12 +12,16 @@ function reducer(state = initiaState, action) {
                 isConected: true
             }
         case 'GET_USER':
+            console.log('get user -------reducer-----');
+            
             return {
                 ...state,
                 currentUser: action.payload,
                 isConected: true
             }
         case 'LOGOUT_USER':
+            console.log('logout userrrr reducer');
+            
             return {
                 ...state,
                 currentUser: {},
