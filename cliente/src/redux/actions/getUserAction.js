@@ -1,7 +1,7 @@
 import axios from 'axios';
 const QUOTE_SERVICE_URL = 'http://localhost:8080/api/user/profile';
 
-const getUser = user => async dispatch => {
+const getUser = () => async dispatch => {
     await axios.get(QUOTE_SERVICE_URL, {
         headers: {
             'Content-Type': 'application/json',
