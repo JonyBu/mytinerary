@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 
-const server = 'mytinerary:mytinerary@mytinerary-ehihp.mongodb.net'; // REPLACE WITH YOUR DB SERVER
-const database = 'MYtinerary?retryWrites=true&w=majority';      // REPLACE WITH YOUR DB NAME
+const server = 'mytinerary:mytinerarypass@mytinerary-ehihp.mongodb.net'; // REPLACE WITH PROYECT DB SERVER
+const database = 'MYtinerary?retryWrites=true&w=majority';      // REPLACE WITH PROYECT DB NAME
 
 class Database {
   constructor() {
