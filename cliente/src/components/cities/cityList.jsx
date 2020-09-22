@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { Alert, ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 const CityList = (props) =>
@@ -13,5 +13,6 @@ const CityList = (props) =>
             </ListGroup>
         </div>
     );
+    alert("Elegir London")
 
 export default CityList;

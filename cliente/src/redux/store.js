@@ -6,8 +6,6 @@ import activitiesReducer from './reducers/activitiesReducer';
 import detailsReducer from './reducers/detailsReducer';
 import loginReducer from './reducers/loginReducer';
 
-
-
 const reducer = combineReducers({
     citiesReducer,
     itinerariesReducer,
@@ -17,7 +15,9 @@ const reducer = combineReducers({
 });
 
 const store = createStore(
-    reducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+    reducer,
+    compose(applyMiddleware(thunk))
+    //compose(applyMiddleware(thunk),devTools)
 );
 
 
