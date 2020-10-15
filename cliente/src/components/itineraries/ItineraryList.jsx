@@ -2,37 +2,44 @@ import React from 'react';
 import { CardBody, Card } from 'reactstrap';
 import { Media } from 'reactstrap';
 import CollapseIt from './collapse';
+import Hash from './hash';
 
 const ItineraryList = (props) => {
+
     return (
-        props.itineraryReducer.map((itinerary, i) =>
+        props.itineraryReducer.map((itinerary, i) => 
             <div key={i}>
-                <Card>
-                    <CardBody >
-                        <Media>
-                            <Media left>
-                                <Media className="imageProfile" object src={require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`)} alt={itinerary.profilePic} />
-                                <br />
-                                <h6>{itinerary.profilePic}</h6>
-                            </Media>
-                            <Media body>
-                                <Media heading>
-                                    {itinerary.title}
-                                </Media>
-                                <br />
-                                Likes: {itinerary.rating}  |  {itinerary.duration} Hours  |  ${itinerary.cost}
-                                <br /><br />
-                                {itinerary.hashtag}
-                                <br />
-                                <br />
-                            </Media>
+            <Card>
+                <CardBody >
+                    <Media>
+                        <Media left>
+                            <Media className="imageProfile" object src={require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`)} alt={itinerary.profilePic} />
+                            <br />
+                            <h6>{itinerary.profilePic}</h6>
                         </Media>
-                        <CollapseIt idItinerary={itinerary._id}/>
-                        <br />
-                    </CardBody>
-                </Card>
-                <br />
-            </div>
+                        <Media body>
+                            <Media heading>
+                                {itinerary.title}
+                            </Media>
+                            <br />
+                            Likes: {itinerary.rating}  |  {itinerary.duration} Hours  |  ${itinerary.cost}
+                            <br /><br />
+                            
+                            <Hash hashtag={itinerary.hashtag[0]} />
+                            <Hash hashtag={itinerary.hashtag[1]} />
+                            <Hash hashtag={itinerary.hashtag[2]} />
+                            
+                            <br />
+                            <br />
+                        </Media>
+                    </Media>
+                    <CollapseIt idItinerary={itinerary._id}/>
+                    <br />
+                </CardBody>
+            </Card>
+            <br />
+        </div>
+        
         )
     )
 }
