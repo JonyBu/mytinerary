@@ -6,8 +6,8 @@ const defaultActivities = {
 function reducer(state = defaultActivities, action) {
     switch (action.type) {
         case 'activitiesAction':
-            console.log('activitiesAction-----------------', action.payload);
-            console.log(defaultActivities);
+            // console.log('activitiesAction-----------------', action.payload);
+            // console.log(defaultActivities);
 
             return {
                 ...state,
