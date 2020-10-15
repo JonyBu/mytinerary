@@ -1,9 +1,7 @@
 ## Image Project
-Home
+
 ![Captura Home](https://i.imgur.com/eDvWpaU.jpg)
-Create account
 ![Captura Create account](https://i.imgur.com/ORRI6cp.jpg)
-Tineraries
 ![Captura Tineraries](https://i.imgur.com/H403eTs.jpg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
