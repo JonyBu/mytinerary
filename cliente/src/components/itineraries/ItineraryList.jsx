@@ -24,11 +24,7 @@ const ItineraryList = (props) => {
                                 <br />
                             Likes: {itinerary.rating}  |  {itinerary.duration} Hours  |  ${itinerary.cost}
                                 <br /><br />
-
-                                <Hash hashtag={itinerary.hashtag[0]} />
-                                <Hash hashtag={itinerary.hashtag[1]} />
-                                <Hash hashtag={itinerary.hashtag[2]} />
-
+                                <Hash hashtag={itinerary.hashtag} />
                                 <br />
                                 <br />
                             </Media>
