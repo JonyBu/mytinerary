@@ -1,9 +1,9 @@
 ## Image Project
 
-![Captura Home](https://i.imgur.com/eDvWpaU.jpg)
-![Captura Tineraries](https://i.imgur.com/H403eTs.jpg)
-![Captura Create account](https://i.imgur.com/ORRI6cp.jpg)
-![Captura Login](https://i.imgur.com/UUkPmIU.jpg)
+![Captura Home](https://i.imgur.com/IsT71CP.jpg)
+![Captura Tineraries](https://i.imgur.com/n388hq8.jpg)
+![Captura Create account](https://i.imgur.com/fQdWrUm.jpg)
+![Captura Login](https://i.imgur.com/34gui6g.jpg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
