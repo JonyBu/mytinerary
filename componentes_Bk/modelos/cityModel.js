@@ -1,8 +1,8 @@
-let mongoose = require('mongoose')
+let mongoose = require("mongoose");
 
 let citySchema = new mongoose.Schema({
-    name: String,
-    country: String
-})
+  name: String,
+  country: String,
+});
 
-module.exports = mongoose.model('cities', citySchema)
+module.exports = mongoose.model("cities", citySchema);

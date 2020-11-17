@@ -1,63 +1,67 @@
-
 #logo {
   height: 200px;
 }
 
 .centrar {
- display: block;
- text-align: center;
- width: 600px;
- margin: auto;
+  display: block;
+  text-align: center;
+  width: 600px;
+  margin: auto;
 }
 
-#flecha{
+#flecha {
   height: 100px;
 }
 
-.home{
+.home {
   height: 100px;
   padding-top: 40px;
 }
 
-.logoMenu{
+.logoMenu {
   height: 20px;
 }
 
-.logoUser{
+.logoUser {
   height: 30px;
 }
 
-.li{
-  list-style:none;
+.li {
+  list-style: none;
 }
 
-.inputSearch{
+.inputSearch {
   margin: 20px 0;
 }
 
-.li .navbar{
+.li .navbar {
   padding: 0;
 }
 
-.imageProfile{
+.imageProfile {
   height: 200px;
 }
 
-.izquierda{
+.izquierda {
   display: block;
   text-align: left;
   margin: auto;
 }
 
-.imagenSlide{
+.imagenSlide {
   height: 300px;
 }
 
-.separar{
+.separar {
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
 }
 
-.userLogo{
+.userLogo {
   height: 10em;
+}
+
+#boton-menu,
+#boton-user {
+  align-items: inherit;
 }

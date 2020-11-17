@@ -22,7 +22,13 @@ class Login extends React.Component {
                 this.props.history.push("/profile")
                 clearInterval(this.cronometro);
             } else {
-                console.log("no funciona", this.state);
+                let contador = 0;
+                console.log("espera");
+                contador++;
+                if (contador === 5) {
+                    clearInterval(this.cronometro);
+                    console.log("Error en la autenticación")
+                }
             }
         }, 1000);
     }
@@ -33,7 +39,7 @@ class Login extends React.Component {
         this.setState(state);
     }
 
-    onSave = (e) => {
+    onSave =  (e) => {
         e.preventDefault();
         this.props.startLogin(this.state);
         this.esperar();
@@ -44,7 +50,6 @@ class Login extends React.Component {
     }
 
     render() {
-        // console.log(this.state);
 
         return (
             <div className="footer" >

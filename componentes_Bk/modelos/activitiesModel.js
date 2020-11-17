@@ -1,8 +1,8 @@
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
 
 let activitiesSchema = new mongoose.Schema({
-    comments: String,
-    idItinerary: mongoose.Schema.Types.ObjectId,
+  comments: String,
+  idItinerary: mongoose.Schema.Types.ObjectId,
 });
 
-module.exports = mongoose.model('activities', activitiesSchema)
+module.exports = mongoose.model("activities", activitiesSchema);

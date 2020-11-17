@@ -1,3 +1,3 @@
-module.exports={
-    secretOrKey: 'algo secreto'
-}
+module.exports = {
+  secretOrKey: `${process.env.TOKEN_SECRET}`,
+};
