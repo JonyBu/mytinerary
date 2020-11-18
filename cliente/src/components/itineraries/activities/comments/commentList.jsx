@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { InputGroup, InputGroupAddon, Button, ListGroupItem } from "reactstrap";
 import commentActionDelete from "../../../../redux/actions/commentActionDelete";
 
@@ -6,9 +6,7 @@ import { connect } from "react-redux";
 import Modal from "./modal";
 
 const CommentList = (props) => {
-  var {
-    _id
-  } = props;
+  var { _id, edit } = props;
 
   return props.activitiesReducer.map((activities, i) => (
     <div key={i}>
@@ -18,28 +16,20 @@ const CommentList = (props) => {
         </ListGroupItem>
 
         <InputGroupAddon addonType="append">
+        <Modal _id={(_id = activities._id)} />
           <Button
+            block
             color="danger"
             outline
+            className="mt-0"
             onClick={function () {
               props.commentActionDelete(activities._id);
             }}
           >
-            X
+            Delete
           </Button>
-          <Button
-            color="primary"
-            outline
-            onClick={function () {
-              props.commentActionUpdate(activities._id);
-            }}
-          >
-            0
-          </Button> 
-          <Modal _id={_id=activities._id}/>
         </InputGroupAddon>
       </InputGroup>
-      
     </div>
   ));
 };
@@ -47,7 +37,6 @@ const CommentList = (props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     commentActionDelete: (data) => dispatch(commentActionDelete(data)),
-    
   };
 };
 

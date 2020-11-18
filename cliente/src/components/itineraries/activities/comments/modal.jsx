@@ -1,6 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter ,Input} from "reactstrap";
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+} from "reactstrap";
 import commentAction from "../../../../redux/actions/commentAction";
 import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
 
@@ -8,28 +15,29 @@ class ModalEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      nameButton: "",
       comments: "",
-      abierto: false,
       id: this.props.id,
       idItinerary: this.props.idItinerary,
       isFetching: [],
     };
+    this.getNameButton.bind(this);
   }
 
   toggle = () => {
-    this.setState({abierto: !this.state.abierto});
-    console.log(this.state)
+    this.setState({ abierto: !this.state.abierto });
+    console.log(this.state);
   };
-  
+
   onChange = (e) => {
-    console.log(this.props)
+    console.log(this.props);
     this.setState({
       ...this.state,
       comments: e.target.value,
       id: this.props._id,
       isFetching: true,
     });
-    console.log(this.state)
+    console.log(this.state);
   };
 
   handleClick = (event) => {
@@ -43,24 +51,34 @@ class ModalEdit extends React.Component {
     }
   };
 
+  getNameButton = () => {
+    if (this.props._id) {
+      this.setState({ nameButton: "Edit" });
+    } else {
+      this.setState({ nameButton: "New Comment" });
+    }
+  };
+
+  componentDidMount() {
+    this.getNameButton();
+  }
+
   render() {
     return (
-      <div>
-        <Button color="primary" onClick={this.toggle}>
-          Comment
+      <>
+        <Button color="primary" onClick={this.toggle} outline block>
+          {this.state.nameButton}
         </Button>
-        <Modal  isOpen={this.state.abierto} toggle={this.toggle}>
+        <Modal isOpen={this.state.abierto} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Comment</ModalHeader>
           <ModalBody>
-
-          <Input
+            <Input
               type="text"
               name="comments"
               id={this.props.idItinerary}
               placeholder="Enter a comment"
               onChange={this.onChange.bind(this)}
             />
-            
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={this.handleClick}>
@@ -71,7 +89,7 @@ class ModalEdit extends React.Component {
             </Button>
           </ModalFooter>
         </Modal>
-      </div>
+      </>
     );
   }
 }

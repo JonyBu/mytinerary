@@ -98,6 +98,8 @@ const ImageCarousel = () => {
                     className="img-fluid w-100 rounded"
                     style={{ height: "9rem" }}
                   />
+
+
                 </Col>
               );
             })}

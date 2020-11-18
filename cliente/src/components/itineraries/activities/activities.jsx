@@ -16,7 +16,6 @@ class activities extends React.Component {
     };
   }
   async componentDidMount() {
-    
     await this.props.activitiesAction(this.props.idItinerary);
     this.setState({
       ...this.state,
@@ -41,7 +40,7 @@ class activities extends React.Component {
       <div>
         <Details idItinerary={this.props.idItinerary} />
         <br />
-        <Modal idItinerary={this.props.idItinerary}/>
+        <Modal idItinerary={this.props.idItinerary} />
         {/* <CommentsForm idItinerary={this.props.idItinerary} /> */}
         <br />
         <div>
