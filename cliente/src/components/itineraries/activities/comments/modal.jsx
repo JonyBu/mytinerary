@@ -10,31 +10,41 @@ import {
 } from "reactstrap";
 import commentAction from "../../../../redux/actions/commentAction";
 import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 class ModalEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nameButton: "",
-      comments: "",
-      id: this.props.id,
       idItinerary: this.props.idItinerary,
-      isFetching: [],
+      id:this.props._id,
+      comments: "",
+      name: "",
+      date: "",
     };
     this.getNameButton.bind(this);
   }
 
+  async componentDidMount() {
+    if (!this.state.nameButton) {
+      this.getNameButton();
+    }
+  }
+
   toggle = () => {
     this.setState({ abierto: !this.state.abierto });
-    console.log(this.state);
   };
 
   onChange = (e) => {
     console.log(this.props);
+    console.log(this.state);
+    var dateEnd = Date.now();
     this.setState({
       ...this.state,
       comments: e.target.value,
-      id: this.props._id,
+      date: dateEnd,
+      name: this.props.name,
       isFetching: true,
     });
     console.log(this.state);
@@ -45,6 +55,7 @@ class ModalEdit extends React.Component {
     this.toggle();
 
     if (this.state.id) {
+
       this.props.commentActionUpdate(this.state);
     } else {
       this.props.commentAction(this.state);
@@ -53,22 +64,30 @@ class ModalEdit extends React.Component {
 
   getNameButton = () => {
     if (this.props._id) {
-      this.setState({ nameButton: "Edit" });
+      return "edit";
     } else {
-      this.setState({ nameButton: "New Comment" });
+      return "Add Comment";
     }
   };
-
-  componentDidMount() {
-    this.getNameButton();
-  }
 
   render() {
     return (
       <>
-        <Button color="primary" onClick={this.toggle} outline block>
-          {this.state.nameButton}
-        </Button>
+        {this.getNameButton() === "edit" ? (
+          <FontAwesomeIcon
+            icon={faEdit}
+            color="gray"
+            size="lg"
+            pull="right"
+            id="iconEdit"
+            onClick={this.toggle}
+          />
+        ) : (
+          <Button color="primary" onClick={this.toggle} outline block>
+            {this.getNameButton()}
+          </Button>
+        )}
+
         <Modal isOpen={this.state.abierto} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Comment</ModalHeader>
           <ModalBody>

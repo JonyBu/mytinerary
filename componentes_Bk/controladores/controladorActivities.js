@@ -17,8 +17,11 @@ router.get("/activities/:idItinerary", function (req, res) {
 });
 
 router.post("/activities", function (req, res) {
+  console.log("req.body"+req.body)
   var newModel = new activitiesModel({
     comments: req.body.comments,
+    name: req.body.name,
+    date: req.body.date,
     idItinerary: req.body.idItinerary,
   });
   newModel.save().then(function (datos) {
@@ -38,9 +41,10 @@ router.delete("/activities/", function (req, res) {
 router.put("/activities/:_id", async (req, res) => {
   const id = req.params._id;
   const comments = req.body.data.comments;
+  const date = req.body.data.date;
   if (id === req.body.data.id) {
     await activitiesModel
-      .updateOne({ _id: id }, { $set: { comments: comments } })
+      .updateOne({ _id: id }, { $set: { comments: comments , date: date} })
       .then(() => {
         return res.status(200).json({
           message: "Update succesful ",

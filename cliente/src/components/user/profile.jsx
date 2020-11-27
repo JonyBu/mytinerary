@@ -28,7 +28,8 @@ class Profile extends React.Component {
   //     document.querySelector('img').src = localImageUrl
   //   }
 
-  async componentWillMount() {
+  async componentDidMount() {
+    // async componentWillMount() {
     // await this.props.getUser(this.props.loginReducer)
 
     await this.props.getUser();
@@ -88,6 +89,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.loginReducer)
   return {
     loginReducer: state.loginReducer,
   };

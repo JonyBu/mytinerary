@@ -9,6 +9,7 @@ const userSchema = mongoose.Schema({
   lastName: String,
   country: String,
   checkbox: Boolean,
+  // id:String,
 });
 
 module.exports = mongoose.model("User", userSchema);

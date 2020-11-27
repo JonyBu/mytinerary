@@ -15,9 +15,13 @@ class Cities extends React.Component {
     };
   }
   async componentDidMount() {
-    this.setState({ ...this.state, isFetching: true });
-    await this.props.citiesAction();
-    this.setState({ filteredCities: this.props.citiesReducer });
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    } else {
+      this.setState({ ...this.state, isFetching: true });
+      await this.props.citiesAction();
+      this.setState({ filteredCities: this.props.citiesReducer });
+    }
   }
 
   filterCities = (cityFilter) => {
@@ -33,12 +37,12 @@ class Cities extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <h1>Listado de ciudades</h1>
         <FilterForm match={this.props.match} onChange={this.filterCities} />
         <CityList citiesReducer={this.state.filteredCities} />
         <Footer />
-      </div>
+      </>
     );
   }
 }

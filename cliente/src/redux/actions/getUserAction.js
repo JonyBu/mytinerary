@@ -7,7 +7,7 @@ const getUser = () => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "bearer " + localStorage.getItem("token"),
+        Authorization: "bearer " + localStorage.getItem("token")
       },
     })
     .then((response) => {
@@ -20,7 +20,7 @@ const getUser = () => async (dispatch) => {
       //console.log("respuesta al get User" , response.data)
     })
     .catch((e) => {
-      console.log(e);
+      console.log("error getuseraction: "+e);
     });
 };
 

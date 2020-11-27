@@ -14,8 +14,8 @@ import imagenMenu from "../imagenes/menu.png";
 import outLogin from "../redux/actions/logoutAction";
 
 class Menu extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       currentUser: [],
       isConected: [],
@@ -35,7 +35,6 @@ class Menu extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="li">
         <Navbar>

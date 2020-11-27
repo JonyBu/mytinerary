@@ -1,13 +1,25 @@
 var express = require("express");
 var router = express.Router();
+const passport = require("../auth/passport");
 
 var cityModel = require("../modelos/cityModel");
+let autenticate =  passport.authenticate("jwt", { session: false })
 
-router.get("/cities", function (req, res) {
-  cityModel.find().then(function (datos) {
-    return res.send(datos);
-  });
-});
+router.get(
+  "/cities",
+  autenticate,
+  function (req, res) {
+    cityModel
+      .find()
+      .then(function (datos) {
+        return res.send(datos);
+      })
+      .catch((err) => {
+        console.log("error controladorcity: "+err)
+      });
+  }
+);
+
 
 router.get("/cities/:name", (req, res) => {
   let cityRequested = req.params.name;

@@ -20,7 +20,7 @@ function reducer(state = initiaState, action) {
         isConected: true,
       };
     case "LOGOUT_USER":
-      console.log("logout userrrr reducer");
+      console.log("logout user reducer");
 
       return {
         ...state,

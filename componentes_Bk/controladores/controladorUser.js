@@ -14,9 +14,9 @@ router.get(
     usuarioModel
       .findOne({ _id: req.user.id })
       .then((user) => {
-        res.json(user);
+        res.json(user)
       })
-      .catch((err) => res.status(404).json({ error: "User does not exist!" }));
+      .catch((err) => res.status(404).json({ error: "User does not exist! "+err }));
   }
 );
 

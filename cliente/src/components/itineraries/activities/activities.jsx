@@ -5,6 +5,7 @@ import Details from "./details/details";
 // import CommentsForm from "./commentsForm";
 import CommentList from "./comments/commentList";
 import Modal from "./comments/modal";
+import getUser from "../../../redux/actions/getUserAction";
 
 class activities extends React.Component {
   constructor(props) {
@@ -12,16 +13,20 @@ class activities extends React.Component {
     this.state = {
       isFetching: [],
       activities: [],
+      currentUser: [],
+      isConected: false,
       idItinerary: this.props.idItinerary,
     };
   }
   async componentDidMount() {
-    await this.props.activitiesAction(this.props.idItinerary);
-    this.setState({
-      ...this.state,
-      activities: this.props.activitiesReducer,
-      isFetching: true,
-    });
+    if (!this.state.isConected) {
+      await this.props.activitiesAction(this.props.idItinerary);
+      this.setState({
+        activities: this.props.activitiesReducer,
+        isFetching: true,
+        currentUser: this.props.loginReducer.currentUser,
+      });
+    }
   }
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
@@ -40,7 +45,10 @@ class activities extends React.Component {
       <div>
         <Details idItinerary={this.props.idItinerary} />
         <br />
-        <Modal idItinerary={this.props.idItinerary} />
+        <Modal
+          idItinerary={this.props.idItinerary}
+          name={this.state.currentUser.userName}
+        />
         {/* <CommentsForm idItinerary={this.props.idItinerary} /> */}
         <br />
         <div>
@@ -55,6 +63,7 @@ const mapStateToProps = (state) => {
   return {
     activitiesReducer: state.activitiesReducer.activities,
     changeComment: state.activitiesReducer.changeComment,
+    loginReducer: state.loginReducer,
   };
 };
 
@@ -63,6 +72,7 @@ const mapDispatchToProps = (dispatch) => {
     activitiesAction: (data) => {
       return dispatch(activitiesAction(data));
     },
+    getUser: () => dispatch(getUser()),
   };
 };
 

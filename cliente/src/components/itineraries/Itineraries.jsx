@@ -12,18 +12,22 @@ class Itinerary extends React.Component {
     };
   }
   async componentDidMount() {
-    this.setState({ ...this.state, isFetching: true });
-    await this.props.itinerariesAction(this.props.match.params.idCity);
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/login");
+    } else {
+      this.setState({ ...this.state, isFetching: true });
+      await this.props.itinerariesAction(this.props.match.params.idCity);
+    }
   }
 
   render() {
     return (
-      <div>
+      <>
         <br />
         <h3 className="izquierda">Listado de itinerarios</h3>
         <br />
         <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
-      </div>
+      </>
     );
   }
 }

@@ -65,3 +65,32 @@
 #boton-user {
   align-items: inherit;
 }
+
+#iconDelete:hover {
+  color: firebrick;
+  cursor: pointer;
+}
+
+#iconEdit:hover {
+  color: green;
+  cursor: pointer;
+}
+
+#iconFav:hover {
+  color: crimson;
+  cursor: pointer;
+}
+
+#iconFav {
+  position: absolute;
+  right: 0.5em;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.iconStar {
+  cursor: pointer;
+  transition: color 200ms;
+}
