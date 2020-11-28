@@ -27,16 +27,14 @@ class MenuUser extends React.Component {
 
   render() {
     return (
-      <>
-        <Button
-          color="warning"
-          block
-          outline
-          onClick={this.handleClick.bind(this)}
-        >
-          logout
-        </Button>
-      </>
+      <Button
+        color="info"
+        block
+        onClick={this.handleClick.bind(this)}
+        className="mt-3 mb-3"
+      >
+        logout
+      </Button>
     );
   }
 }

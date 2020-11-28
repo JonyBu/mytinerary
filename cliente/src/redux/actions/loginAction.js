@@ -13,13 +13,13 @@ const startLogin = (user) => async (dispatch) => {
     })
     .then((response) => {
       if (response.data.success) {
-        localStorage.setItem("token", response.data.token);
+        sessionStorage.setItem("token", response.data.token);
         dispatch({
           type: "LOGIN_USER",
           payload: user,
         });
 
-        var token = localStorage.getItem("token");
+        var token = sessionStorage.getItem("token");
         var decode = jwt_decode(token);
         alert("Bienvenido " + decode.userName);
       } else {

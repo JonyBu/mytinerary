@@ -42,18 +42,13 @@ class activities extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="p-3 border border-secondary">
         <Details idItinerary={this.props.idItinerary} />
-        <br />
         <Modal
           idItinerary={this.props.idItinerary}
           name={this.state.currentUser.userName}
         />
-        {/* <CommentsForm idItinerary={this.props.idItinerary} /> */}
-        <br />
-        <div>
-          <CommentList activitiesReducer={this.state.activities} />
-        </div>
+        <CommentList activitiesReducer={this.state.activities} />
       </div>
     );
   }

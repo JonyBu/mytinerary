@@ -8,18 +8,14 @@ const CollapseIt = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Button color="primary" onClick={toggle} style={{ marginBottom: "1rem" }}>
+    <>
+      <Button color="primary" block onClick={toggle} style={{ marginBottom: "1rem" }}>
         View All
       </Button>
       <Collapse isOpen={isOpen}>
-        <Card>
-          <CardBody>
             <Activities idItinerary={props.idItinerary} />
-          </CardBody>
-        </Card>
       </Collapse>
-    </div>
+    </>
   );
 };
 

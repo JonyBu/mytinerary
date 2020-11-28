@@ -15,7 +15,7 @@ class Cities extends React.Component {
     };
   }
   async componentDidMount() {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       this.props.history.push("/login");
     } else {
       this.setState({ ...this.state, isFetching: true });

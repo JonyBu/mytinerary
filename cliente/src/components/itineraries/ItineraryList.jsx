@@ -12,69 +12,74 @@ import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 library.add(faHeartRegular, faHeartSolid);
 
 const ItineraryList = (props) => {
-  const [favorite, setFavorite] = useState(null);
-  const [hover, setHover] = useState(null);
-  const itineraries = props.itineraryReducer;
-  console.log(itineraries)
+  const [favorite, setFavorite] = useState([]);
+  const [abierto, setHover] = useState(-1);
 
   return props.itineraryReducer.map((itinerary, i) => {
-    
-    function clickFav(fav) {
-      setFavorite(fav);
-    }
-    const fav = itinerary.title
-    console.log(itinerary)
-   
-    // console.log(favorite)
-    // console.log(hover)
-    return (
-      <div key={i}>
-        <Card>
-          <CardBody>
-            <Media>
-              <Media left>
-                <Media
-                  className="imageProfile"
-                  object
-                  src={require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`)}
-                  alt={itinerary.profilePic}
-                />
-                <br />
-                <h6>{itinerary.profilePic}</h6>
+    const clickFav = () => {
+      const found = favorite.indexOf(itinerary.title);
+      if (found === -1) {
+        setFavorite([...favorite, itinerary.title]);
+      } else {
+        favorite.splice(found, 1);
+      }
+    };
 
-                <Rating />
-              </Media>
-              <Media body>
-                <Media heading>
-                  {itinerary.title}
-                  <FontAwesomeIcon
-                    icon={ hover || fav == favorite ? faHeartSolid : faHeartRegular}
-                    color={ hover || fav == favorite ? "red" : "gray"}
-                    size="lg"
-                    pull="right"
-                    id="iconFav"
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(null)}
-                    // onClick={()=>setFavorite(fav)}
-                    onClick={()=>clickFav(fav)}
-                  />
-                </Media>
-                <br />
-                Likes: {itinerary.rating} | {itinerary.duration} Hours | $
-                {itinerary.cost}
-                <br />
-                <br />
-                <Hash hashtag={itinerary.hashtag} />
-                <br />
-                <br />
-              </Media>
+    const toggle = (numID) => {
+      setHover(numID);
+    };
+
+    return (
+      <Card key={i} className="mb-3">
+        <CardBody>
+          <Media>
+            <Media left>
+              <Media
+                className="imageProfile"
+                object
+                src={require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`)}
+                alt={itinerary.profilePic}
+              />
+              <br />
+              <h6>{itinerary.profilePic}</h6>
+
+              <Rating />
             </Media>
-            <CollapseIt idItinerary={itinerary._id} />
-            <br />
-          </CardBody>
-        </Card>
-        <br />
-      </div>
+            <Media body>
+              <Media heading>
+                {itinerary.title}
+                <FontAwesomeIcon
+                  icon={
+                    abierto === i || favorite.includes(itinerary.title)
+                      ? faHeartSolid
+                      : faHeartRegular
+                  }
+                  color={
+                    abierto === i || favorite.includes(itinerary.title)
+                      ? "red"
+                      : "gray"
+                  }
+                  size="lg"
+                  pull="right"
+                  id="iconFav"
+                  onMouseEnter={() => toggle(i)}
+                  onMouseLeave={() => toggle(-1)}
+                  onClick={() => clickFav()}
+                />
+              </Media>
+              <br />
+              Likes: {itinerary.rating} | {itinerary.duration} Hours | $
+              {itinerary.cost}
+              <br />
+              <br />
+              <Hash hashtag={itinerary.hashtag} />
+              <br />
+              <br />
+            </Media>
+          </Media>
+          <CollapseIt idItinerary={itinerary._id} />
+        </CardBody>
+      </Card>
     );
   });
 };

@@ -2,11 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import commentActionDelete from "../../../../redux/actions/commentActionDelete";
 import Modal from "./modal";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faTrash } from "@fortawesome/free-solid-svg-icons";
-// import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
-
+import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
 function dateCoverter(dateComment) {
   var dateEnd = Date.now();
@@ -46,10 +44,9 @@ function dateCoverter(dateComment) {
 
 const CommentList = (props) => {
   return props.activitiesReducer.map((activities, i) => (
-    <div key={i}>
-      <Card className="mt-2">
+      <Card className="mt-2 border-info" key={i}>
         <CardBody>
-          <CardTitle className="text-left">
+          <CardTitle className="text-left text-info" tag="h5">
             <small className="text-muted">{activities.name}</small>
             <Modal _id={activities._id} />
             <FontAwesomeIcon
@@ -71,7 +68,6 @@ const CommentList = (props) => {
           </CardText>
         </CardBody>
       </Card>
-    </div>
   ));
 };
 

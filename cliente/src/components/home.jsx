@@ -9,7 +9,7 @@ import Menu from "../components/menu";
 class Home extends React.Component {
   render() {
     return (
-      <div>
+      <>
         <Menu />
         <div className="margen">
           <img id="logo" src={imageLogo} alt="" />
@@ -26,7 +26,7 @@ class Home extends React.Component {
 
           <ImageCarousel />
         </div>
-      </div>
+      </>
     );
   }
 }

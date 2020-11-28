@@ -18,7 +18,7 @@ class ModalEdit extends React.Component {
     super(props);
     this.state = {
       idItinerary: this.props.idItinerary,
-      id:this.props._id,
+      id: this.props._id,
       comments: "",
       name: "",
       date: "",
@@ -55,7 +55,6 @@ class ModalEdit extends React.Component {
     this.toggle();
 
     if (this.state.id) {
-
       this.props.commentActionUpdate(this.state);
     } else {
       this.props.commentAction(this.state);
@@ -83,7 +82,7 @@ class ModalEdit extends React.Component {
             onClick={this.toggle}
           />
         ) : (
-          <Button color="primary" onClick={this.toggle} outline block>
+          <Button color="info" className="mt-3" onClick={this.toggle} block>
             {this.getNameButton()}
           </Button>
         )}

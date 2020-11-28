@@ -7,14 +7,14 @@ const outLogin = (data) => (dispatch) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "bearer " + localStorage.getItem("token"),
+        Authorization: "bearer " + sessionStorage.getItem("token"),
       },
     })
     .then((response) => {
       //console.log('respueta a logout: ', response.data);
       //console.log('data: ', data);
       if (response.data) {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         data.currentUser = [];
         data.isConected = false;
         dispatch({

@@ -7,7 +7,7 @@ const getUser = () => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "bearer " + localStorage.getItem("token")
+        Authorization: "bearer " + sessionStorage.getItem("token")
       },
     })
     .then((response) => {

@@ -10,6 +10,7 @@ class Footer extends React.Component {
         <Link to="/">
           <img className="home" src={image} alt="imagen de home" />
           <MenuUSer/>
+          
         </Link>
       </div>
     );

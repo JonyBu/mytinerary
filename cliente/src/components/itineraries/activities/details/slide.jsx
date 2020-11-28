@@ -26,14 +26,14 @@ const Slide = (props) => {
         }}
       >
         {props.detailsReducer.map((details, i) => (
-          <div className="centrar" key={i}>
+          <div style={{backgroundColor: '#0D0D0D'}} className="centrar" key={i}>
             <img
               className="imagenSlide"
               src={require(`../../../../imagenes/detalles/London/${details.activityPic}.jpg`)}
               alt={details.title}
             />
             <br />
-            <h5>{details.title}</h5>
+            <h5 >{details.title}</h5>
           </div>
         ))}
       </Whirligig>

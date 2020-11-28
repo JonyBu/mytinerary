@@ -27,7 +27,7 @@ class Login extends React.Component {
   esperar = () => {
     var contador = 1;
     this.cronometro = setInterval(() => {
-      if (!localStorage.token) {
+      if (!sessionStorage.token) {
         console.log("espera " + contador + "/5");
         if (contador === 5) {
           clearInterval(this.cronometro);

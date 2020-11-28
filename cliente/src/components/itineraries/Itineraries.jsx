@@ -12,7 +12,7 @@ class Itinerary extends React.Component {
     };
   }
   async componentDidMount() {
-    if (!localStorage.getItem("token")) {
+    if (!sessionStorage.getItem("token")) {
       this.props.history.push("/login");
     } else {
       this.setState({ ...this.state, isFetching: true });
@@ -23,9 +23,7 @@ class Itinerary extends React.Component {
   render() {
     return (
       <>
-        <br />
-        <h3 className="izquierda">Listado de itinerarios</h3>
-        <br />
+        <h3 className="izquierda m-3">Listado de itinerarios</h3>
         <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
       </>
     );
