@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collapse, CardBody, Card, Button } from "reactstrap";
+import { Collapse, Button } from "reactstrap";
 
 import Activities from "../itineraries/activities/activities";
 
@@ -9,11 +9,16 @@ const CollapseIt = (props) => {
 
   return (
     <>
-      <Button color="primary" block onClick={toggle} style={{ marginBottom: "1rem" }}>
+      <Button
+        color="primary"
+        block
+        onClick={toggle}
+        style={{ marginBottom: "1rem" }}
+      >
         View All
       </Button>
       <Collapse isOpen={isOpen}>
-            <Activities idItinerary={props.idItinerary} />
+        <Activities idItinerary={props.idItinerary} />
       </Collapse>
     </>
   );

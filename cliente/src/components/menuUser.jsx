@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import outLogin from "../redux/actions/logoutAction";
+import { Link } from "react-router-dom";
 
 import { Button } from "reactstrap";
 
@@ -27,14 +28,16 @@ class MenuUser extends React.Component {
 
   render() {
     return (
-      <Button
-        color="info"
-        block
-        onClick={this.handleClick.bind(this)}
-        className="mt-3 mb-3"
-      >
-        logout
-      </Button>
+      <Link to="/login">
+        <Button
+          color="info"
+          block
+          onClick={this.handleClick.bind(this)}
+          className="mt-3 mb-3"
+        >
+          logout
+        </Button>
+      </Link>
     );
   }
 }

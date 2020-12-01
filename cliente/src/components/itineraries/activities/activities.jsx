@@ -21,10 +21,12 @@ class activities extends React.Component {
   async componentDidMount() {
     if (!this.state.isConected) {
       await this.props.activitiesAction(this.props.idItinerary);
+      await this.props.getUser();
       this.setState({
         activities: this.props.activitiesReducer,
         isFetching: true,
         currentUser: this.props.loginReducer.currentUser,
+        isConected: this.props.loginReducer.isConected,
       });
     }
   }
@@ -46,7 +48,7 @@ class activities extends React.Component {
         <Details idItinerary={this.props.idItinerary} />
         <Modal
           idItinerary={this.props.idItinerary}
-          name={this.state.currentUser.userName}
+          name={this.props.loginReducer.currentUser.userName}
         />
         <CommentList activitiesReducer={this.state.activities} />
       </div>

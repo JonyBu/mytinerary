@@ -20,7 +20,7 @@ class ModalEdit extends React.Component {
       idItinerary: this.props.idItinerary,
       id: this.props._id,
       comments: "",
-      name: "",
+      name: this.props.name,
       date: "",
     };
     this.getNameButton.bind(this);
@@ -37,8 +37,6 @@ class ModalEdit extends React.Component {
   };
 
   onChange = (e) => {
-    console.log(this.props);
-    console.log(this.state);
     var dateEnd = Date.now();
     this.setState({
       ...this.state,
@@ -47,7 +45,6 @@ class ModalEdit extends React.Component {
       name: this.props.name,
       isFetching: true,
     });
-    console.log(this.state);
   };
 
   handleClick = (event) => {

@@ -2,12 +2,12 @@
   height: 200px;
 }
 
-html{
+html {
   background-color: #333;
 }
 
-#root{
-  background-color:#333;
+#root {
+  background-color: #333;
 }
 
 .centrar {
@@ -17,7 +17,7 @@ html{
   margin: 1em auto;
   padding: 0.5em 1em;
   background-color: white;
-  border: solid gray 0.1em ;
+  border: solid gray 0.1em;
 }
 
 #flecha {
@@ -76,7 +76,7 @@ html{
 #boton-menu,
 #boton-user {
   align-items: inherit;
-  text-decoration:none
+  text-decoration: none;
 }
 
 #iconDelete:hover {
@@ -107,4 +107,3 @@ input[type="radio"] {
   cursor: pointer;
   transition: color 200ms;
 }
-

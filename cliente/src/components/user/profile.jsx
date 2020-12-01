@@ -80,6 +80,7 @@ class Profile extends React.Component {
               Logout
             </CardLink>
             <CardLink href="/favorite">My favorite Itinerary</CardLink>
+            <CardLink href="/cities"> Cities </CardLink>
           </Container>
         </Jumbotron>
         <Footer />
@@ -89,7 +90,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.loginReducer)
+  console.log(state.loginReducer);
   return {
     loginReducer: state.loginReducer,
   };

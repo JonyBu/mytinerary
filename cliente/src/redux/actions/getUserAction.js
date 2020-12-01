@@ -7,7 +7,7 @@ const getUser = () => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "bearer " + sessionStorage.getItem("token")
+        Authorization: "bearer " + sessionStorage.getItem("token"),
       },
     })
     .then((response) => {
@@ -15,12 +15,11 @@ const getUser = () => async (dispatch) => {
         type: "GET_USER",
         payload: response.data,
       });
-      //console.log(user);
       //user.isConected = true
-      //console.log("respuesta al get User" , response.data)
+      // console.log("respuesta al get User" , response.data)
     })
     .catch((e) => {
-      console.log("error getuseraction: "+e);
+      console.log("error getuseraction: " + e);
     });
 };
 

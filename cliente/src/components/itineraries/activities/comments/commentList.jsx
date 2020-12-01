@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import commentActionDelete from "../../../../redux/actions/commentActionDelete";
 import Modal from "./modal";
-import { Card, CardBody, CardTitle, CardText, Button } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 
@@ -44,30 +44,28 @@ function dateCoverter(dateComment) {
 
 const CommentList = (props) => {
   return props.activitiesReducer.map((activities, i) => (
-      <Card className="mt-2 border-info" key={i}>
-        <CardBody>
-          <CardTitle className="text-left text-info" tag="h5">
-            <small className="text-muted">{activities.name}</small>
-            <Modal _id={activities._id} />
-            <FontAwesomeIcon
-              icon={faTrashAlt}
-              color="gray"
-              size="lg"
-              pull="right"
-              id="iconDelete"
-              onClick={function () {
-                props.commentActionDelete(activities._id);
-              }}
-            />
-          </CardTitle>
-          <CardText>{activities.comments}</CardText>
-          <CardText className="text-right">
-            <small className="text-muted">
-              {dateCoverter(activities.date)}
-            </small>
-          </CardText>
-        </CardBody>
-      </Card>
+    <Card className="mt-2 border-info" key={i}>
+      <CardBody>
+        <CardTitle className="text-left text-info" tag="h5">
+          <small className="text-muted">{activities.name}</small>
+          <Modal _id={activities._id} name={activities.name} />
+          <FontAwesomeIcon
+            icon={faTrashAlt}
+            color="gray"
+            size="lg"
+            pull="right"
+            id="iconDelete"
+            onClick={function () {
+              props.commentActionDelete(activities._id);
+            }}
+          />
+        </CardTitle>
+        <CardText>{activities.comments}</CardText>
+        <CardText className="text-right">
+          <small className="text-muted">{dateCoverter(activities.date)}</small>
+        </CardText>
+      </CardBody>
+    </Card>
   ));
 };
 
