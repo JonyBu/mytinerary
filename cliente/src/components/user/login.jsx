@@ -112,7 +112,7 @@ class Login extends React.Component {
         </Jumbotron>
 
         <div>
-          <GoogleButton className="centrar" onClick={this.signGoogle} />
+          <GoogleButton className="centrar" style={{ height: "" }} onClick={this.signGoogle} />
         </div>
         <br />
         <FormText color="muted">

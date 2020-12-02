@@ -42,9 +42,8 @@ class Menu extends React.Component {
             <DropdownToggle nav>
               <img className="logoUser" src={imagenUser} alt="" />
             </DropdownToggle>
-            <DropdownMenu className="m-0 p-0 border-0">
+            <DropdownMenu left className="m-0 p-0 border-0">
               <ButtonGroup vertical id="boton-user">
-                {/* <Link to="/createAccount">Create Account</Link> */}
                 <Link to="/createAccount" className="text-decoration-none">
                   <Button color="warning" block outline>
                     Create Account
