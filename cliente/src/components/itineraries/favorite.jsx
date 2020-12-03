@@ -26,6 +26,7 @@ class Favorite extends React.Component {
     return (
       <div>
         <h1>Itinerarios Favoritos</h1>
+        <p>esto no funciona</p>
         <Footer />
       </div>
     );
