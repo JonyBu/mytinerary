@@ -26,19 +26,20 @@
     "passport-jwt": "^4.0.0",
     "react-redux": "^7.2.2",
     "react-thunk": "^1.0.0",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "serve": "^11.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku": "node server.js",
-    "client": "cd cliente && npm start",
-    "server": "nodemon server.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "concurrently \"npm run client\" \"npm run server\""
-  },
+    "dev": "react-scripts start",
+    "start": "serve -s build",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env = jsdom ",
+    "eject" :"react-scriptseject ", 
+    "heroku-postbuild": "npm run build "
+    },
   "author": "",
   "license": "ISC"
 }

@@ -28,8 +28,8 @@ app.use("/api", routerActivities);
 app.use("/api", routerDetails);
 app.use("/api", routerUser);
 
-var port = process.env.PORT || "8081";
+var port = process.env.PORT || "8000";
 
 app.listen(port, () => {
-  console.log("servidor escuchando puerto", port);
+  console.log("servidor escuchando puerto ", port);
 });
