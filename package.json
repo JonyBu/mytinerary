@@ -37,7 +37,7 @@
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "concurrently \"npm run client\" \"npm run heroku\""
+    "start": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "",
   "license": "ISC"
