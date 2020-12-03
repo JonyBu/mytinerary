@@ -33,10 +33,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "heroku": "node server.js",
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "concurrently \"npm run client\" \"npm run heroku\""
   },
   "author": "",
   "license": "ISC"

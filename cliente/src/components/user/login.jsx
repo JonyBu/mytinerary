@@ -61,7 +61,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="footer">
+      <>
         <br />
         <h4>Login</h4>
         <br />
@@ -111,9 +111,12 @@ class Login extends React.Component {
           </Form>
         </Jumbotron>
 
-        <div>
-          <GoogleButton className="centrar" style={{ height: "" }} onClick={this.signGoogle} />
-        </div>
+        <GoogleButton
+          className="centrar"
+          style={{ height: "" }}
+          onClick={this.signGoogle}
+        />
+
         <br />
         <FormText color="muted">
           Don´t have a MYtinerary account yet? You should create one It´s
@@ -123,7 +126,7 @@ class Login extends React.Component {
         <Link to="./createAccount">Create Account</Link>
 
         <Footer />
-      </div>
+      </>
     );
   }
 }

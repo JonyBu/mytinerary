@@ -23,7 +23,7 @@ class Itinerary extends React.Component {
   render() {
     return (
       <>
-        <h3 className="izquierda m-3">Listado de itinerarios</h3>
+        <h3 className="izquierda m-3">Itineraries List</h3>
         <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
       </>
     );

@@ -1,6 +1,6 @@
 const initiaState = {
   currentUser: [],
-  isConected: [],
+  isConected: false,
 };
 
 function reducer(state = initiaState, action) {

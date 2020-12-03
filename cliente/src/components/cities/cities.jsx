@@ -38,7 +38,7 @@ class Cities extends React.Component {
   render() {
     return (
       <>
-        <h1>Listado de ciudades</h1>
+        <h1 className="m-3">Listado de ciudades</h1>
         <FilterForm match={this.props.match} onChange={this.filterCities} />
         <CityList citiesReducer={this.state.filteredCities} />
         <Footer />

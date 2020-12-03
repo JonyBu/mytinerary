@@ -72,14 +72,6 @@ html {
 .userLogo {
   height: 10em;
 }
-
-#boton-menu,
-#boton-user {
-  align-items: inherit;
-  display: list-item;
-  text-decoration: none;
-}
-
 #iconDelete:hover {
   color: firebrick;
   cursor: pointer;
@@ -100,6 +92,7 @@ html {
   right: 0.5em;
 }
 
+
 input[type="radio"] {
   display: none;
 }
@@ -107,4 +100,4 @@ input[type="radio"] {
 .iconStar {
   cursor: pointer;
   transition: color 200ms;
-}
+} 
