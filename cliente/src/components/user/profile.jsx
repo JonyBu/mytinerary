@@ -49,7 +49,7 @@ class Profile extends React.Component {
     if (this.props.loginReducer.isConected === true) {
     }
     return (
-      <div>
+      <>
         <img src={img} alt={img} />
         <br />
         <Jumbotron fluid>
@@ -83,14 +83,14 @@ class Profile extends React.Component {
             <CardLink href="/cities"> Cities </CardLink>
           </Container>
         </Jumbotron>
+
         <Footer />
-      </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.loginReducer);
   return {
     loginReducer: state.loginReducer,
   };

@@ -1,56 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import outLogin from "../redux/actions/logoutAction";
-import { Link } from "react-router-dom";
+import {
+  Button,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText,
+} from "reactstrap";
 
-import { Button } from "reactstrap";
+const MenuUser = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-class MenuUser extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: [],
-      isConected: [],
-    };
-  }
+  const toggle = () => setIsOpen(!isOpen);
 
-  componentDidMount() {
-    this.setState({
-      currentUser: this.props.currentUser.currentUser,
-      isConected: this.props.isConected,
-    });
-  }
+  return (
+    <Navbar color="light" light>
+      <NavbarBrand href="/login" className="mr-auto">
+        <NavbarText className="mr-3">Welcome</NavbarText>
+        <>{props.currentUser.userName}</>
+        <img
+          id=""
+          src={props.currentUser.profilePic}
+          alt={props.currentUser.profilePic}
+          className="ml-3"
+        />
+      </NavbarBrand>
 
-  handleClick = (event) => {
-    event.preventDefault();
-    this.props.outLogin(this.state);
-  };
+      <NavbarToggler onClick={toggle} />
 
-  render() {
-    return (
-      <Link to="/login">
-        <Button
-          color="info"
-          block
-          onClick={this.handleClick.bind(this)}
-          className="mt-3 mb-3"
-        >
-          logout
-        </Button>
-      </Link>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.loginReducer,
-    isConected: state.loginReducer,
-  };
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="mr-auto" navbar>
+          <NavItem>
+            <NavLink to="/profile">
+              <Button color="dark" block outline size="sm">
+                My Profile
+              </Button>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/favorite">
+              <Button color="dark" block outline size="sm">
+                My Favorites
+              </Button>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink>
+              <Button
+                color="dark"
+                block
+                outline
+                size="sm"
+                onClick={() => props.outLogin(props.currentUser)}
+              >
+                Log out
+              </Button>
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
 };
 
 const mapDispatchToProps = (dispatch) => ({
   outLogin: (data) => dispatch(outLogin(data)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuUser);
+export default connect(null, mapDispatchToProps)(MenuUser);

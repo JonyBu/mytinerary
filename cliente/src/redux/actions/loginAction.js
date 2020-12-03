@@ -1,5 +1,5 @@
 import axios from "axios";
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 
 const QUOTE_SERVICE_URL = "http://localhost:8080/api/user/login";
 
@@ -19,9 +19,8 @@ const startLogin = (user) => async (dispatch) => {
           payload: user,
         });
 
-        var token = sessionStorage.getItem("token");
-        var decode = jwt_decode(token);
-        alert("Bienvenido " + decode.userName);
+        // var token = sessionStorage.getItem("token");
+        // var decode = jwt_decode(token);
       } else {
         alert(response.data.message + " vuelva a loguearse");
       }

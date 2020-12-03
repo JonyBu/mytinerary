@@ -27,7 +27,7 @@ const Slide = (props) => {
       >
         {props.detailsReducer.map((details, i) => (
           <div
-            style={{ backgroundColor: "#0D0D0D" }}
+            // style={{ backgroundColor: "#0D0D0D" }}
             className="centrar"
             key={i}
           >

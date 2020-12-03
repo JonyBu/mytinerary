@@ -20,7 +20,7 @@
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^5.11.0",
+    "mongoose": "^5.11.1",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
@@ -33,10 +33,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
+    "heroku": "node server.js",
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "concurrently \"npm run client\" \"npm run heroku\""
   },
   "author": "",
   "license": "ISC"

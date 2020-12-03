@@ -1,106 +1,55 @@
-import React from "react";
+import React, {useState} from "react";
 import {
-  Navbar,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
   Button,
-  ButtonGroup,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  NavItem,
+  NavLink,
+  Nav,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import imagenUser from "../imagenes/user.png";
-import imagenMenu from "../imagenes/menu.png";
-import outLogin from "../redux/actions/logoutAction";
 
-class Menu extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currentUser: [],
-      isConected: [],
-    };
-  }
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
-  componentDidMount() {
-    this.setState({
-      currentUser: this.props.currentUser.currentUser,
-      isConected: this.props.currentUser.isConected,
-    });
-  }
+const Menu = () => {
 
-  handleClick = (event) => {
-    event.preventDefault();
-    this.props.outLogin(this.state);
-  };
+  const [collapsed, setIsOpen] = useState(true);
 
-  render() {
+  const toggleNavbar = () => setIsOpen(!collapsed);
+
     return (
-      <div className="li">
-        <Navbar>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav>
-              <img className="logoUser" src={imagenUser} alt="" />
-            </DropdownToggle>
-            <DropdownMenu className="m-0 p-0 border-0">
-              <ButtonGroup vertical id="boton-user">
-                {/* <Link to="/createAccount">Create Account</Link> */}
-                <Link to="/createAccount" className="text-decoration-none">
-                  <Button color="warning" block outline>
-                    Create Account
-                  </Button>
-                </Link>
-                <Link to="/login" className="text-decoration-none">
-                  <Button color="warning" block outline>
-                    login
-                  </Button>
-                </Link>
-                <Link to="/" className="text-decoration-none">
-                  <Button
-                    color="warning"
-                    block
-                    outline
-                    onClick={this.handleClick.bind(this)}
-                  >
-                    logout
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav>
-              <img className="logoMenu" src={imagenMenu} alt="" />
-            </DropdownToggle>
-            <DropdownMenu right className="m-0 p-0 border-0">
-              <ButtonGroup vertical id="boton-menu">
-                <Link to="/cities" className="text-decoration-none">
-                  <Button color="info" block outline>
-                    Chose your itinerary
-                  </Button>
-                </Link>
-                <Link to="/profile" className="text-decoration-none">
-                  <Button color="info" block outline>
-                    Profile
-                  </Button>
-                </Link>
-              </ButtonGroup>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </Navbar>
-      </div>
+      <Navbar color="faded" light>
+        <NavbarBrand href="/login" className="mr-auto">
+        <FontAwesomeIcon icon={faUserCircle} size="2x" color="#394E56" />
+        </NavbarBrand>
+        <NavbarToggler
+          onClick={toggleNavbar}
+          className="mr-2"
+        />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <NavLink href="/createAccount">
+                <Button color="dark" block outline>
+                  Sing in
+                </Button>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/login">
+                <Button color="dark" block outline>
+                  Log in
+                </Button>
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
     );
   }
-}
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.loginReducer,
-  };
-};
 
-const mapDispatchToProps = (dispatch) => ({
-  outLogin: (data) => dispatch(outLogin(data)),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+
+export default Menu;
