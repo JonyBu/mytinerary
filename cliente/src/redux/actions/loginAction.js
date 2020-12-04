@@ -1,7 +1,7 @@
 import axios from "axios";
 // import jwt_decode from "jwt-decode";
 
-const QUOTE_SERVICE_URL = "http://localhost:8080/api/user/login";
+const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/login`;
 
 const startLogin = (user) => async (dispatch) => {
   await axios

@@ -37,15 +37,11 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
-    "developer": "concurrently \"npm run client\" \"npm run server\"",
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env = jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC"

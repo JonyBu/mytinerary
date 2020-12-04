@@ -52,7 +52,7 @@ class createAccount extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const QUOTE_SERVICE_URL = "http://localhost:8080/api/user/createAccount";
+    const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/createAccount`;
     const userObject = {
       profilePic: this.state.profilePic,
       userName: this.state.userName,

@@ -56,7 +56,7 @@ class Login extends React.Component {
   };
 
   signGoogle = () => {
-    window.location.href = "http://localhost:8080/api/auth/google";
+    window.location.href = `http://localhost:${process.env.PORT || "8080"}/api/auth/google`;
   };
 
   render() {

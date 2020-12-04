@@ -1,5 +1,5 @@
 export const type = "activitiesAction";
-const QUOTE_SERVICE_URL = "http://localhost:8080/api/activities/";
+const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/activities/`;
 
 const activitiesAction = (idItinerary) => async (dispatch) => {
   const res = await fetch(QUOTE_SERVICE_URL + idItinerary)

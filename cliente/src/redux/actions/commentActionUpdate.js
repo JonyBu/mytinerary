@@ -2,7 +2,7 @@ import axios from "axios";
 export const type = "UPDATE_COMMENT";
 
 const commentAction = (data) => (dispatch) => {
-  const QUOTE_SERVICE_URL = "http://localhost:8080/api/activities/"+data.id;
+  const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/activities/`+data.id;
 
   axios
     .put(QUOTE_SERVICE_URL, { data })

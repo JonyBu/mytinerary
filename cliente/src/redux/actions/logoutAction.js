@@ -1,5 +1,5 @@
 import axios from "axios";
-const QUOTE_SERVICE_URL = "http://localhost:8080/api/user/profile";
+const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/profile`;
 
 const outLogin = (data) => (dispatch) => {
   axios
