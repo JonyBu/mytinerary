@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "node": "14.x",
-    "npm":"6.x"
-    },
+    "node": "14.15.0",
+    "npm": "6.14.8"
+  },
   "main": "server.js",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -24,7 +24,7 @@
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^5.11.1",
+    "mongoose": "^5.11.3",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
@@ -40,10 +40,10 @@
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test --env = jsdom ",
-    "eject" :"react-scriptseject ", 
-    "heroku-postbuild": "npm run build "
-    },
+    "test": "react-scripts test --env = jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
+  },
   "author": "",
   "license": "ISC"
 }
