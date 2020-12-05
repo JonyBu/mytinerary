@@ -21,8 +21,9 @@ class activities extends React.Component {
   async componentDidMount() {
     if (!this.state.isConected) {
       await this.props.activitiesAction(this.props.idItinerary);
-      await this.props.getUser();
+      this.props.getUser();
       this.setState({
+        ...this.state,
         activities: this.props.activitiesReducer,
         isFetching: true,
         currentUser: this.props.loginReducer.currentUser,
@@ -35,7 +36,6 @@ class activities extends React.Component {
     if (nextProps.changeComment === true) {
       await this.props.activitiesAction(this.props.idItinerary);
       this.setState({
-        ...this.state,
         activities: this.props.activitiesReducer,
         isFetching: true,
       });

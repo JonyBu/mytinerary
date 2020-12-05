@@ -25,7 +25,9 @@ const Slide = (props) => {
           whirligig = _whirligigInstance;
         }}
       >
-        {props.detailsReducer.map((details, i) => (
+        {props.detailsReducer.map((details, i) => {
+          console.log(details)
+          return (
           <div
             // style={{ backgroundColor: "#0D0D0D" }}
             className="centrar"
@@ -39,7 +41,8 @@ const Slide = (props) => {
             <br />
             <h5>{details.title}</h5>
           </div>
-        ))}
+        )
+          })}
       </Whirligig>
     </div>
   );

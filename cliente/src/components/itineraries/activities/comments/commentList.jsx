@@ -43,7 +43,8 @@ function dateCoverter(dateComment) {
 }
 
 const CommentList = (props) => {
-  return props.activitiesReducer.map((activities, i) => (
+  return props.activitiesReducer.map((activities, i) => {
+    return(
     <Card className="mt-2 border-info" key={i}>
       <CardBody>
         <CardTitle className="text-left text-info" tag="h5">
@@ -66,7 +67,7 @@ const CommentList = (props) => {
         </CardText>
       </CardBody>
     </Card>
-  ));
+  )});
 };
 
 const mapDispatchToProps = (dispatch) => {

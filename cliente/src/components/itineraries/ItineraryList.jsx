@@ -37,12 +37,11 @@ const ItineraryList = (props) => {
               <Media
                 className="imageProfile"
                 object
-                src={require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`)}
+                src={`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`}
                 alt={itinerary.profilePic}
               />
               <br />
               <h6>{itinerary.profilePic}</h6>
-
               <Rating />
             </Media>
             <Media body>
