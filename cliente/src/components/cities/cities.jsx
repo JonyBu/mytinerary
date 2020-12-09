@@ -4,6 +4,7 @@ import CityList from "./cityList.jsx";
 import FilterForm from "./filterCities.jsx";
 import citiesAction from "../../redux/actions/citiesAction";
 import Footer from "../footer";
+import imagen from "../../imagenes/viajes.jpg"
 
 class Cities extends React.Component {
   constructor() {
@@ -38,7 +39,8 @@ class Cities extends React.Component {
   render() {
     return (
       <>
-        <h1 className="m-3">Listado de ciudades</h1>
+        <img src={imagen} alt="" className="baner"/>
+        <h1 className="m-3">City list</h1>
         <FilterForm match={this.props.match} onChange={this.filterCities} />
         <CityList citiesReducer={this.state.filteredCities} />
         <Footer />

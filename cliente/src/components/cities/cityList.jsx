@@ -18,7 +18,7 @@ const CityList = (props) => {
           className={cityDisponible(city.name)}
           color="danger"
         >
-          {city.name} {city.country}
+          {city.name} {city.country} 
         </Button>
       </Link>
     </ListGroup>

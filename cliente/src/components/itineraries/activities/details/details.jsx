@@ -9,20 +9,19 @@ class details extends React.Component {
     this.state = {
       details: [],
       isFetching: false,
+      Itinerary: [],
     };
   }
 
   async componentDidMount() {
-    this.setState({ ...this.state, isFetching: true });
-    await this.props.detailsAction(this.props.idItinerary);
-    this.setState({ details: this.props.detailsReducer });
+    this.setState({ ...this.state, isFetching: true, Itinerary: this.props.Itinerary });
+    await this.props.detailsAction(this.props.Itinerary._id);
+    this.setState({ details: this.props.detailsReducer , });
   }
 
   render() {
     return (
-      <div>
-        <Slide detailsReducer={this.state.details} />
-      </div>
+        <Slide detailsReducer={this.state.details} Itinerary={this.state.Itinerary}/> 
     );
   }
 }

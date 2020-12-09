@@ -1,50 +1,35 @@
 import React from "react";
-import Whirligig from "react-whirligig";
-import { Button } from "reactstrap";
+import Slider from "react-animated-slider";
+import "react-animated-slider/build/horizontal.css";
 
 const Slide = (props) => {
-  let whirligig;
-  const next = () => whirligig.next();
-  const prev = () => whirligig.prev();
+  const Itinerary = props.Itinerary;
+
   return (
-    <div>
-      <div className="separar">
-        <Button outline color="primary" onClick={prev}>
-          Prev
-        </Button>
-        <h5>Activities</h5>
-        <Button outline color="primary" onClick={next}>
-          Next
-        </Button>
-      </div>
-      <br />
-      <Whirligig
-        visibleSlides={3}
-        gutter="30em"
-        ref={(_whirligigInstance) => {
-          whirligig = _whirligigInstance;
-        }}
-      >
-        {props.detailsReducer.map((details, i) => {
-          console.log(details)
-          return (
+    <Slider className="slider-wrapper">
+      {props.detailsReducer.map((item, index) => {
+        const imagen = require(`../../../../imagenes/detalles/London/${item.activityPic}.jpg`)
+          .default;
+        return (
           <div
-            // style={{ backgroundColor: "#0D0D0D" }}
-            className="centrar"
-            key={i}
+            key={index}
+            className="slider-content"
+            style={{ background: `url(${imagen}) no-repeat center center` }}
           >
-            <img
-              className="imagenSlide"
-              src={require(`../../../../imagenes/detalles/London/${details.activityPic}.jpg`)}
-              alt={details.title}
-            />
-            <br />
-            <h5>{details.title}</h5>
+            <div className="inner">
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+            </div>
+            <section>
+              {/* <img src={require(`../../../../imagenes/itinerarios/London/${props.Itinerary.profilePic}.png`).default} alt={Itinerary.profilePic} /> */}
+              <span>
+                Posted by <strong>{Itinerary.profilePic}</strong>
+              </span>
+            </section>
           </div>
-        )
-          })}
-      </Whirligig>
-    </div>
+        );
+      })}
+    </Slider>
   );
 };
 

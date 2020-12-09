@@ -18,7 +18,7 @@ const CollapseIt = (props) => {
         View All
       </Button>
       <Collapse isOpen={isOpen}>
-        <Activities idItinerary={props.idItinerary} />
+        <Activities Itinerary={props.itinerary} />
       </Collapse>
     </>
   );

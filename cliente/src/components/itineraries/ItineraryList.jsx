@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { CardBody, Card } from "reactstrap";
-import { Media } from "reactstrap";
+import { CardBody, Card, Media } from "reactstrap";
 import CollapseIt from "./collapse";
 import Hash from "./hash";
 import Rating from "./activities/details/rating";
@@ -15,7 +14,12 @@ const ItineraryList = (props) => {
   const [favorite, setFavorite] = useState([]);
   const [abierto, setHover] = useState(-1);
 
+
+
   return props.itineraryReducer.map((itinerary, i) => {
+    var imageName = require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`) 
+
+
     const clickFav = () => {
       const found = favorite.indexOf(itinerary.title);
       if (found === -1) {
@@ -37,7 +41,7 @@ const ItineraryList = (props) => {
               <Media
                 className="imageProfile"
                 object
-                src={`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`}
+                src={imageName.default}
                 alt={itinerary.profilePic}
               />
               <br />
@@ -76,7 +80,7 @@ const ItineraryList = (props) => {
               <br />
             </Media>
           </Media>
-          <CollapseIt idItinerary={itinerary._id} />
+          <CollapseIt  itinerary={itinerary}/>
         </CardBody>
       </Card>
     );

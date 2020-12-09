@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import imageLogo from "../imagenes/MYtineraryLogo.png";
 import "../App.css";
+import "../slider-animations.css"
 import ImageCarousel from "../components/carousel";
 import Menu from "../components/menu";
 import MenuUser from "../components/menuUser";

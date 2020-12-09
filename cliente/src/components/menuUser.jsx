@@ -12,11 +12,14 @@ import {
   NavLink,
   NavbarText,
 } from "reactstrap";
+import img from "../imagenes/user.png";
 
 const MenuUser = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+
+  const imagenProfile = props.currentUser.profilePic == null ? img : props.currentUser.profilePic
 
   return (
     <Navbar color="light" light>
@@ -25,7 +28,7 @@ const MenuUser = (props) => {
         <>{props.currentUser.userName}</>
         <img
           id=""
-          src={props.currentUser.profilePic}
+          src={imagenProfile}
           alt={props.currentUser.profilePic}
           className="ml-3"
         />

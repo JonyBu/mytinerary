@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import activitiesAction from "../../../redux/actions/activitiesAction";
 import Details from "./details/details";
-// import CommentsForm from "./commentsForm";
 import CommentList from "./comments/commentList";
 import Modal from "./comments/modal";
 import getUser from "../../../redux/actions/getUserAction";
@@ -15,15 +14,16 @@ class activities extends React.Component {
       activities: [],
       currentUser: [],
       isConected: false,
-      idItinerary: this.props.idItinerary,
+      Itinerary: [],
     };
   }
   async componentDidMount() {
     if (!this.state.isConected) {
-      await this.props.activitiesAction(this.props.idItinerary);
+      await this.props.activitiesAction(this.props.Itinerary._id);
       this.props.getUser();
       this.setState({
         ...this.state,
+        Itinerary: this.props.Itinerary,
         activities: this.props.activitiesReducer,
         isFetching: true,
         currentUser: this.props.loginReducer.currentUser,
@@ -34,7 +34,7 @@ class activities extends React.Component {
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.changeComment === true) {
-      await this.props.activitiesAction(this.props.idItinerary);
+      await this.props.activitiesAction(this.props.Itinerary._id);
       this.setState({
         activities: this.props.activitiesReducer,
         isFetching: true,
@@ -45,9 +45,9 @@ class activities extends React.Component {
   render() {
     return (
       <div className="p-3 border border-secondary">
-        <Details idItinerary={this.props.idItinerary} />
+        <Details Itinerary={this.props.Itinerary}/>
         <Modal
-          idItinerary={this.props.idItinerary}
+          idItinerary={this.props.Itinerary._id}
           name={this.props.loginReducer.currentUser.userName}
         />
         <CommentList activitiesReducer={this.state.activities} />

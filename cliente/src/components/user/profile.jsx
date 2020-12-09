@@ -45,12 +45,17 @@ class Profile extends React.Component {
     this.props.outLogin(this.state);
   };
 
+  
+
+  
+
   render() {
-    if (this.props.loginReducer.isConected === true) {
-    }
+    // if (this.props.loginReducer.isConected === true) {
+      const imagenProfile = this.state.currentUser.profilePic
+    // }
     return (
       <>
-        <img src={img} alt={img} />
+        {this.props.loginReducer.isConected ? <img src={img} alt={img}/>:<img src={require(imagenProfile).default} alt={imagenProfile}/>}
         <br />
         <Jumbotron fluid>
           <Container fluid>

@@ -19,11 +19,11 @@ class FilterForm extends React.Component {
 
   render() {
     return (
-      <div className="inputSearch">
+      <div className="mt-5 mb-3">
         <Input
           type="text"
           id="filter"
-          placeholder="Filter our current cities"
+          placeholder="Search our current cities"
           onChange={(e) => this.handleChange(e, this)}
           className="text-center"
         />
