@@ -13,28 +13,34 @@ html {
 .centrar {
   display: block;
   text-align: center;
-  width: 35em;
+  max-width: 800px;
   margin: 1em auto;
   padding: 0.5em 1em;
-  background-color: white;
-  border: solid gray 0.1em;
+  /* background-color: rgb(240, 240, 240); */
+  background-color: #f1f1f1;
+  /* border: solid gray 0.1em; */
+  font-family: "Poppins", sans-serif;
 }
 
 .izquierda {
   display: block;
   text-align: left;
   margin: auto;
+  background-color: white;
 }
 
-.imageProfile{
+.imageProfile {
   height: 10em;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  vertical-align: middle;
 }
 
-.imagenSlide{
+.imagenSlide {
   height: 18em;
 }
 
-.baner{
+.baner {
   height: 13em;
 }
 
@@ -60,6 +66,7 @@ html {
 #iconFav {
   position: absolute;
   right: 0.5em;
+  margin: 0.5em 0;
 }
 
 input[type="radio"] {
@@ -69,5 +76,50 @@ input[type="radio"] {
 .iconStar {
   cursor: pointer;
   transition: color 200ms;
+  align-items: center;
 }
 
+.centrarIconoComentario {
+  margin: auto;
+  padding: 0;
+  padding-right: 1em;
+}
+
+.comment-content section {
+  position: absolute;
+  margin: auto;
+}
+
+.comment-content section small {
+  color: lightgray;
+  font-size: 12px;
+  display: inline-block;
+  text-align: left;
+  line-height: 1.4;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.comment-content section img {
+  width: 40px;
+  height: 40px;
+  border: solid 2px rgba(201, 201, 201, 0.5);
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+.comment-content section small strong {
+  display: block;
+}
+
+.botonComment {
+  text-align: right;
+}
+
+.img-user-description{
+  width: 6em;
+  height: 6em;
+  border: solid 2px rgba(0, 163, 175, 0.623);
+  border-radius: 100%;
+  vertical-align: middle;
+}

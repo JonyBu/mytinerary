@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import itinerariesAction from "../../redux/actions/itinerariesAction";
 import ItineraryList from "./ItineraryList";
+import detailsAction from "../../redux/actions/detailsAction";
 
 class Itinerary extends React.Component {
   constructor() {
@@ -12,19 +13,26 @@ class Itinerary extends React.Component {
     };
   }
   async componentDidMount() {
+    console.log(this.props)
     if (!sessionStorage.getItem("token")) {
       this.props.history.push("/login");
     } else {
-      this.setState({ ...this.state, isFetching: true });
       await this.props.itinerariesAction(this.props.match.params.idCity);
+      this.setState({
+        ...this.state,
+        isFetching: true,
+        itineraries: this.props.itinerariesReducer,
+      });
     }
   }
 
   render() {
     return (
       <>
-        <h3 className="izquierda m-3">Itineraries List</h3>
-        <ItineraryList itineraryReducer={this.props.itinerariesReducer} />
+        <h3 className="m-3">Itineraries List</h3>
+        <ItineraryList
+          itineraryReducer={this.props.itinerariesReducer}
+        />
       </>
     );
   }

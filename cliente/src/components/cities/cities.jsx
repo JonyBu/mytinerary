@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import CityList from "./cityList.jsx";
-import FilterForm from "./filterCities.jsx";
+import { ListGroup, Button } from "reactstrap";
+import { Link } from "react-router-dom";
+
 import citiesAction from "../../redux/actions/citiesAction";
+import FilterForm from "./filterCities.jsx";
 import Footer from "../footer";
-import imagen from "../../imagenes/viajes.jpg"
+
+import imagen from "../../imagenes/viajes.jpg";
+
 
 class Cities extends React.Component {
   constructor() {
@@ -15,6 +19,7 @@ class Cities extends React.Component {
       isFetching: false,
     };
   }
+  
   async componentDidMount() {
     if (!sessionStorage.getItem("token")) {
       this.props.history.push("/login");
@@ -36,13 +41,36 @@ class Cities extends React.Component {
     });
   };
 
+  cityDisponible = (cityName) => {
+    if (cityName === "London") {
+      return "mt-3";
+    }
+    return "disabled mt-3";
+  };
+
   render() {
     return (
       <>
-        <img src={imagen} alt="" className="baner"/>
+        <img src={imagen} alt="" className="baner" />
         <h1 className="m-3">City list</h1>
         <FilterForm match={this.props.match} onChange={this.filterCities} />
-        <CityList citiesReducer={this.state.filteredCities} />
+        {this.state.filteredCities.map((city, i) => (
+          <ListGroup key={i}>
+            <Link
+              to={`/itineraries/${city._id}`}
+              className="text-decoration-none"
+            >
+              <Button
+                block
+                outline
+                className={this.cityDisponible(city.name)}
+                color="danger"
+              >
+                {city.name} {city.country}
+              </Button>
+            </Link>
+          </ListGroup>
+        ))}
         <Footer />
       </>
     );

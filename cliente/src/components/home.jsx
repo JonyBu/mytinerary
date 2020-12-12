@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import imageLogo from "../imagenes/MYtineraryLogo.png";
-import "../App.css";
-import "../slider-animations.css";
-import "../slider.css";
+
 import ImageCarousel from "../components/carousel";
 import Menu from "../components/menu";
 import MenuUser from "../components/menuUser";
-import { connect } from "react-redux";
+import { connect  } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";

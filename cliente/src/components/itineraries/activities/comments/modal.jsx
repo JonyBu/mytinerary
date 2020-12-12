@@ -72,14 +72,14 @@ class ModalEdit extends React.Component {
         {this.getNameButton() === "edit" ? (
           <FontAwesomeIcon
             icon={faEdit}
-            color="gray"
+            color="lightgray"
             size="lg"
             pull="right"
             id="iconEdit"
             onClick={this.toggle}
           />
         ) : (
-          <Button color="info" className="mt-3" onClick={this.toggle} block>
+          <Button color="info" className="" onClick={this.toggle} >
             {this.getNameButton()}
           </Button>
         )}

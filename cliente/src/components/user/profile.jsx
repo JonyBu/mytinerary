@@ -20,24 +20,16 @@ class Profile extends React.Component {
       currentUser: [],
       isConected: [],
     };
-    // this.handleInputImage = this.handleInputImage.bind(this)
   }
 
-  // handleInputImage = (props) => {
-  //     const localImageUrl =  `../../imagenes/${props.img}`
-  //     document.querySelector('img').src = localImageUrl
-  //   }
 
   async componentDidMount() {
-    // async componentWillMount() {
-    // await this.props.getUser(this.props.loginReducer)
 
     await this.props.getUser();
     this.setState({
       currentUser: this.props.loginReducer.currentUser,
       isConected: this.props.loginReducer.isConected,
     });
-    // this.handleInputImage(this.state.currentUser.profilePic)
   }
 
   handleClick = (event) => {

@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import commentActionDelete from "../../../../redux/actions/commentActionDelete";
-import Modal from "./modal";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+
+import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+
+import commentActionDelete from "../../../../redux/actions/commentActionDelete";
+import Modal from "./modal";
 
 function dateCoverter(dateComment) {
   var dateEnd = Date.now();
@@ -44,30 +46,49 @@ function dateCoverter(dateComment) {
 
 const CommentList = (props) => {
   return props.activitiesReducer.map((activities, i) => {
-    return(
-    <Card className="mt-2 border-info" key={i}>
-      <CardBody>
-        <CardTitle className="text-left text-info" tag="h5">
-          <small className="text-muted">{activities.name}</small>
-          <Modal _id={activities._id} name={activities.name} />
-          <FontAwesomeIcon
-            icon={faTrashAlt}
-            color="gray"
-            size="lg"
-            pull="right"
-            id="iconDelete"
-            onClick={function () {
-              props.commentActionDelete(activities._id);
-            }}
-          />
-        </CardTitle>
-        <CardText>{activities.comments}</CardText>
-        <CardText className="text-right">
-          <small className="text-muted">{dateCoverter(activities.date)}</small>
-        </CardText>
-      </CardBody>
-    </Card>
-  )});
+    var imagen = require(`../../../../imagenes/usuarios/${activities.userPic}`)
+      .default;
+    return (
+      <>
+        <hr />
+        <Row key={i} className="mb-3">
+          <Col sm="3" xs="3" className="comment-content">
+            <section>
+              <img src={imagen} alt={"imagen de usuario"} />
+
+              <small className="text-muted">
+                {" "}
+                Posted by<strong>{activities.userName}</strong>
+              </small>
+            </section>
+          </Col>
+          <Col sm="7" xs="9">
+            <p>{activities.comments}</p>
+          </Col>
+          <Col sm="2" xs="12" className="centrarIconoComentario">
+            <Modal _id={activities._id} name={activities.userName} />
+            <FontAwesomeIcon
+              icon={faTrashAlt}
+              color="lightgray"
+              size="lg"
+              pull="right"
+              id="iconDelete"
+              onClick={function () {
+                props.commentActionDelete(activities._id);
+              }}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <small className="text-muted fecha float-right">
+              {dateCoverter(activities.date)}
+            </small>
+          </Col>
+        </Row>
+      </>
+    );
+  });
 };
 
 const mapDispatchToProps = (dispatch) => {

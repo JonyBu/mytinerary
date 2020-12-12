@@ -14,7 +14,7 @@
   }
   
   .slide {
-    height: 40vh;
+    /* height: 40vh; */
     background-size: cover !important;
   }
   
@@ -91,6 +91,7 @@
     color: #FFFFFF;
     font-size: 2em;
     line-height: 1;
+    
   }
   
   .slider-content .inner p {

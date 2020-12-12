@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Row, Col } from "reactstrap";
+
 import activitiesAction from "../../../redux/actions/activitiesAction";
-import Details from "./details/details";
+import getUser from "../../../redux/actions/getUserAction";
+
 import CommentList from "./comments/commentList";
 import Modal from "./comments/modal";
-import getUser from "../../../redux/actions/getUserAction";
 
 class activities extends React.Component {
   constructor(props) {
@@ -44,13 +46,20 @@ class activities extends React.Component {
 
   render() {
     return (
-      <div className="p-3 border border-secondary">
-        <Details Itinerary={this.props.Itinerary}/>
-        <Modal
-          idItinerary={this.props.Itinerary._id}
-          name={this.props.loginReducer.currentUser.userName}
-        />
+      <div className="p-3">
+        <Row>
+          <Col>
+            <h5>Comments</h5>
+          </Col>
+          <Col className="botonComment">
+            <Modal
+              idItinerary={this.props.Itinerary._id}
+              name={this.props.loginReducer.currentUser.userName}
+            />
+          </Col>
+        </Row>
         <CommentList activitiesReducer={this.state.activities} />
+        <hr />
       </div>
     );
   }

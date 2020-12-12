@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import Slide from "./slide";
+
+import Slider from "react-animated-slider";
+import "react-animated-slider/build/horizontal.css";
+
 import detailsAction from "../../../../redux/actions/detailsAction";
 
 class details extends React.Component {
@@ -21,7 +24,25 @@ class details extends React.Component {
 
   render() {
     return (
-        <Slide detailsReducer={this.state.details} Itinerary={this.state.Itinerary}/> 
+      <Slider className="slider-wrapper">
+      {this.state.details.map((item, index) => {
+        const imagen = require(`../../../../imagenes/detalles/London/${item.activityPic}.jpg`)
+          .default;
+        return (
+          <div
+          key={index}
+          className="slider-content"
+          style={{ background: `url(${imagen}) no-repeat center center` }}
+        >
+          <section>
+            <span>
+            {item.title}<strong>{item.details}</strong>
+            </span>
+          </section>
+        </div>
+        );
+      })}
+    </Slider>
     );
   }
 }

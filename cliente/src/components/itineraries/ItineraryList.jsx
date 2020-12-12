@@ -1,25 +1,23 @@
 import React, { useState } from "react";
-import { CardBody, Card, Media } from "reactstrap";
-import CollapseIt from "./collapse";
-import Hash from "./hash";
-import Rating from "./activities/details/rating";
+import { Card } from "reactstrap";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
-library.add(faHeartRegular, faHeartSolid);
+import CollapseIt from "./collapse";
+import Rating from "../itineraries/activities/details/rating";
+import Details from "../itineraries/activities/details/details";
+
+library.add(faHeartSolid, faHeartRegular);
 
 const ItineraryList = (props) => {
   const [favorite, setFavorite] = useState([]);
   const [abierto, setHover] = useState(-1);
-
-
+  const [details, setDetails] = useState(props.detailsReducer);
 
   return props.itineraryReducer.map((itinerary, i) => {
-    var imageName = require(`../../imagenes/itinerarios/London/${itinerary.profilePic}.png`) 
-
-
     const clickFav = () => {
       const found = favorite.indexOf(itinerary.title);
       if (found === -1) {
@@ -34,54 +32,32 @@ const ItineraryList = (props) => {
     };
 
     return (
-      <Card key={i} className="mb-3">
-        <CardBody>
-          <Media>
-            <Media left>
-              <Media
-                className="imageProfile"
-                object
-                src={imageName.default}
-                alt={itinerary.profilePic}
-              />
-              <br />
-              <h6>{itinerary.profilePic}</h6>
-              <Rating />
-            </Media>
-            <Media body>
-              <Media heading>
-                {itinerary.title}
-                <FontAwesomeIcon
-                  icon={
-                    abierto === i || favorite.includes(itinerary.title)
-                      ? faHeartSolid
-                      : faHeartRegular
-                  }
-                  color={
-                    abierto === i || favorite.includes(itinerary.title)
-                      ? "red"
-                      : "gray"
-                  }
-                  size="lg"
-                  pull="right"
-                  id="iconFav"
-                  onMouseEnter={() => toggle(i)}
-                  onMouseLeave={() => toggle(-1)}
-                  onClick={() => clickFav()}
-                />
-              </Media>
-              <br />
-              Likes: {itinerary.rating} | {itinerary.duration} Hours | $
-              {itinerary.cost}
-              <br />
-              <br />
-              <Hash hashtag={itinerary.hashtag} />
-              <br />
-              <br />
-            </Media>
-          </Media>
-          <CollapseIt  itinerary={itinerary}/>
-        </CardBody>
+      <Card key={i} className="izquierda mb-3">
+        <FontAwesomeIcon
+          icon={
+            abierto === i || favorite.includes(itinerary.title)
+              ? faHeartSolid
+              : faHeartRegular
+          }
+          color={
+            abierto === i || favorite.includes(itinerary.title)
+              ? "red"
+              : "lightgray"
+          }
+          size="lg"
+          pull="right"
+          id="iconFav"
+          onMouseEnter={() => toggle(i)}
+          onMouseLeave={() => toggle(-1)}
+          onClick={() => clickFav()}
+        />
+        <h4 className="izquierda m-2">{itinerary.title}</h4>
+
+        <Rating itinerary={itinerary} />
+
+        <Details Itinerary={itinerary} />
+
+        <CollapseIt itinerary={itinerary} />
       </Card>
     );
   });
