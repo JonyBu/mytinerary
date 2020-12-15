@@ -18,7 +18,6 @@ const startLogin = (user) => async (dispatch) => {
           type: "LOGIN_USER",
           payload: user,
         });
-
         // var token = sessionStorage.getItem("token");
         // var decode = jwt_decode(token);
       } else {

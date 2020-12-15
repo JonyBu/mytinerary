@@ -1,5 +1,5 @@
 #logo {
-  height: 10em;
+  height: 9em;
 }
 
 html {
@@ -123,3 +123,24 @@ input[type="radio"] {
   border-radius: 100%;
   vertical-align: middle;
 }
+
+.img-user-menu{
+  height: 4em;
+  margin: auto;
+}
+
+.imagenLogin{
+  height: 9em;
+}
+
+.botonEditar{
+  position: absolute;
+  right: 2em;
+}
+
+.botonEditarImg{
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+

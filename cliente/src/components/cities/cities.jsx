@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import citiesAction from "../../redux/actions/citiesAction";
 import FilterForm from "./filterCities.jsx";
 import Footer from "../footer";
+import MenuUser from "../menuUser"
 
 import imagen from "../../imagenes/viajes.jpg";
 
@@ -51,6 +52,7 @@ class Cities extends React.Component {
   render() {
     return (
       <>
+      <MenuUser/>
         <img src={imagen} alt="" className="baner" />
         <h1 className="m-3">City list</h1>
         <FilterForm match={this.props.match} onChange={this.filterCities} />

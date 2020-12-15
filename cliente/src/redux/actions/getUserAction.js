@@ -15,8 +15,7 @@ const getUser = () => async (dispatch) => {
         type: "GET_USER",
         payload: response.data,
       });
-      //user.isConected = true
-      // console.log("respuesta al get User" , response.data)
+      console.log("respuesta al get User" , response.data)
     })
     .catch((e) => {
       console.log("error getuseraction: " + e);

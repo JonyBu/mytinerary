@@ -14,9 +14,11 @@ router.get(
     usuarioModel
       .findOne({ _id: req.user.id })
       .then((user) => {
-        res.json(user)
+        res.json(user);
       })
-      .catch((err) => res.status(404).json({ error: "User does not exist! "+err }));
+      .catch((err) =>
+        res.status(404).json({ error: "User does not exist! " + err })
+      );
   }
 );
 
@@ -31,7 +33,6 @@ router.post("/user/login", async function (req, res) {
   const validPassword = await bcrypt.compare(password, user.password);
   if (!validPassword)
     return res.status(400).json({ error: true, message: "no registrado" });
-
 
   const payload = {
     id: user._id,
@@ -89,5 +90,18 @@ router.post(
     });
   }
 );
+
+router.put("/user/profile/:_id", async (req, res) => {
+  const id = req.params._id;
+  const data = req.body;
+  await usuarioModel
+    .updateOne({ _id: id }, { $set: data })
+    .then(() => {
+      return res.status(200).json({
+        message: "Update succesful " + res,
+      });
+    })
+    .catch((err) => console.log(err));
+});
 
 module.exports = router;

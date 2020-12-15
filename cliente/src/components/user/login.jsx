@@ -13,7 +13,10 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
 import startLogin from "../../redux/actions/loginAction";
+
+import img from "../../imagenes/logo/MYtineraryLogo.png"
 
 class Login extends React.Component {
   constructor() {
@@ -62,9 +65,8 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <br />
-        <h4>Login</h4>
-        <br />
+      <img src={img} className="imagenLogin m-4" ></img>
+        {/* <h4 className="m-3">Login</h4> */}
         <Jumbotron>
           <Form>
             <FormGroup row>

@@ -1,8 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import itinerariesAction from "../../redux/actions/itinerariesAction";
+
 import ItineraryList from "./ItineraryList";
-import detailsAction from "../../redux/actions/detailsAction";
+import MenuUser from "../menuUser";
 
 class Itinerary extends React.Component {
   constructor() {
@@ -29,7 +31,9 @@ class Itinerary extends React.Component {
   render() {
     return (
       <>
-        <h3 className="m-3">Itineraries List</h3>
+      
+        <MenuUser />
+        {/* <h3 className="m-3">Itineraries List</h3> */}
         <ItineraryList
           itineraryReducer={this.props.itinerariesReducer}
         />

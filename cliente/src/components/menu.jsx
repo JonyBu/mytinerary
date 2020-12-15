@@ -13,6 +13,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
+import logo from "../imagenes/logo/MYtineraryLogoSolo.png"
+
 const Menu = () => {
 
   const [collapsed, setIsOpen] = useState(true);
@@ -21,9 +23,10 @@ const Menu = () => {
 
     return (
       <Navbar color="faded" light>
-        <NavbarBrand href="/login" className="mr-auto">
+        <NavbarBrand href="/login" className="">
         <FontAwesomeIcon icon={faUserCircle} size="2x" color="#394E56" />
         </NavbarBrand>
+        <img src={logo} alt="Logo Mytinerary" className="img-user-menu"/>
         <NavbarToggler
           onClick={toggleNavbar}
           className="mr-2"

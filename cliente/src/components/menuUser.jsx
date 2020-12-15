@@ -6,33 +6,28 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
+  // NavbarBrand,
+  // NavbarText,
 } from "reactstrap";
-import img from "../imagenes/user.png";
+import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";
 
 const MenuUser = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+ 
   const toggle = () => setIsOpen(!isOpen);
 
-  const imagenProfile = props.currentUser.profilePic == null ? img : props.currentUser.profilePic
+  // const imagen = () => require(`../imagenes/usuarios/${user.profilePic}`).default;
 
   return (
-    <Navbar color="light" light>
-      <NavbarBrand href="/login" className="mr-auto">
-        <NavbarText className="mr-3">Welcome</NavbarText>
-        <>{props.currentUser.userName}</>
-        <img
-          id=""
-          src={imagenProfile}
-          alt={props.currentUser.profilePic}
-          className="ml-3"
-        />
-      </NavbarBrand>
+    <Navbar color="gray" light>
+      {/* <NavbarBrand href="/login" className="mr-auto">
+        <NavbarText className="mr-2">Welcome</NavbarText>
+        {props.currentUser.userName} 
+      </NavbarBrand> */}
+      <img src={imgLogo} alt="Mytinereary Logo" className="img-user-menu"/>
 
       <NavbarToggler onClick={toggle} />
 

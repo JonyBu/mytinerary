@@ -15,7 +15,7 @@ library.add(faHeartSolid, faHeartRegular);
 const ItineraryList = (props) => {
   const [favorite, setFavorite] = useState([]);
   const [abierto, setHover] = useState(-1);
-  const [details, setDetails] = useState(props.detailsReducer);
+  // const [details, setDetails] = useState(props.detailsReducer);
 
   return props.itineraryReducer.map((itinerary, i) => {
     const clickFav = () => {

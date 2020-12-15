@@ -17,7 +17,7 @@ class createAccount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profilePic: "",
+      profilePic: "user.png",
       userName: "",
       password: "",
       email: "",
@@ -46,8 +46,6 @@ class createAccount extends React.Component {
     const localImageUrl = URL.createObjectURL(files[0]);
     document.querySelector("img").src = localImageUrl;
     this.setState({ profilePic: files[0].name });
-
-    // this.state.profilePic = files[0].name;
   };
 
   handleSubmit = (e) => {
@@ -186,7 +184,7 @@ class createAccount extends React.Component {
                   onChange={this.handleInputChange}
                 >
                   <option value=""></option>
-                  <option value="london">London</option>
+                  <option value="united kingdon">United Kingdon</option>
                   <option value="spain">Spain</option>
                   <option value="french">French</option>
                   <option value="italy">Italy</option>

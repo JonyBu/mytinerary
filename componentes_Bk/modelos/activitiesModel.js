@@ -2,7 +2,10 @@ let mongoose = require("mongoose");
 
 let activitiesSchema = new mongoose.Schema({
   comments: String,
-  name: String,
+  userName: String,
+  userPic: String,
+  like: Number,
+  deslike: Number,
   date: Number,
   idItinerary: mongoose.Schema.Types.ObjectId,
 });

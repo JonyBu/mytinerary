@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import imageLogo from "../imagenes/MYtineraryLogo.png";
-
-import ImageCarousel from "../components/carousel";
-import Menu from "../components/menu";
-import MenuUser from "../components/menuUser";
 import { connect  } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faArrowAltCircleRight as faArrowAltCircleRightSolid } from "@fortawesome/free-solid-svg-icons";
 import { faArrowAltCircleRight as faArrowAltCircleRightRegular } from "@fortawesome/free-regular-svg-icons";
+
+import ImageCarousel from "../components/carousel";
+import MenuUser from "../components/menuUser";
+import Menu from "../components/menu";
+
+import imageLogo from "../imagenes/logo/iconosLogo.png";
 
 library.add(faArrowAltCircleRightRegular, faArrowAltCircleRightSolid);
 
@@ -22,6 +23,7 @@ class Home extends React.Component {
       isConected: {},
       currentUser: {},
     };
+    console.log(props.currentUser)
   }
 
   componentDidMount() {
