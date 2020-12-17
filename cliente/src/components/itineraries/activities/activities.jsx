@@ -54,7 +54,6 @@ class activities extends React.Component {
           <Col className="botonComment">
             <Modal
               idItinerary={this.props.Itinerary._id}
-              name={this.props.loginReducer.currentUser.userName}
             />
           </Col>
         </Row>

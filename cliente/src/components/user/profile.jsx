@@ -1,13 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {
-  Card,
-  CardLink,
-  Jumbotron,
-  CardImg,
-  Col,
-  Row,
-} from "reactstrap";
+import { Card, CardLink, Jumbotron, CardImg, Col, Row } from "reactstrap";
 
 import outLogin from "../../redux/actions/logoutAction";
 import getUser from "../../redux/actions/getUserAction";
@@ -43,7 +36,7 @@ class Profile extends React.Component {
   }
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
+    console.log(nextProps);
     if (nextProps.loginReducer.isUpdated === true) {
       await this.props.getUser();
       this.setState({
@@ -69,7 +62,7 @@ class Profile extends React.Component {
         <Jumbotron fluid style={{ backgroundImage: `url(${imgfondo})` }}>
           <Card className="border-dark m-3">
             <Row className="rowProfile ">
-              <Col xs="12" sm="6" className="pr-0 ">
+              <Col xs="12" sm="6" className="pr-0">
                 <CardImg
                   left
                   src={this.state.imagen}
@@ -88,7 +81,7 @@ class Profile extends React.Component {
               <Col className="m-auto p-0 colRelative" xs="12" sm="6">
                 <h4 className="m-3">WELCOME</h4>
                 <p>
-                  User: {this.state.currentUser.userName}{" "}
+                  User: {this.state.currentUser.userName}
                   <ModalUser
                     id={this.state.currentUser._id}
                     datos={{
@@ -96,8 +89,9 @@ class Profile extends React.Component {
                       name: "userName",
                       placeholder: "User Name",
                     }}
-                  />
+                  />{" "}
                 </p>
+
                 <p>
                   Email: {this.state.currentUser.email}{" "}
                   <ModalUser
@@ -125,11 +119,20 @@ class Profile extends React.Component {
           </Card>
         </Jumbotron>
 
-        <CardLink onClick={this.handleClick.bind(this)} href="/">
-          Logout
-        </CardLink>
-        <CardLink href="/favorite">Itineraries favorite</CardLink>
-        <CardLink href="/cities"> Cities </CardLink>
+        <Row>
+          <Col xs="12" sm="4">
+            <CardLink onClick={this.handleClick.bind(this)} href="/">
+              Logout
+            </CardLink>
+          </Col>
+          <Col xs="12" sm="4">
+            <CardLink href="/favorite">Itineraries favorite</CardLink>
+          </Col>
+          <Col xs="12" sm="4">
+            <CardLink href="/cities"> Cities </CardLink>
+          </Col>
+        </Row>
+
         <Footer />
       </>
     );

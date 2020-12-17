@@ -30,7 +30,7 @@ const Rating = (props) => {
                 ratingValue <= (hover || rating) ? faStarSolid : faStarRegular
               }
               color={ratingValue <= (hover || rating) ? "gold" : "lightgray"}
-              size="x1"
+              size="1x"
               pull="right"
               className="iconStar"
               onMouseEnter={() => setHover(ratingValue)}

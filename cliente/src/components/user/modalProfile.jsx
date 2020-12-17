@@ -63,7 +63,7 @@ class ModalProfile extends React.Component {
   render() {
     return (
       <>
-        <Button color="light" className={this.claseDesde()} onClick={this.toggle}>
+        <Button color="light" className={ this.claseDesde() } onClick={this.toggle}>
           <FontAwesomeIcon icon={faPen} />
         </Button>
 

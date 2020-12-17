@@ -48,6 +48,7 @@ const CommentList = (props) => {
   return props.activitiesReducer.map((activities, i) => {
     var imagen = require(`../../../../imagenes/usuarios/${activities.userPic}`)
       .default;
+      console.log(imagen)
     return (
       <>
         <hr />
@@ -66,7 +67,7 @@ const CommentList = (props) => {
             <p>{activities.comments}</p>
           </Col>
           <Col sm="2" xs="12" className="centrarIconoComentario">
-            <Modal _id={activities._id} name={activities.userName} />
+            <Modal _id={activities._id} />
             <FontAwesomeIcon
               icon={faTrashAlt}
               color="lightgray"

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import citiesAction from "../../redux/actions/citiesAction";
 import FilterForm from "./filterCities.jsx";
 import Footer from "../footer";
-import MenuUser from "../menuUser"
+import Menu from "../menu"
 
 import imagen from "../../imagenes/viajes.jpg";
 
@@ -22,7 +22,8 @@ class Cities extends React.Component {
   }
   
   async componentDidMount() {
-    if (!sessionStorage.getItem("token")) {
+    console.log(this.props.loginReducer)
+    if (!sessionStorage.getItem("token") || this.props.loginReducer.isConnected) {
       this.props.history.push("/login");
     } else {
       this.setState({ ...this.state, isFetching: true });
@@ -50,38 +51,40 @@ class Cities extends React.Component {
   };
 
   render() {
-    return (
-      <>
-      <MenuUser/>
-        <img src={imagen} alt="" className="baner" />
-        <h1 className="m-3">City list</h1>
-        <FilterForm match={this.props.match} onChange={this.filterCities} />
-        {this.state.filteredCities.map((city, i) => (
-          <ListGroup key={i}>
-            <Link
-              to={`/itineraries/${city._id}`}
-              className="text-decoration-none"
-            >
-              <Button
-                block
-                outline
-                className={this.cityDisponible(city.name)}
-                color="danger"
+      return (
+        <>
+        <Menu />
+          <img src={imagen} alt="" className="baner" />
+          <h1 className="m-3">City list</h1>
+          <FilterForm match={this.props.match} onChange={this.filterCities} />
+          {this.state.filteredCities.map((city, i) => (
+            <ListGroup key={i}>
+              <Link
+                to={`/itineraries/${city._id}`}
+                className="text-decoration-none"
               >
-                {city.name} {city.country}
-              </Button>
-            </Link>
-          </ListGroup>
-        ))}
-        <Footer />
-      </>
-    );
+                <Button
+                  block
+                  outline
+                  className={this.cityDisponible(city.name)}
+                  color="danger"
+                >
+                  {city.name} {city.country}
+                </Button>
+              </Link>
+            </ListGroup>
+          ))}
+          <Footer />
+        </>
+      );
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     citiesReducer: state.citiesReducer.cities,
+    loginReducer: state.loginReducer
   };
 };
 

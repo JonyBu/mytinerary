@@ -20,7 +20,10 @@ router.post("/activities", function (req, res) {
   console.log("req.body"+req.body)
   var newModel = new activitiesModel({
     comments: req.body.comments,
-    name: req.body.name,
+    userName: req.body.userName,
+    userPic: req.body.userPic,
+    like: req.body.like,
+    deslike:req.body.deslike,
     date: req.body.date,
     idItinerary: req.body.idItinerary,
   });

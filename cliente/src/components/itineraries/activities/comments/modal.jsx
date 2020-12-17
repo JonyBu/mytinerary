@@ -20,7 +20,7 @@ class ModalEdit extends React.Component {
       idItinerary: this.props.idItinerary,
       id: this.props._id,
       comments: "",
-      name: this.props.name,
+      user: this.props.loginReducer.currentUser,
       date: "",
     };
     this.getNameButton.bind(this);
@@ -42,9 +42,13 @@ class ModalEdit extends React.Component {
       ...this.state,
       comments: e.target.value,
       date: dateEnd,
-      name: this.props.name,
+      userName: this.state.user.userName,
+      userPic: this.state.user.profilePic,
+      like: this.state.user.like,
+      deslike: this.state.user.deslike,
       isFetching: true,
     });
+    console.log(this.state)
   };
 
   handleClick = (event) => {
@@ -109,6 +113,12 @@ class ModalEdit extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loginReducer: state.loginReducer,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     commentAction: (data) => dispatch(commentAction(data)),
@@ -116,4 +126,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(ModalEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEdit);

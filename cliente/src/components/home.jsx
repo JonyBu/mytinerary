@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect  } from "react-redux";
+import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -8,7 +8,6 @@ import { faArrowAltCircleRight as faArrowAltCircleRightSolid } from "@fortawesom
 import { faArrowAltCircleRight as faArrowAltCircleRightRegular } from "@fortawesome/free-regular-svg-icons";
 
 import ImageCarousel from "../components/carousel";
-import MenuUser from "../components/menuUser";
 import Menu from "../components/menu";
 
 import imageLogo from "../imagenes/logo/iconosLogo.png";
@@ -23,13 +22,14 @@ class Home extends React.Component {
       isConected: {},
       currentUser: {},
     };
-    console.log(props.currentUser)
+    console.log(props.loginReducer);
   }
 
   componentDidMount() {
+    console.log(this.props);
     this.setState({
-      currentUser: this.props.currentUser.currentUser,
-      isConected: this.props.currentUser.isConected,
+      currentUser: this.props.loginReducer.currentUser,
+      isConected: this.props.loginReducer.isConected,
     });
   }
 
@@ -40,14 +40,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        {this.state.isConected ? (
-          <MenuUser
-            isConected={this.state.isConected}
-            currentUser={this.state.currentUser}
-          />
-        ) : (
-          <Menu />
-        )}
+        <Menu />
 
         <div className="mt-3">
           <img
@@ -86,9 +79,8 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.loginReducer,
+    loginReducer: state.loginReducer,
   };
 };
-
 
 export default connect(mapStateToProps, null)(Home);
