@@ -1,34 +1,37 @@
 import React from "react";
-import Footer from "../footer";
 import { connect } from "react-redux";
-import outLogin from "../../redux/actions/logoutAction";
+
 import getUser from "../../redux/actions/getUserAction";
+import getItinerariesFav from "../../redux/actions/itinerariesFavAction";
+
+import Menu from "../menu";
+import Footer from "../footer";
 
 class Favorite extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: [],
-      isConected: [],
+      currentUser: props.loginReducer.currentUser,
+      isConected: props.loginReducer.isConected,
     };
   }
 
   async componentWillMount() {
-    await this.props.getUser(this.state);
-    this.setState({
-      currentUser: this.props.loginReducer.currentUser,
-      isConected: this.props.loginReducer.isConected,
-    });
+
   }
+
   render() {
-    console.log(this.state);
 
     return (
-      <div>
+      <>
+        <Menu/>
         <h1>Itinerarios Favoritos</h1>
-        <p>esto no funciona</p>
+        <div>
+
+
+        </div>
         <Footer />
-      </div>
+      </>
     );
   }
 }
@@ -36,13 +39,15 @@ class Favorite extends React.Component {
 const mapStateToProps = (state) => {
   return {
     loginReducer: state.loginReducer,
+    getItinerariesFav: state.getItinerariesFav
+
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    outLogin: (data) => dispatch(outLogin(data)),
     getUser: (data) => dispatch(getUser(data)),
+    getItinerariesFav: (data) => dispatch(getItinerariesFav(data))
   };
 };
 

@@ -1,21 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { Card } from "reactstrap";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+
 import itinerariesAction from "../../redux/actions/itinerariesAction";
 
-import ItineraryList from "./ItineraryList";
+import CollapseIt from "./collapse";
+import Rating from "./rating";
+import Details from "./details";
+
 import Menu from "../menu";
+
+library.add(faHeartSolid, faHeartRegular);
 
 class Itinerary extends React.Component {
   constructor() {
     super();
     this.state = {
       itineraries: [],
-      isFetching: false,
+      favorite: [],
+      abierto: -1,
     };
   }
+
   async componentDidMount() {
-    console.log(this.props)
     if (!sessionStorage.getItem("token")) {
       this.props.history.push("/login");
     } else {
@@ -31,12 +44,53 @@ class Itinerary extends React.Component {
   render() {
     return (
       <>
-      
         <Menu />
-        {/* <h3 className="m-3">Itineraries List</h3> */}
-        <ItineraryList
-          itineraryReducer={this.props.itinerariesReducer}
-        />
+        {this.props.itinerariesReducer.map((itinerary, i) => {
+          const clickFav = () => {
+            const found = this.state.favorite.indexOf(itinerary.title);
+            if (found === -1) {
+              this.setState({
+                ...this.state.favorite,
+                favorite: itinerary.title,
+              });
+            } else {
+              this.state.favorite.splice(found, 1);
+            }
+          };
+
+          const toggle = (numID) => {
+            this.setState({ abierto: numID });
+          };
+
+          return (
+            <Card key={i} className="izquierda mb-3">
+              <FontAwesomeIcon
+                icon={
+                  this.state.abierto === i ||
+                  this.state.favorite.includes(itinerary.title)
+                    ? faHeartSolid
+                    : faHeartRegular
+                }
+                color={
+                  this.state.abierto === i ||
+                  this.state.favorite.includes(itinerary.title)
+                    ? "red"
+                    : "lightgray"
+                }
+                size="lg"
+                pull="right"
+                id="iconFav"
+                onMouseEnter={() => toggle(i)}
+                onMouseLeave={() => toggle(-1)}
+                onClick={() => clickFav()}
+              />
+              <h4 className="izquierda m-2">{itinerary.title}</h4>
+              <Rating  />
+              <Details Itinerary={itinerary} />
+              <CollapseIt itinerary={itinerary} />
+            </Card>
+          );
+        })}
       </>
     );
   }

@@ -2,8 +2,8 @@ import React from "react";
 import { Input } from "reactstrap";
 
 class FilterForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       cityFilter: "",
     };
@@ -13,13 +13,12 @@ class FilterForm extends React.Component {
     this.setState({
       cityFilter: e.target.value,
     });
-
     this.props.onChange(e.target.value);
   };
 
   render() {
     return (
-      <div className="mt-5 mb-3">
+      <div className="mt-3 mb-3">
         <Input
           type="text"
           id="filter"

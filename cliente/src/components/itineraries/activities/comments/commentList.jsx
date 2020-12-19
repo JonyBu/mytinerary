@@ -45,51 +45,62 @@ function dateCoverter(dateComment) {
 }
 
 const CommentList = (props) => {
-  return props.activitiesReducer.map((activities, i) => {
-    var imagen = require(`../../../../imagenes/usuarios/${activities.userPic}`)
+  return props.comments.map((comment, i) => {
+    var imagen = require(`../../../../imagenes/usuarios/${comment.userPic}`)
       .default;
-      console.log(imagen)
     return (
-      <>
+      <div  key={i}>
         <hr />
-        <Row key={i} className="mb-3">
+        <Row className="mb-3">
           <Col sm="3" xs="3" className="comment-content">
             <section>
               <img src={imagen} alt={"imagen de usuario"} />
-
               <small className="text-muted">
-                {" "}
-                Posted by<strong>{activities.userName}</strong>
+                Posted by<strong>{comment.userName}</strong>
               </small>
             </section>
           </Col>
           <Col sm="7" xs="9">
-            <p>{activities.comments}</p>
+            <p>{comment.comments}</p>
           </Col>
           <Col sm="2" xs="12" className="centrarIconoComentario">
-            <Modal _id={activities._id} />
-            <FontAwesomeIcon
-              icon={faTrashAlt}
-              color="lightgray"
-              size="lg"
-              pull="right"
-              id="iconDelete"
-              onClick={function () {
-                props.commentActionDelete(activities._id);
-              }}
-            />
+            {props.user.userName === comment.userName ? (
+              <>
+                <Modal _id={comment._id} />
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  color="lightgray"
+                  size="lg"
+                  pull="right"
+                  id="iconDelete"
+                  onClick={function () {
+                    props.commentActionDelete(comment._id);
+                  }}
+                />
+              </>
+            ) : (
+              <>
+              </>
+            )}
           </Col>
         </Row>
         <Row>
           <Col>
             <small className="text-muted fecha float-right">
-              {dateCoverter(activities.date)}
+              {dateCoverter(comment.date)}
             </small>
           </Col>
         </Row>
-      </>
+      </div>
     );
   });
+};
+
+const mapStateToProps = (state) => {
+  return {
+    changeComment: state.activitiesReducer.changeComment,
+    user: state.loginReducer.currentUser,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -98,4 +109,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(CommentList);
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);

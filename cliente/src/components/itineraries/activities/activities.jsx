@@ -1,20 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import { Row, Col } from "reactstrap";
 
+import commentActionDelete from "../../../redux/actions/commentActionDelete";
 import activitiesAction from "../../../redux/actions/activitiesAction";
 import getUser from "../../../redux/actions/getUserAction";
 
-import CommentList from "./comments/commentList";
 import Modal from "./comments/modal";
+import CommentList from "./comments/commentList"
 
 class activities extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      isFetching: [],
       activities: [],
-      currentUser: [],
       isConected: false,
       Itinerary: [],
     };
@@ -27,7 +27,6 @@ class activities extends React.Component {
         ...this.state,
         Itinerary: this.props.Itinerary,
         activities: this.props.activitiesReducer,
-        isFetching: true,
         currentUser: this.props.loginReducer.currentUser,
         isConected: this.props.loginReducer.isConected,
       });
@@ -39,10 +38,10 @@ class activities extends React.Component {
       await this.props.activitiesAction(this.props.Itinerary._id);
       this.setState({
         activities: this.props.activitiesReducer,
-        isFetching: true,
       });
     }
   }
+
 
   render() {
     return (
@@ -52,13 +51,10 @@ class activities extends React.Component {
             <h5>Comments</h5>
           </Col>
           <Col className="botonComment">
-            <Modal
-              idItinerary={this.props.Itinerary._id}
-            />
+            <Modal idItinerary={this.state.Itinerary._id} />
           </Col>
         </Row>
-        <CommentList activitiesReducer={this.state.activities} />
-        <hr />
+        <CommentList comments={this.state.activities}/>
       </div>
     );
   }
@@ -74,9 +70,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    activitiesAction: (data) => {
-      return dispatch(activitiesAction(data));
-    },
+    activitiesAction: (data) => dispatch(activitiesAction(data)),
+    commentActionDelete: (data) => dispatch(commentActionDelete(data)),
     getUser: () => dispatch(getUser()),
   };
 };

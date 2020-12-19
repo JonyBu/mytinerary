@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+
 import {
   Button,
   Modal,
@@ -8,10 +9,12 @@ import {
   ModalFooter,
   Input,
 } from "reactstrap";
-import commentAction from "../../../../redux/actions/commentAction";
-import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+
+import commentAction from "../../../../redux/actions/commentAction";
+import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
+
 
 class ModalEdit extends React.Component {
   constructor(props) {
@@ -19,9 +22,7 @@ class ModalEdit extends React.Component {
     this.state = {
       idItinerary: this.props.idItinerary,
       id: this.props._id,
-      comments: "",
       user: this.props.loginReducer.currentUser,
-      date: "",
     };
     this.getNameButton.bind(this);
   }
@@ -46,9 +47,8 @@ class ModalEdit extends React.Component {
       userPic: this.state.user.profilePic,
       like: this.state.user.like,
       deslike: this.state.user.deslike,
-      isFetching: true,
+      idItinerary: this.props.idItinerary,
     });
-    console.log(this.state)
   };
 
   handleClick = (event) => {

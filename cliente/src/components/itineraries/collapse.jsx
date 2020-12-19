@@ -7,9 +7,10 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 
 import Activities from "../itineraries/activities/activities";
 
+
 const CollapseIt = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [itinerary, setItinerary] = useState(props.itinerary);
+  const [itinerary] = useState(props.itinerary);
   const toggle = () => setIsOpen(!isOpen);
 
   const imagen = require(`../../imagenes/usuarios/${itinerary.userPic}`)
@@ -24,7 +25,6 @@ const CollapseIt = (props) => {
         <div className="details m-3">
           <h5>Description</h5>
           <hr />
-
           <Row>
             <Col sm="2">
               <img
@@ -39,7 +39,6 @@ const CollapseIt = (props) => {
             <Col sm="10">
               <h5>{itinerary.title}</h5>
               <small className="text-muted">
-                {" "}
                 {itinerary.cityName} - {itinerary.countryName}{" "}
               </small>
               <p>{itinerary.description}</p>

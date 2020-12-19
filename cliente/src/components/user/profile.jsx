@@ -1,13 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, CardLink, Jumbotron, CardImg, Col, Row } from "reactstrap";
+import { Link } from "react-router-dom";
+
+import { Card, Jumbotron, CardImg, Col, Row,  } from "reactstrap";
 
 import outLogin from "../../redux/actions/logoutAction";
 import getUser from "../../redux/actions/getUserAction";
 import Footer from "../footer";
 import ModalUser from "../user/modalProfile";
 
-import img from "../../imagenes/user.png";
+import img from "../../imagenes/usuarios/user.png";
 import imgfondo from "../../imagenes/fondo/sello.jpg";
 import imgLogo from "../../imagenes/logo/MYtineraryLogoSolo.png";
 
@@ -36,13 +38,17 @@ class Profile extends React.Component {
   }
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-    if (nextProps.loginReducer.isUpdated === true) {
-      await this.props.getUser();
-      this.setState({
-        ...this.state,
-        currentUser: this.props.loginReducer.currentUser,
-      });
+    if (nextProps.loginReducer.isConected ) {
+      if (nextProps.loginReducer.isUpdated ) {
+        await this.props.getUser();
+        this.setState({
+          ...this.state,
+          currentUser: this.props.loginReducer.currentUser,
+        });
+      }
+    }
+    else{
+      this.props.history.push("/login");
     }
   }
 
@@ -80,6 +86,8 @@ class Profile extends React.Component {
               </Col>
               <Col className="m-auto p-0 colRelative" xs="12" sm="6">
                 <h4 className="m-3">WELCOME</h4>
+
+
                 <p>
                   User: {this.state.currentUser.userName}
                   <ModalUser
@@ -103,7 +111,7 @@ class Profile extends React.Component {
                     }}
                   />
                 </p>
-                <p>
+                <p >
                   Country: {this.state.currentUser.country}{" "}
                   <ModalUser
                     id={this.state.currentUser._id}
@@ -121,15 +129,15 @@ class Profile extends React.Component {
 
         <Row>
           <Col xs="12" sm="4">
-            <CardLink onClick={this.handleClick.bind(this)} href="/">
+            <Link onClick={this.handleClick.bind(this)} to="/" style={{ textDecoration: "none" }}>
               Logout
-            </CardLink>
+            </Link>
           </Col>
           <Col xs="12" sm="4">
-            <CardLink href="/favorite">Itineraries favorite</CardLink>
+            <Link to="/favorite" style={{ textDecoration: "none" }}>Itineraries favorite</Link>
           </Col>
           <Col xs="12" sm="4">
-            <CardLink href="/cities"> Cities </CardLink>
+            <Link to="/cities" style={{ textDecoration: "none" }}> Cities </Link>
           </Col>
         </Row>
 

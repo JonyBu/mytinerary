@@ -1,5 +1,6 @@
 const defaultCity = {
   cities: [],
+  isReady: false,
 };
 
 function reducer(state = defaultCity, action) {
@@ -8,6 +9,7 @@ function reducer(state = defaultCity, action) {
       return {
         ...state,
         cities: action.payload,
+        isReady: true
       };
 
     default:

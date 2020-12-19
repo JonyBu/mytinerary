@@ -21,14 +21,13 @@ function reducer(state = initiaState, action) {
       };
     case "LOGOUT_USER":
       return {
-        ...state,
         currentUser: {},
         isConected: false,
       };
       case "UPDATE_USER":
         return{
           ...state,
-          currentUser: {},
+          // currentUser: {},
           isUpdated: true,
         }
     default:

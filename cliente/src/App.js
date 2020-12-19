@@ -11,7 +11,7 @@ import Itineraries from "./components/itineraries/Itineraries";
 import Other from "./components/cities/OtherCity";
 import TemsAndConditions from "./components/user/tems&conditions";
 import Profile from "./components/user/profile";
-import Favorite from "./components/itineraries/favorite";
+import Favorite from "./components/user/favorite";
 
 class App extends React.Component {
   render() {

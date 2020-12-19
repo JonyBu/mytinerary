@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
@@ -8,10 +7,9 @@ import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faStarRegular, faStarSolid);
 
-const Rating = (props) => {
+const Rating = () => {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [itinerary, setItinerary] = useState(props.itinerary)
 
   return (
     <div className="rating ml-1">
@@ -39,7 +37,6 @@ const Rating = (props) => {
           </label>
         );
       })}
-      {/* <small className="text-muted">The rating is ({itinerary.rating} / {itinerary.quantityRating})</small> */}
     </div>
   );
 };

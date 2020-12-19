@@ -56,7 +56,7 @@ class ModalProfile extends React.Component {
       case "profilePic":
         return "botonEditarImg";
       default:
-        return "botonEditar";
+        return "botonEditar ";
     }
   }
 
@@ -64,7 +64,7 @@ class ModalProfile extends React.Component {
     return (
       <>
         <Button color="light" className={ this.claseDesde() } onClick={this.toggle}>
-          <FontAwesomeIcon icon={faPen} />
+          <FontAwesomeIcon icon={faPen}  />
         </Button>
 
         <Modal isOpen={this.state.abierto} toggle={this.toggle}>

@@ -4,12 +4,12 @@ import { ListGroup, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import citiesAction from "../../redux/actions/citiesAction";
+
 import FilterForm from "./filterCities.jsx";
 import Footer from "../footer";
-import Menu from "../menu"
+import Menu from "../menu";
 
-import imagen from "../../imagenes/viajes.jpg";
-
+import imagen from "../../imagenes/fondo/cityss.jpg";
 
 class Cities extends React.Component {
   constructor() {
@@ -17,18 +17,20 @@ class Cities extends React.Component {
     this.state = {
       cities: [],
       filteredCities: [],
-      isFetching: false,
     };
   }
-  
+
   async componentDidMount() {
-    console.log(this.props.loginReducer)
-    if (!sessionStorage.getItem("token") || this.props.loginReducer.isConnected) {
+    if (
+      this.props.loginReducer.isConnected ||
+      !sessionStorage.getItem("token")
+    ) {
       this.props.history.push("/login");
     } else {
-      this.setState({ ...this.state, isFetching: true });
-      await this.props.citiesAction();
-      this.setState({ filteredCities: this.props.citiesReducer });
+      if (!this.props.loginReducer.isReady) {
+        await this.props.citiesAction();
+        this.setState({ filteredCities: this.props.citiesReducer });
+      }
     }
   }
 
@@ -43,48 +45,49 @@ class Cities extends React.Component {
     });
   };
 
-  cityDisponible = (cityName) => {
-    if (cityName === "London") {
+  cityDisponible = (avaible) => {
+    
+    if (avaible) {
       return "mt-3";
     }
     return "disabled mt-3";
   };
 
   render() {
-      return (
-        <>
+    return (
+      <>
         <Menu />
-          <img src={imagen} alt="" className="baner" />
-          <h1 className="m-3">City list</h1>
-          <FilterForm match={this.props.match} onChange={this.filterCities} />
-          {this.state.filteredCities.map((city, i) => (
-            <ListGroup key={i}>
-              <Link
-                to={`/itineraries/${city._id}`}
-                className="text-decoration-none"
+        <img src={imagen} alt="" className="baner" />
+        <h1 className="m-3">City list</h1>
+        <FilterForm match={this.props.match} onChange={this.filterCities} />
+        {this.state.filteredCities.map((city, i) => (
+          <ListGroup key={i}>
+            <Link
+              to={`/itineraries/${city._id}`}
+              className="text-decoration-none"
+            >
+              <Button
+                block
+                outline
+                className={this.cityDisponible(city.itineraries)}
+                color="danger"
               >
-                <Button
-                  block
-                  outline
-                  className={this.cityDisponible(city.name)}
-                  color="danger"
-                >
-                  {city.name} {city.country}
-                </Button>
-              </Link>
-            </ListGroup>
-          ))}
-          <Footer />
-        </>
-      );
+                {city.name} - {city.country} 
+              </Button>
+            </Link>
+          </ListGroup>
+        ))}
+        <Footer />
+      </>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log(state);
   return {
+    loginReducer: state.loginReducer,
     citiesReducer: state.citiesReducer.cities,
-    loginReducer: state.loginReducer
   };
 };
 

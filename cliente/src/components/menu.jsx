@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import outLogin from "../redux/actions/logoutAction";
 import {
   Button,
   Collapse,
@@ -11,19 +10,25 @@ import {
   NavItem,
   NavbarBrand,
 } from "reactstrap";
-import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
+import outLogin from "../redux/actions/logoutAction";
+
 import logo from "../imagenes/logo/MYtineraryLogoSolo.png";
+import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";
 
 
 const Menu = (props) => {
+  
   const [collapsed, setIsOpen] = useState(true);
   
   const toggle = () => setIsOpen(!collapsed);
+
+
   if (props.loginReducer.isConected) {
+    
     
     // const imagenProfile = require(`../imagenes/usuarios/${props.loginReducer.currentUser.profilePic}`)
     //       .default;
@@ -44,15 +49,15 @@ const Menu = (props) => {
           <Nav className="mr-auto" navbar>
             <NavItem>
               <Link to="/profile" style={{ textDecoration: "none" }}>
-                <Button color="dark" block outline size="sm">
-                  My Profile
+                <Button color="danger" block className="mt-1">
+                  Profile
                 </Button>
               </Link>
             </NavItem>
             <NavItem>
-              <Link to="/favorite" style={{ textDecoration: "none" }}>
-                <Button color="dark" block outline size="sm">
-                  My Favorites
+              <Link to="/favorite"  style={{ textDecoration: "none" }}>
+                <Button color="info" block className="mt-1">
+                  Favorites
                 </Button>
               </Link>
             </NavItem>
@@ -61,8 +66,7 @@ const Menu = (props) => {
                 <Button
                   color="dark"
                   block
-                  outline
-                  size="sm"
+                  className="mt-1"
                   onClick={() => {
                     props.outLogin(props.loginReducer.currentUser);
                   }}
@@ -82,19 +86,21 @@ const Menu = (props) => {
           <FontAwesomeIcon icon={faUserCircle} size="2x" color="#394E56" />
         </NavbarBrand>
         <img src={logo} alt="Logo Mytinerary" className="img-user-menu" />
+
+
         <NavbarToggler onClick={toggle} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
-              <Link href="/createAccount" style={{ textDecoration: "none" }}>
-                <Button color="dark" block outline>
+              <Link to="/createAccount" style={{ textDecoration: "none" }}>
+                <Button color="info" block className="mt-1" >
                   Sing in
                 </Button>
               </Link>
             </NavItem>
-            <NavItem>
-              <Link href="/login" style={{ textDecoration: "none" }}>
-                <Button color="dark" block outline>
+            <NavItem >
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Button color="dark" block className="mt-1">
                   Log in
                 </Button>
               </Link>

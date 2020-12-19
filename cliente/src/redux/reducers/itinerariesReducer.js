@@ -9,6 +9,11 @@ function reducer(state = defaultItinerary, action) {
         ...state,
         itineraries: action.payload,
       };
+    case "itinerariesFavAction":
+      console.log("aca")
+    return {    
+        itineraries: action.payload,
+      };
     default:
       return state;
   }

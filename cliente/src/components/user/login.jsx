@@ -10,13 +10,14 @@ import {
   Label,
   Input,
   Col,
+  Alert,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import startLogin from "../../redux/actions/loginAction";
 
-import img from "../../imagenes/logo/MYtineraryLogo.png"
+import img from "../../imagenes/logo/MYtineraryLogo.png";
 
 class Login extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class Login extends React.Component {
     this.state = {
       userName: [],
       isConected: [],
+      error: "invisible",
     };
   }
 
@@ -31,10 +33,10 @@ class Login extends React.Component {
     var contador = 1;
     this.cronometro = setInterval(() => {
       if (!sessionStorage.token) {
-        console.log("espera " + contador + "/5");
-        if (contador === 5) {
+        console.log("espera " + contador + "/2");
+        if (contador === 2) {
           clearInterval(this.cronometro);
-          console.log("Error en la autenticación");
+          this.setState({ error: "visible" });
         } else {
           contador++;
         }
@@ -59,13 +61,19 @@ class Login extends React.Component {
   };
 
   signGoogle = () => {
-    window.location.href = `http://localhost:${process.env.PORT || "8080"}/api/auth/google`;
+    window.location.href = `http://localhost:${
+      process.env.PORT || "8080"
+    }/api/auth/google`;
   };
 
   render() {
     return (
       <>
-      <img src={img} className="imagenLogin m-4" ></img>
+        <Alert color="danger" className={this.state.error}>
+          Authentication failed, please try again or register
+        </Alert>
+
+        <img src={img} className="imagenLogin m-4" alt="Logo Mytinerary"></img>
         {/* <h4 className="m-3">Login</h4> */}
         <Jumbotron>
           <Form>
@@ -119,8 +127,7 @@ class Login extends React.Component {
           onClick={this.signGoogle}
         />
 
-        <br />
-        <FormText color="muted">
+        <FormText color="muted" className="m-3">
           Don´t have a MYtinerary account yet? You should create one It´s
           totally rfee and only takes a minute
         </FormText>
@@ -133,8 +140,14 @@ class Login extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    loginReducer: state.loginReducer,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => ({
   startLogin: (data) => dispatch(startLogin(data)),
 });
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

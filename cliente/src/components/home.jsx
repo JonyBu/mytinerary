@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -19,18 +18,7 @@ class Home extends React.Component {
     super(props);
     this.state = {
       hover: false,
-      isConected: {},
-      currentUser: {},
     };
-    console.log(props.loginReducer);
-  }
-
-  componentDidMount() {
-    console.log(this.props);
-    this.setState({
-      currentUser: this.props.loginReducer.currentUser,
-      isConected: this.props.loginReducer.isConected,
-    });
   }
 
   setHover = () => {
@@ -77,10 +65,6 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    loginReducer: state.loginReducer,
-  };
-};
 
-export default connect(mapStateToProps, null)(Home);
+
+export default Home;

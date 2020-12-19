@@ -7,7 +7,7 @@ import { faHome } from "@fortawesome/free-solid-svg-icons";
 class Footer extends React.Component {
   render() {
     return (
-      <div>
+      <div className="m-3">
         <Link to="/" >
           <FontAwesomeIcon className="m-3" icon={faHome} size={"3x"} color="#394E56" />
         </Link>
