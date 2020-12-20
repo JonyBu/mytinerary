@@ -30,24 +30,24 @@ class Login extends React.Component {
     };
   }
 
-  // esperar = () => {
-  //   var contador = 1;
-  //   this.cronometro = setInterval(() => {
-  //     if (!sessionStorage.token) {
-  //       console.log("espera " + contador + "/2");
-  //       if (contador === 2) {
-  //         clearInterval(this.cronometro);
-  //         this.setState({ error: "visible" });
-  //       } else {
-  //         contador++;
-  //       }
-  //     } else {
-  //       this.props.history.push("/profile");
-  //       clearInterval(this.cronometro);
-  //     }
-  //   }, 1000);
-  //   // clearInterval(this.cronometro);
-  // };
+  esperar = () => {
+    var contador = 1;
+    this.cronometro = setInterval(() => {
+      if (!sessionStorage.token) {
+        console.log("espera " + contador + "/2");
+        if (contador === 2) {
+          clearInterval(this.cronometro);
+          this.setState({ error: "visible" });
+        } else {
+          contador++;
+        }
+      } else {
+        this.props.history.push("/profile");
+        clearInterval(this.cronometro);
+      }
+    }, 1000);
+    // clearInterval(this.cronometro);
+  };
 
   onChange = (e) => {
     var state = this.state;
@@ -58,8 +58,7 @@ class Login extends React.Component {
   onSave = (e) => {
     e.preventDefault();
     this.props.startLogin(this.state);
-    this.props.history.push("/profile");
-    // this.esperar();
+    this.esperar();
   };
 
   signGoogle = () => {

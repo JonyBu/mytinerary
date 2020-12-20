@@ -20,7 +20,7 @@ const CollapseIt = (props) => {
       <Button color="dark" onClick={toggle} className="m-3" outline size="sm">
         View All
       </Button>
-      <Collapse isOpen={isOpen}>
+      <Collapse isOpen={isOpen} >
         <div className="details m-3">
           <h5>Description</h5>
           <hr />
