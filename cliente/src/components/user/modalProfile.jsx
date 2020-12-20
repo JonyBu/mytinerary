@@ -11,13 +11,11 @@ import {
   Col,
 } from "reactstrap";
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faClock, faStar } from "@fortawesome/free-regular-svg-icons";
-import { faPen,  } from "@fortawesome/free-solid-svg-icons";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 import updateUserAction from "../../redux/actions/updateUserAction";
-
 
 class ModalProfile extends React.Component {
   constructor(props) {
@@ -25,13 +23,16 @@ class ModalProfile extends React.Component {
     this.state = {
       id: this.props.id,
       datos: this.props.datos,
-      newdata:{},
+      newdata: {},
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  async componentDidMount() {
-    this.setState({...this.state, id: this.props.loginReducer.currentUser._id})
+  componentDidMount() {
+    this.setState({
+      ...this.state,
+      id: this.props.loginReducer.currentUser._id,
+    });
   }
 
   toggle = () => {
@@ -39,15 +40,18 @@ class ModalProfile extends React.Component {
   };
 
   handleInputChange = (event) => {
-    const newdata = {[event.target.name]: event.target.value , id:this.state.id}
+    const newdata = {
+      [event.target.name]: event.target.value,
+      id: this.state.id,
+    };
     this.setState({
-      newdata
+      newdata,
     });
   };
 
   handleClick = (event) => {
     event.preventDefault();
-    this.props.updateUserAction(this.state.newdata)
+    this.props.updateUserAction(this.state.newdata);
     this.toggle();
   };
 
@@ -58,27 +62,32 @@ class ModalProfile extends React.Component {
       default:
         return "botonEditar ";
     }
-  }
+  };
 
   render() {
     return (
       <>
-        <Button color="light" className={ this.claseDesde() } onClick={this.toggle}>
-          <FontAwesomeIcon icon={faPen}  />
+        <Button
+          color="light"
+          className={this.claseDesde()}
+          onClick={this.toggle}
+        >
+          <FontAwesomeIcon icon={faPen} />
         </Button>
-
         <Modal isOpen={this.state.abierto} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Insert your new {this.state.datos.placeholder}</ModalHeader>
+          <ModalHeader toggle={this.toggle}>
+            Insert your new {this.state.datos.placeholder}
+          </ModalHeader>
           <ModalBody>
-              <Col xs={12}>
-                <Input
-                  type={this.state.datos.type}
-                  name={this.state.datos.name}
-                  id={this.state.datos.name}
-                  placeholder={this.state.datos.placeholder}
-                  onChange={this.handleInputChange}
-                />
-              </Col>
+            <Col xs={12}>
+              <Input
+                type={this.state.datos.type}
+                name={this.state.datos.name}
+                id={this.state.datos.name}
+                placeholder={this.state.datos.placeholder}
+                onChange={this.handleInputChange}
+              />
+            </Col>
           </ModalBody>
           <ModalFooter>
             <Button color="success" onClick={this.handleClick}>
@@ -93,17 +102,17 @@ class ModalProfile extends React.Component {
     );
   }
 }
+
 const mapStateToProps = (state) => {
   return {
     loginReducer: state.loginReducer,
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUserAction: (data) => dispatch(updateUserAction(data)),
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps,mapDispatchToProps) (ModalProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalProfile);

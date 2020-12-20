@@ -1,6 +1,6 @@
 const defaultCity = {
   cities: [],
-  isReady: false,
+  isReady: [],
 };
 
 function reducer(state = defaultCity, action) {

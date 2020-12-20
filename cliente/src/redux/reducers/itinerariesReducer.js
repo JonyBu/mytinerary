@@ -11,6 +11,7 @@ function reducer(state = defaultItinerary, action) {
       };
     case "itinerariesFavAction":
       console.log("aca")
+      console.log(action.payload)
     return {    
         itineraries: action.payload,
       };

@@ -19,32 +19,22 @@ import outLogin from "../redux/actions/logoutAction";
 import logo from "../imagenes/logo/MYtineraryLogoSolo.png";
 import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";
 
-
 const Menu = (props) => {
-  
+  console.log(props)
   const [collapsed, setIsOpen] = useState(true);
-  
   const toggle = () => setIsOpen(!collapsed);
 
-
-  if (props.loginReducer.isConected) {
-    
-    
-    // const imagenProfile = require(`../imagenes/usuarios/${props.loginReducer.currentUser.profilePic}`)
-    //       .default;
-
+  if (props.loginReducer.isConected ||
+    !sessionStorage.getItem("token")) {
     return (
       <Navbar color="gray" light className="m-3">
         <Link to="/profile" style={{ textDecoration: "none" }}>
-          {/* <img src={imagenProfile} alt="imagen de usuario" className="imgMenu" /> */}
           {props.loginReducer.currentUser.userName}
         </Link>
         <Link to="/" className="img-user-menu">
           <img src={imgLogo} alt="Mytinereary Logo" className="img-user-menu" />
         </Link>
-
         <NavbarToggler onClick={toggle} />
-
         <Collapse isOpen={!collapsed} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
@@ -55,7 +45,7 @@ const Menu = (props) => {
               </Link>
             </NavItem>
             <NavItem>
-              <Link to="/favorite"  style={{ textDecoration: "none" }}>
+              <Link to="/favorite" style={{ textDecoration: "none" }}>
                 <Button color="info" block className="mt-1">
                   Favorites
                 </Button>
@@ -86,19 +76,17 @@ const Menu = (props) => {
           <FontAwesomeIcon icon={faUserCircle} size="2x" color="#394E56" />
         </NavbarBrand>
         <img src={logo} alt="Logo Mytinerary" className="img-user-menu" />
-
-
         <NavbarToggler onClick={toggle} className="mr-2" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>
               <Link to="/createAccount" style={{ textDecoration: "none" }}>
-                <Button color="info" block className="mt-1" >
+                <Button color="info" block className="mt-1">
                   Sing in
                 </Button>
               </Link>
             </NavItem>
-            <NavItem >
+            <NavItem>
               <Link to="/login" style={{ textDecoration: "none" }}>
                 <Button color="dark" block className="mt-1">
                   Log in

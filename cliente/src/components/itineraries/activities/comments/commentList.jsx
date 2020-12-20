@@ -98,7 +98,6 @@ const CommentList = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    changeComment: state.activitiesReducer.changeComment,
     user: state.loginReducer.currentUser,
   };
 };

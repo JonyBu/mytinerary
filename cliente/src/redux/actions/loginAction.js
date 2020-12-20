@@ -12,11 +12,12 @@ const startLogin = (user) => async (dispatch) => {
       },
     })
     .then((response) => {
+      console.log(response.data)
       if (response.data.success) {
         sessionStorage.setItem("token", response.data.token);
         dispatch({
           type: "LOGIN_USER",
-          payload: user,
+          payload: user.userName,
         });
         // var token = sessionStorage.getItem("token");
         // var decode = jwt_decode(token);

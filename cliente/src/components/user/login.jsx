@@ -1,6 +1,9 @@
 import React from "react";
-import Footer from "../footer";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import GoogleButton from "react-google-button";
+
 import {
   FormText,
   Jumbotron,
@@ -12,10 +15,10 @@ import {
   Col,
   Alert,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 import startLogin from "../../redux/actions/loginAction";
+
+import Footer from "../footer";
 
 import img from "../../imagenes/logo/MYtineraryLogo.png";
 
@@ -23,30 +26,28 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      userName: [],
-      isConected: [],
       error: "invisible",
     };
   }
 
-  esperar = () => {
-    var contador = 1;
-    this.cronometro = setInterval(() => {
-      if (!sessionStorage.token) {
-        console.log("espera " + contador + "/2");
-        if (contador === 2) {
-          clearInterval(this.cronometro);
-          this.setState({ error: "visible" });
-        } else {
-          contador++;
-        }
-      } else {
-        this.props.history.push("/profile");
-        clearInterval(this.cronometro);
-      }
-    }, 1000);
-    // clearInterval(this.cronometro);
-  };
+  // esperar = () => {
+  //   var contador = 1;
+  //   this.cronometro = setInterval(() => {
+  //     if (!sessionStorage.token) {
+  //       console.log("espera " + contador + "/2");
+  //       if (contador === 2) {
+  //         clearInterval(this.cronometro);
+  //         this.setState({ error: "visible" });
+  //       } else {
+  //         contador++;
+  //       }
+  //     } else {
+  //       this.props.history.push("/profile");
+  //       clearInterval(this.cronometro);
+  //     }
+  //   }, 1000);
+  //   // clearInterval(this.cronometro);
+  // };
 
   onChange = (e) => {
     var state = this.state;
@@ -57,7 +58,8 @@ class Login extends React.Component {
   onSave = (e) => {
     e.preventDefault();
     this.props.startLogin(this.state);
-    this.esperar();
+    this.props.history.push("/profile");
+    // this.esperar();
   };
 
   signGoogle = () => {

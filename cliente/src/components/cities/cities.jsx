@@ -45,8 +45,7 @@ class Cities extends React.Component {
     });
   };
 
-  cityDisponible = (avaible) => {
-    
+  cityDisponible = (avaible) => {   
     if (avaible) {
       return "mt-3";
     }

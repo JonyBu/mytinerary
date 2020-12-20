@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Card } from "reactstrap";
+import { Card, Row, Col } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faHeartSolid, faWallet  } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular, faClock, faStar  } from "@fortawesome/free-regular-svg-icons";
 
 import itinerariesAction from "../../redux/actions/itinerariesAction";
 
@@ -35,7 +35,6 @@ class Itinerary extends React.Component {
       await this.props.itinerariesAction(this.props.match.params.idCity);
       this.setState({
         ...this.state,
-        isFetching: true,
         itineraries: this.props.itinerariesReducer,
       });
     }
@@ -85,7 +84,20 @@ class Itinerary extends React.Component {
                 onClick={() => clickFav()}
               />
               <h4 className="izquierda m-2">{itinerary.title}</h4>
-              <Rating  />
+              {/* <Row className="m-auto" >
+                <Col>
+                    <Rating />
+                </Col>
+                <Col>
+                  <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
+                  {itinerary.duration}
+                </Col>
+                <Col>
+                  <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
+                  {itinerary.cost}
+                </Col>
+              </Row> */}
+              <Rating />
               <Details Itinerary={itinerary} />
               <CollapseIt itinerary={itinerary} />
             </Card>

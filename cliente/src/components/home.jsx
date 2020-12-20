@@ -29,7 +29,6 @@ class Home extends React.Component {
     return (
       <>
         <Menu />
-
         <div className="mt-3">
           <img
             id="logo"
@@ -64,7 +63,5 @@ class Home extends React.Component {
     );
   }
 }
-
-
 
 export default Home;

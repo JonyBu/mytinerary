@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 
 import { Row, Col } from "reactstrap";
 
-import commentActionDelete from "../../../redux/actions/commentActionDelete";
 import activitiesAction from "../../../redux/actions/activitiesAction";
-import getUser from "../../../redux/actions/getUserAction";
 
 import Modal from "./comments/modal";
 import CommentList from "./comments/commentList"
@@ -15,21 +13,21 @@ class activities extends React.Component {
     super();
     this.state = {
       activities: [],
-      isConected: false,
+      isConected: [],
       Itinerary: [],
     };
   }
   async componentDidMount() {
-    if (!this.state.isConected) {
+    if (this.state.isConected) {
       await this.props.activitiesAction(this.props.Itinerary._id);
-      this.props.getUser();
       this.setState({
         ...this.state,
         Itinerary: this.props.Itinerary,
         activities: this.props.activitiesReducer,
-        currentUser: this.props.loginReducer.currentUser,
         isConected: this.props.loginReducer.isConected,
       });
+    }else{
+      this.props.history.push("/login");
     }
   }
 
@@ -41,7 +39,6 @@ class activities extends React.Component {
       });
     }
   }
-
 
   render() {
     return (
@@ -71,8 +68,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     activitiesAction: (data) => dispatch(activitiesAction(data)),
-    commentActionDelete: (data) => dispatch(commentActionDelete(data)),
-    getUser: () => dispatch(getUser()),
   };
 };
 

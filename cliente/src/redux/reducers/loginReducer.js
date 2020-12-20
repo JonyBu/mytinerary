@@ -1,7 +1,7 @@
 const initiaState = {
   currentUser: [],
   isConected: false,
-  isUpdated: false,
+  isUpdated: [],
 };
 
 function reducer(state = initiaState, action) {
@@ -17,19 +17,17 @@ function reducer(state = initiaState, action) {
         ...state,
         currentUser: action.payload,
         isConected: true,
-        isUpdated: false,
       };
     case "LOGOUT_USER":
       return {
         currentUser: {},
         isConected: false,
       };
-      case "UPDATE_USER":
-        return{
-          ...state,
-          // currentUser: {},
-          isUpdated: true,
-        }
+    case "UPDATE_USER":
+      return {
+        ...state,
+        isUpdated: true,
+      };
     default:
       return state;
   }

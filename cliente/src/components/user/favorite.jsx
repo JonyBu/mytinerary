@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import getUser from "../../redux/actions/getUserAction";
 import getItinerariesFav from "../../redux/actions/itinerariesFavAction";
 
 import Menu from "../menu";
@@ -17,11 +16,11 @@ class Favorite extends React.Component {
   }
 
   async componentWillMount() {
-
+    await this.props.getItinerariesFav('5dcebe0ab015a018747a9b55');
+    console.log(this.props)
   }
 
   render() {
-
     return (
       <>
         <Menu/>
@@ -37,16 +36,16 @@ class Favorite extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
     loginReducer: state.loginReducer,
-    getItinerariesFav: state.getItinerariesFav
-
+    currentUser: state.loginReducer.currentUser,
+    // getItinerariesFav: state.getItinerariesFav
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUser: (data) => dispatch(getUser(data)),
     getItinerariesFav: (data) => dispatch(getItinerariesFav(data))
   };
 };

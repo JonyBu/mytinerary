@@ -20,17 +20,11 @@ class ModalEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      idItinerary: this.props.idItinerary,
-      id: this.props._id,
-      user: this.props.loginReducer.currentUser,
+      idItinerary: props.idItinerary,
+      id: props._id,
+      user: props.loginReducer.currentUser,
     };
     this.getNameButton.bind(this);
-  }
-
-  async componentDidMount() {
-    if (!this.state.nameButton) {
-      this.getNameButton();
-    }
   }
 
   toggle = () => {

@@ -7,7 +7,6 @@ import { faWallet } from "@fortawesome/free-solid-svg-icons";
 
 import Activities from "../itineraries/activities/activities";
 
-
 const CollapseIt = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const [itinerary] = useState(props.itinerary);
@@ -33,7 +32,7 @@ const CollapseIt = (props) => {
                 alt={itinerary.userPic}
               />
               <small className="text-muted">
-                By <strong>{itinerary.userName}</strong>
+               by {itinerary.userName}
               </small>
             </Col>
             <Col sm="10">
@@ -42,29 +41,30 @@ const CollapseIt = (props) => {
                 {itinerary.cityName} - {itinerary.countryName}{" "}
               </small>
               <p>{itinerary.description}</p>
-              <Row>
-                <Col>
-                  <p>
-                    <FontAwesomeIcon icon={faStar} className="mr-2" />
-                    score: (
-                    {(itinerary.rating / itinerary.quantityRating).toFixed(2)}
-                    /5)
-                  </p>
-                </Col>
-                <Col>
-                  <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
-                  {itinerary.duration}
-                </Col>
-                <Col>
-                  <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
-                  {itinerary.cost}
-                </Col>
-              </Row>
               {itinerary.hashtag.map((has, i) => (
                 <span key={i} className="badge badge-pill badge-info m-1 ">
                   {has}
                 </span>
               ))}
+            </Col>
+          </Row>
+          <hr />
+          <Row className="m-auto" style={{textAlign:"center"}}>
+            <Col>
+              <p>
+                <FontAwesomeIcon icon={faStar} className="mr-2" />
+                score: (
+                {(itinerary.rating / itinerary.quantityRating).toFixed(2)}
+                /5)
+              </p>
+            </Col>
+            <Col>
+              <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
+              {itinerary.duration}
+            </Col>
+            <Col>
+              <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
+              {itinerary.cost}
             </Col>
           </Row>
           <hr />

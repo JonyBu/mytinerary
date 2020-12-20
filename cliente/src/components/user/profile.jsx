@@ -2,12 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Card, Jumbotron, CardImg, Col, Row,  } from "reactstrap";
+import { Card, Jumbotron, CardImg, Col, Row } from "reactstrap";
 
-import outLogin from "../../redux/actions/logoutAction";
 import getUser from "../../redux/actions/getUserAction";
+import outLogin from "../../redux/actions/logoutAction";
+
 import Footer from "../footer";
 import ModalUser from "../user/modalProfile";
+// import Menu from "../menu";
 
 import img from "../../imagenes/usuarios/user.png";
 import imgfondo from "../../imagenes/fondo/sello.jpg";
@@ -25,29 +27,27 @@ class Profile extends React.Component {
 
   async componentDidMount() {
     await this.props.getUser();
-    this.setState({
-      currentUser: this.props.loginReducer.currentUser,
-      isConected: this.props.loginReducer.isConected,
-    });
-    const imagenProfile = require(`../../imagenes/usuarios/${this.state.currentUser.profilePic}`)
-      .default;
-    this.setState({
-      ...this.state,
-      imagen: imagenProfile,
-    });
+    if (this.props.loginReducer.isConected) {
+      const imagenProfile = require(`../../imagenes/usuarios/${this.props.loginReducer.currentUser.profilePic}`)
+        .default;
+      this.setState({
+        ...this.state,
+        imagen: imagenProfile,
+        currentUser: this.props.loginReducer.currentUser,
+        isConected: this.props.loginReducer.isConected,
+      });
+    }
   }
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.loginReducer.isConected ) {
-      if (nextProps.loginReducer.isUpdated ) {
-        await this.props.getUser();
+    if (nextProps.loginReducer.isConected) {
+      if (nextProps.loginReducer.isUpdated) {
         this.setState({
           ...this.state,
           currentUser: this.props.loginReducer.currentUser,
         });
       }
-    }
-    else{
+    } else {
       this.props.history.push("/login");
     }
   }
@@ -65,6 +65,7 @@ class Profile extends React.Component {
           alt="imagen logo mytinerary"
           className="img-user-menu m-3"
         />
+        {/* <Menu /> */}
         <Jumbotron fluid style={{ backgroundImage: `url(${imgfondo})` }}>
           <Card className="border-dark m-3">
             <Row className="rowProfile ">
@@ -86,7 +87,6 @@ class Profile extends React.Component {
               </Col>
               <Col className="m-auto p-0 colRelative" xs="12" sm="6">
                 <h4 className="m-3">WELCOME</h4>
-
 
                 <p>
                   User: {this.state.currentUser.userName}
@@ -111,7 +111,7 @@ class Profile extends React.Component {
                     }}
                   />
                 </p>
-                <p >
+                <p>
                   Country: {this.state.currentUser.country}{" "}
                   <ModalUser
                     id={this.state.currentUser._id}
@@ -129,15 +129,24 @@ class Profile extends React.Component {
 
         <Row>
           <Col xs="12" sm="4">
-            <Link onClick={this.handleClick.bind(this)} to="/" style={{ textDecoration: "none" }}>
+            <Link
+              onClick={this.handleClick.bind(this)}
+              to="/"
+              style={{ textDecoration: "none" }}
+            >
               Logout
             </Link>
           </Col>
           <Col xs="12" sm="4">
-            <Link to="/favorite" style={{ textDecoration: "none" }}>Itineraries favorite</Link>
+            <Link to="/favorite" style={{ textDecoration: "none" }}>
+              Favorites
+            </Link>
           </Col>
           <Col xs="12" sm="4">
-            <Link to="/cities" style={{ textDecoration: "none" }}> Cities </Link>
+            <Link to="/cities" style={{ textDecoration: "none" }}>
+              {" "}
+              Cities{" "}
+            </Link>
           </Col>
         </Row>
 
@@ -148,6 +157,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     loginReducer: state.loginReducer,
   };
@@ -156,7 +166,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     outLogin: (data) => dispatch(outLogin(data)),
-    getUser: () => dispatch(getUser()),
+    getUser: (data) => dispatch(getUser(data))
   };
 };
 
