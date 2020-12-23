@@ -1,5 +1,8 @@
 export const type = "citiesAction";
-const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/cities`;
+
+const QUOTE_SERVICE_URL = `http://localhost:${
+  process.env.PORT || "8080"
+}/api/cities`;
 
 const citiesAction = () => async (dispatch) => {
   const res = await fetch(QUOTE_SERVICE_URL, {

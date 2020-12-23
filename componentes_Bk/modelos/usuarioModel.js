@@ -9,6 +9,8 @@ const userSchema = mongoose.Schema({
   lastName: String,
   country: String,
   checkbox: Boolean,
+  itinerariesFav: Array,
+  myTineraries: Array,
   // id:String,
 });
 

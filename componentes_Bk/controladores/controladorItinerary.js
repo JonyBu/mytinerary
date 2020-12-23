@@ -3,15 +3,16 @@ var router = express.Router();
 var itineraryModel = require("../modelos/itineraryModel");
 const passport = require("../auth/passport");
 
-let autenticate =  passport.authenticate("jwt", { session: false })
+let autenticate = passport.authenticate("jwt", { session: false });
 
-router.get("/itineraries",autenticate, function (req, res) {
-  itineraryModel.find().then(function (datos) {
+router.post("/itineraries", autenticate, function (req, res) {
+  let itineraryRequested = req.body;
+  itineraryModel.find({ _id: itineraryRequested }).then(function (datos) {
     return res.send(datos);
   });
 });
 
-router.get("/itineraries/:idCity",autenticate, (req, res) => {
+router.get("/itineraries/:idCity", autenticate, (req, res) => {
   let itineraryRequested = req.params.idCity;
   itineraryModel
     .find({ idCity: itineraryRequested })

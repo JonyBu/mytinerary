@@ -9,7 +9,7 @@ function reducer(state = defaultCity, action) {
       return {
         ...state,
         cities: action.payload,
-        isReady: true
+        isReady: true,
       };
 
     default:

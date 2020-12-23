@@ -48,7 +48,6 @@ class Home extends React.Component {
               icon={faArrowAltCircleRightRegular}
               onMouseEnter={this.setHover.bind(this)}
               onMouseLeave={this.setHover.bind(this)}
-              onClick={() => console.log(this.state.hover)}
             />
           </Link>
           <h2 className="m-3"> Popular itineraries</h2>

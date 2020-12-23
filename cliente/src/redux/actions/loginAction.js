@@ -1,7 +1,8 @@
 import axios from "axios";
-// import jwt_decode from "jwt-decode";
 
-const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/login`;
+const QUOTE_SERVICE_URL = `http://localhost:${
+  process.env.PORT || "8080"
+}/api/user/login`;
 
 const startLogin = (user) => async (dispatch) => {
   await axios
@@ -12,18 +13,11 @@ const startLogin = (user) => async (dispatch) => {
       },
     })
     .then((response) => {
-      console.log(response.data)
-      if (response.data.success) {
-        sessionStorage.setItem("token", response.data.token);
-        dispatch({
-          type: "LOGIN_USER",
-          payload: user.userName,
-        });
-        // var token = sessionStorage.getItem("token");
-        // var decode = jwt_decode(token);
-      } else {
-        alert(response.data.message + " vuelva a loguearse");
-      }
+      sessionStorage.setItem("token", response.data.token);
+      dispatch({
+        type: "LOGIN_USER",
+        payload: user.userName,
+      });
     })
     .catch((err) => {
       console.log(err);

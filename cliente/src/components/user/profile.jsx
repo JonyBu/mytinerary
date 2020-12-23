@@ -39,7 +39,7 @@ class Profile extends React.Component {
     }
   }
 
-  async UNSAFE_componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.loginReducer.isConected) {
       if (nextProps.loginReducer.isUpdated) {
         this.setState({
@@ -157,7 +157,6 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     loginReducer: state.loginReducer,
   };
@@ -166,7 +165,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     outLogin: (data) => dispatch(outLogin(data)),
-    getUser: (data) => dispatch(getUser(data))
+    getUser: (data) => dispatch(getUser(data)),
   };
 };
 

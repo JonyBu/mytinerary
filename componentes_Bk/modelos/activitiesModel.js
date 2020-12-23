@@ -5,7 +5,7 @@ let activitiesSchema = new mongoose.Schema({
   userName: String,
   userPic: String,
   like: Number,
-  deslike: Number,
+  dislike: Number,
   date: Number,
   idItinerary: mongoose.Schema.Types.ObjectId,
 });

@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+import { connect } from "react-redux";
+
 import {
   Col,
   Jumbotron,
@@ -10,8 +11,12 @@ import {
   Input,
   FormText,
 } from "reactstrap";
+
 import Footer from "../footer";
-import imagenUser from "../../imagenes/userLogin.png";
+
+import newUser from "../../redux/actions/newUserAction";
+
+import imagenUser from "../../imagenes/usuarios/userLogin.png";
 
 class createAccount extends React.Component {
   constructor(props) {
@@ -50,25 +55,14 @@ class createAccount extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/createAccount`;
-    const userObject = {
-      profilePic: this.state.profilePic,
-      userName: this.state.userName,
-      password: this.state.password,
-      email: this.state.email,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      country: this.state.country,
-      checkbox: this.state.checkbox,
-    };
-    axios
-      .post(QUOTE_SERVICE_URL, userObject)
-      .then(
-        (response) => console.log("succes: ", response.data),
-        this.props.history.push("/login")
-      )
-      .catch((error) => alert("error: ", error));
+    this.props.newUser(this.state);
   };
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    nextProps.loginReducer.isCreated
+      ? this.props.history.push("/login")
+      : alert("error vuelva a intentarlo");
+  }
 
   render() {
     return (
@@ -225,4 +219,14 @@ class createAccount extends React.Component {
   }
 }
 
-export default createAccount;
+const mapStateToProps = (state) => {
+  return {
+    loginReducer: state.loginReducer,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  newUser: (data) => dispatch(newUser(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(createAccount);

@@ -4,7 +4,7 @@ let itinerarySchema = new mongoose.Schema({
   title: String,
   profilePic: String,
   rating: Number,
-  quantityRating : Number,
+  quantityRating: Number,
   duration: Number,
   cost: Number,
   description: String,

@@ -3,8 +3,13 @@ import { connect } from "react-redux";
 
 import { Row, Col } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import {
+  faTrashAlt,
+  faThumbsUp,
+  faThumbsDown,
+} from "@fortawesome/free-regular-svg-icons";
 
+import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
 import commentActionDelete from "../../../../redux/actions/commentActionDelete";
 import Modal from "./modal";
 
@@ -45,19 +50,50 @@ function dateCoverter(dateComment) {
 }
 
 const CommentList = (props) => {
+  const likeUp = (com) => {
+    let newComment = com;
+    newComment.like++;
+    newComment = {
+      id: com._id,
+      like: com.like,
+      dislike: com.dislike,
+      comments: com.comments,
+      date: com.date,
+    };
+    props.commentActionUpdate(newComment);
+  };
+
+  const likeDown = (com) => {
+    let newComment = com;
+    newComment.dislike++;
+    newComment = {
+      id: com._id,
+      like: com.like,
+      dislike: com.dislike,
+      comments: com.comments,
+      date: com.date,
+    };
+    props.commentActionUpdate(newComment);
+  };
+
   return props.comments.map((comment, i) => {
     var imagen = require(`../../../../imagenes/usuarios/${comment.userPic}`)
       .default;
     return (
-      <div  key={i}>
+      <div key={i}>
         <hr />
         <Row className="mb-3">
           <Col sm="3" xs="3" className="comment-content">
-            <section>
+            <section style={{ textAlign: "center" }}>
               <img src={imagen} alt={"imagen de usuario"} />
-              <small className="text-muted">
-                Posted by<strong>{comment.userName}</strong>
-              </small>
+              <p className="colRelative">
+                <small
+                  className="text-muted ml-0 mt-1"
+                  style={{ textAlign: "center" }}
+                >
+                  Posted by<strong>{comment.userName}</strong>
+                </small>
+              </p>
             </section>
           </Col>
           <Col sm="7" xs="9">
@@ -66,7 +102,7 @@ const CommentList = (props) => {
           <Col sm="2" xs="12" className="centrarIconoComentario">
             {props.user.userName === comment.userName ? (
               <>
-                <Modal _id={comment._id} />
+                <Modal _id={comment._id} comment={comment} from="edit" />
                 <FontAwesomeIcon
                   icon={faTrashAlt}
                   color="lightgray"
@@ -79,14 +115,28 @@ const CommentList = (props) => {
                 />
               </>
             ) : (
-              <>
-              </>
+              <></>
             )}
           </Col>
         </Row>
-        <Row>
+        <Row className="position-relative pt-4">
           <Col>
-            <small className="text-muted fecha float-right">
+            <FontAwesomeIcon
+              icon={faThumbsUp}
+              color="lightgreen"
+              onClick={() => likeUp(comment)}
+            />
+            {comment.like}
+            <FontAwesomeIcon
+              icon={faThumbsDown}
+              color="red"
+              className="ml-3"
+              onClick={() => likeDown(comment)}
+            />
+            {comment.dislike}
+          </Col>
+          <Col>
+            <small className="text-muted float-right">
               {dateCoverter(comment.date)}
             </small>
           </Col>
@@ -105,6 +155,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     commentActionDelete: (data) => dispatch(commentActionDelete(data)),
+    commentActionUpdate: (data) => dispatch(commentActionUpdate(data)),
   };
 };
 

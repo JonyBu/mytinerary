@@ -20,12 +20,10 @@ import logo from "../imagenes/logo/MYtineraryLogoSolo.png";
 import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";
 
 const Menu = (props) => {
-  console.log(props)
   const [collapsed, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!collapsed);
 
-  if (props.loginReducer.isConected ||
-    !sessionStorage.getItem("token")) {
+  if (props.loginReducer.isConected || sessionStorage.getItem("token")) {
     return (
       <Navbar color="gray" light className="m-3">
         <Link to="/profile" style={{ textDecoration: "none" }}>
@@ -35,6 +33,7 @@ const Menu = (props) => {
           <img src={imgLogo} alt="Mytinereary Logo" className="img-user-menu" />
         </Link>
         <NavbarToggler onClick={toggle} />
+
         <Collapse isOpen={!collapsed} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>

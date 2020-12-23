@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Row, Col } from "reactstrap";
+import { Row, Col, Card } from "reactstrap";
 
 import activitiesAction from "../../../redux/actions/activitiesAction";
 
 import Modal from "./comments/modal";
-import CommentList from "./comments/commentList"
+import CommentList from "./comments/commentList";
 
 class activities extends React.Component {
   constructor() {
@@ -26,7 +26,7 @@ class activities extends React.Component {
         activities: this.props.activitiesReducer,
         isConected: this.props.loginReducer.isConected,
       });
-    }else{
+    } else {
       this.props.history.push("/login");
     }
   }
@@ -42,17 +42,17 @@ class activities extends React.Component {
 
   render() {
     return (
-      <div className="p-3">
+      <Card className="izquierda mt-3 mb-3 p-3">
         <Row>
           <Col>
             <h5>Comments</h5>
           </Col>
           <Col className="botonComment">
-            <Modal idItinerary={this.state.Itinerary._id} />
+            <Modal idItinerary={this.state.Itinerary._id} from="Add Comment" />
           </Col>
         </Row>
-        <CommentList comments={this.state.activities}/>
-      </div>
+        <CommentList comments={this.state.activities} />
+      </Card>
     );
   }
 }

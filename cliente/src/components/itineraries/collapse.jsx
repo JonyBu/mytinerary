@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Collapse, Button, Row, Col } from "reactstrap";
+import { Collapse, Button, Row, Col , Card} from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faStar } from "@fortawesome/free-regular-svg-icons";
@@ -17,23 +17,21 @@ const CollapseIt = (props) => {
 
   return (
     <>
-      <Button color="dark" onClick={toggle} className="m-3" outline size="sm">
+      <Button color="info" block onClick={toggle} className="mb-3" size="sm">
         View All
       </Button>
-      <Collapse isOpen={isOpen} >
-        <div className="details m-3">
+      <Collapse isOpen={isOpen}>
+        <Card className="details izquierda p-3">
           <h5>Description</h5>
           <hr />
           <Row>
-            <Col sm="2">
+            <Col sm="2" style={{ textAlign: "center" }}>
               <img
                 className="img-user-description"
                 src={imagen}
                 alt={itinerary.userPic}
               />
-              <small className="text-muted">
-               by {itinerary.userName}
-              </small>
+              <small className="text-muted">{itinerary.userName}</small>
             </Col>
             <Col sm="10">
               <h5>{itinerary.title}</h5>
@@ -41,6 +39,24 @@ const CollapseIt = (props) => {
                 {itinerary.cityName} - {itinerary.countryName}{" "}
               </small>
               <p>{itinerary.description}</p>
+              <Row>
+                <Col>
+                  <p>
+                    <FontAwesomeIcon icon={faStar} className="mr-2" />
+                    score:
+                    {" "}{(itinerary.rating / itinerary.quantityRating).toFixed(2)}
+                    /5
+                  </p>
+                </Col>
+                <Col>
+                  <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
+                  {itinerary.duration}
+                </Col>
+                <Col>
+                  <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
+                  {itinerary.cost}
+                </Col>
+              </Row>
               {itinerary.hashtag.map((has, i) => (
                 <span key={i} className="badge badge-pill badge-info m-1 ">
                   {has}
@@ -48,27 +64,7 @@ const CollapseIt = (props) => {
               ))}
             </Col>
           </Row>
-          <hr />
-          <Row className="m-auto" style={{textAlign:"center"}}>
-            <Col>
-              <p>
-                <FontAwesomeIcon icon={faStar} className="mr-2" />
-                score: (
-                {(itinerary.rating / itinerary.quantityRating).toFixed(2)}
-                /5)
-              </p>
-            </Col>
-            <Col>
-              <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
-              {itinerary.duration}
-            </Col>
-            <Col>
-              <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
-              {itinerary.cost}
-            </Col>
-          </Row>
-          <hr />
-        </div>
+        </Card>
         <Activities Itinerary={itinerary} />
       </Collapse>
     </>

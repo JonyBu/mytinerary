@@ -9,8 +9,8 @@ const commentAction = (data) => (dispatch) => {
     userName: data.userName,
     userPic: data.userPic,
     date: data.date,
-    like: data.like,
-    deslike: data.deslike,
+    like: 0,
+    dislike: 0,
     idItinerary: data.idItinerary,
   };
   axios
@@ -20,9 +20,8 @@ const commentAction = (data) => (dispatch) => {
         type: "ADD_COMMENT",
         payload: response.data,
       });
-      console.log("succes: ", response.data);
     })
-    .catch((error) => console.log("error: ", error));
+    .catch((error) => console.log(error));
 };
 
 export default commentAction;

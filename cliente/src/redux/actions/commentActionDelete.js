@@ -1,7 +1,9 @@
 import axios from "axios";
 export const type = "DELETE_COMMENT";
 
-const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/activities`;
+const QUOTE_SERVICE_URL = `http://localhost:${
+  process.env.PORT || "8080"
+}/api/activities`;
 
 const commentAction = (id) => (dispatch) => {
   const data = { _id: id };
@@ -12,9 +14,8 @@ const commentAction = (id) => (dispatch) => {
         type: "DELETE_COMMENT",
         payload: id,
       });
-      console.log("succes: ", response.data);
     })
-    .catch((error) => console.log("error: ", error));
+    .catch((error) => console.log(error));
 };
 
 export default commentAction;

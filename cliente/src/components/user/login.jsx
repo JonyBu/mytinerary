@@ -70,12 +70,13 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <Alert color="danger" className={this.state.error}>
-          Authentication failed, please try again or register
-        </Alert>
-
         <img src={img} className="imagenLogin m-4" alt="Logo Mytinerary"></img>
         {/* <h4 className="m-3">Login</h4> */}
+        <Alert color="danger" className={this.state.error}>
+          Authentication failed, check the data entered and try again or
+          register
+        </Alert>
+
         <Jumbotron>
           <Form>
             <FormGroup row>
@@ -83,12 +84,22 @@ class Login extends React.Component {
                 User Name:
               </Label>
               <Col sm={9}>
-                <Input
-                  type="text"
-                  name="userName"
-                  id="user"
-                  onChange={this.onChange.bind(this)}
-                />
+                {this.state.error === "invisible" ? (
+                  <Input
+                    type="text"
+                    name="userName"
+                    id="user"
+                    onChange={this.onChange.bind(this)}
+                  />
+                ) : (
+                  <Input
+                    type="text"
+                    name="userName"
+                    id="user"
+                    onChange={this.onChange.bind(this)}
+                    invalid
+                  />
+                )}
               </Col>
             </FormGroup>
             <FormGroup row>
@@ -96,12 +107,22 @@ class Login extends React.Component {
                 Password:
               </Label>
               <Col sm={9}>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={this.onChange.bind(this)}
-                />
+                {this.state.error === "invisible" ? (
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={this.onChange.bind(this)}
+                  />
+                ) : (
+                  <Input
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={this.onChange.bind(this)}
+                    invalid
+                  />
+                )}
               </Col>
             </FormGroup>
             <FormGroup row>

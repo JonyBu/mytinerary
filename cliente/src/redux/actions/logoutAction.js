@@ -1,7 +1,9 @@
 import axios from "axios";
-const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/user/profile`;
+const QUOTE_SERVICE_URL = `http://localhost:${
+  process.env.PORT || "8080"
+}/api/user/profile`;
 
-const outLogin = (data) => (dispatch) => {
+const outLogin = () => (dispatch) => {
   axios
     .get(QUOTE_SERVICE_URL, {
       headers: {
@@ -11,19 +13,11 @@ const outLogin = (data) => (dispatch) => {
       },
     })
     .then((response) => {
-      //console.log('respueta a logout: ', response.data);
-      //console.log('data: ', data);
-      if (response.data) {
-        sessionStorage.removeItem("token");
-        data.currentUser = [];
-        data.isConected = false;
-        dispatch({
-          type: "LOGOUT_USER",
-          payload: [],
-        });
-      } else {
-        alert(response.data.message + "vuelva a loguearse");
-      }
+      sessionStorage.removeItem("token");
+      dispatch({
+        type: "LOGOUT_USER",
+        payload: [],
+      });
     })
     .catch((err) => {
       console.log(err);

@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { Card, Row, Col } from "reactstrap";
+import { Card } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faHeart as faHeartSolid, faWallet  } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faHeartRegular, faClock, faStar  } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 import itinerariesAction from "../../redux/actions/itinerariesAction";
 
@@ -29,7 +29,8 @@ class Itinerary extends React.Component {
   }
 
   async componentDidMount() {
-    if (!sessionStorage.getItem("token")) {
+    if (!this.props.loginReducer.isConected ||
+      !sessionStorage.getItem("token")) {
       this.props.history.push("/login");
     } else {
       await this.props.itinerariesAction(this.props.match.params.idCity);
@@ -62,7 +63,8 @@ class Itinerary extends React.Component {
           };
 
           return (
-            <Card key={i} className="izquierda mb-3">
+            <>
+            <Card key={i} className="izquierda" >
               <FontAwesomeIcon
                 icon={
                   this.state.abierto === i ||
@@ -82,25 +84,14 @@ class Itinerary extends React.Component {
                 onMouseEnter={() => toggle(i)}
                 onMouseLeave={() => toggle(-1)}
                 onClick={() => clickFav()}
+                className="mt-3 mr-1"
               />
-              <h4 className="izquierda m-2">{itinerary.title}</h4>
-              {/* <Row className="m-auto" >
-                <Col>
-                    <Rating />
-                </Col>
-                <Col>
-                  <FontAwesomeIcon icon={faClock} className="mr-2" /> duration:{" "}
-                  {itinerary.duration}
-                </Col>
-                <Col>
-                  <FontAwesomeIcon icon={faWallet} className="mr-2" /> cost: $
-                  {itinerary.cost}
-                </Col>
-              </Row> */}
+              <h4 className="izquierda mt-3 ml-3">{itinerary.title}</h4>
               <Rating />
               <Details Itinerary={itinerary} />
-              <CollapseIt itinerary={itinerary} />
             </Card>
+              <CollapseIt itinerary={itinerary} />
+            </>
           );
         })}
       </>
@@ -111,6 +102,7 @@ class Itinerary extends React.Component {
 const mapStateToProps = (state) => {
   return {
     itinerariesReducer: state.itinerariesReducer.itineraries,
+    loginReducer: state.loginReducer
   };
 };
 

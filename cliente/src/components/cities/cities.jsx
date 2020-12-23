@@ -45,7 +45,7 @@ class Cities extends React.Component {
     });
   };
 
-  cityDisponible = (avaible) => {   
+  cityDisponible = (avaible) => {
     if (avaible) {
       return "mt-3";
     }
@@ -71,7 +71,7 @@ class Cities extends React.Component {
                 className={this.cityDisponible(city.itineraries)}
                 color="danger"
               >
-                {city.name} - {city.country} 
+                {city.name} - {city.country}
               </Button>
             </Link>
           </ListGroup>
@@ -83,7 +83,6 @@ class Cities extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     loginReducer: state.loginReducer,
     citiesReducer: state.citiesReducer.cities,
