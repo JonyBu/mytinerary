@@ -11,11 +11,11 @@ router.get(
 router.get(
   "/auth/google/callback",
   passport.authenticate("google", {
-    failureRedirect: "http://localhost:3000/login",
+    failureRedirect: `http://localhost:${process.env.PORT || "8080"}/login`,
     session: false,
   }),
   function (req, res) {
-    res.redirect("http://localhost:3000/");
+    res.redirect(`http://localhost:${process.env.PORT || "8080"}/`);
   }
 );
 

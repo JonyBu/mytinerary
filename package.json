@@ -39,7 +39,11 @@
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "npm run build",
+    "build": "cross-env NODE_ENV=production webpack",
+    "server:dev": "webpack-dev-server",
+    
   },
   "author": "",
   "license": "ISC"
