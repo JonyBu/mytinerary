@@ -71,7 +71,6 @@ class Profile extends React.Component {
             <Row className="rowProfile ">
               <Col xs="12" sm="6" className="pr-0">
                 <CardImg
-                  left
                   src={this.state.imagen}
                   alt="imagen de usuario"
                   className="imagenProfile "

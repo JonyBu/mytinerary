@@ -85,7 +85,6 @@ router.post(
       checkbox: req.body.checkbox,
     });
     newModel.save().then(function (datos) {
-      console.log("datos: " + datos);
       return res.send(datos);
     });
   }

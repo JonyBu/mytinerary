@@ -1,19 +1,21 @@
 const defaultItinerary = {
   itineraries: [],
+  error:[],
+  message: [],
 };
 
 function reducer(state = defaultItinerary, action) {
   switch (action.type) {
     case "itinerariesAction":
       return {
-        ...state,
         itineraries: action.payload,
+        error: false,
       };
-    case "itinerariesFavAction":
-      return {
-        ...state,
-        itineraries: action.payload,
-      };
+      case "ERROR":
+        return {
+          error: true,
+          message: action.message
+        };
     default:
       return state;
   }

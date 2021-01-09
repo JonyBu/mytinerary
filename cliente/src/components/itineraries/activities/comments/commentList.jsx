@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { Row, Col } from "reactstrap";
@@ -50,35 +50,48 @@ function dateCoverter(dateComment) {
 }
 
 const CommentList = (props) => {
-  const likeUp = (com) => {
-    let newComment = com;
-    newComment.like++;
-    newComment = {
-      id: com._id,
-      like: com.like,
-      dislike: com.dislike,
-      comments: com.comments,
-      date: com.date,
-    };
-    props.commentActionUpdate(newComment);
-  };
 
-  const likeDown = (com) => {
-    let newComment = com;
-    newComment.dislike++;
-    newComment = {
-      id: com._id,
-      like: com.like,
-      dislike: com.dislike,
-      comments: com.comments,
-      date: com.date,
-    };
-    props.commentActionUpdate(newComment);
-  };
+  const [vote, setLike] = useState(false);
+  const [come, setCome] = useState();
 
   return props.comments.map((comment, i) => {
+
+    const likeUp = (com) => {
+      if (vote === false) {
+        setLike(true);
+        setCome(com._id);
+        let newComment = com;
+        newComment.like++;
+        newComment = {
+          id: com._id,
+          like: com.like,
+          dislike: com.dislike,
+          comments: com.comments,
+          date: com.date,
+        };
+        props.commentActionUpdate(newComment);
+      }
+    };
+  
+    const likeDown = (com) => {
+      if (vote === false) {
+        setLike(true);
+        let newComment = com;
+        newComment.dislike++;
+        newComment = {
+          id: com._id,
+          like: com.like,
+          dislike: com.dislike,
+          comments: com.comments,
+          date: com.date,
+        };
+        props.commentActionUpdate(newComment);
+      }
+    };
+
     var imagen = require(`../../../../imagenes/usuarios/${comment.userPic}`)
       .default;
+
     return (
       <div key={i}>
         <hr />
@@ -121,15 +134,16 @@ const CommentList = (props) => {
         </Row>
         <Row className="position-relative pt-4">
           <Col>
+          
             <FontAwesomeIcon
               icon={faThumbsUp}
-              color="lightgreen"
+              color= { (vote && come === comment._id) ? "gray" : "lightgreen"  } 
               onClick={() => likeUp(comment)}
             />
             {comment.like}
             <FontAwesomeIcon
               icon={faThumbsDown}
-              color="red"
+              color={ (vote && come === comment._id) ? "gray" : "red"  } 
               className="ml-3"
               onClick={() => likeDown(comment)}
             />

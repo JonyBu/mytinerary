@@ -36,8 +36,9 @@ class Login extends React.Component {
       if (!sessionStorage.token) {
         console.log("espera " + contador + "/2");
         if (contador === 2) {
-          clearInterval(this.cronometro);
           this.setState({ error: "visible" });
+          document.getElementById("password").value = "";
+          clearInterval(this.cronometro);
         } else {
           contador++;
         }
@@ -53,10 +54,10 @@ class Login extends React.Component {
     var state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
+
   };
 
   onSave = (e) => {
-    e.preventDefault();
     this.props.startLogin(this.state);
     this.esperar();
   };
@@ -71,7 +72,6 @@ class Login extends React.Component {
     return (
       <>
         <img src={img} className="imagenLogin m-4" alt="Logo Mytinerary"></img>
-        {/* <h4 className="m-3">Login</h4> */}
         <Alert color="danger" className={this.state.error}>
           Authentication failed, check the data entered and try again or
           register
@@ -90,6 +90,7 @@ class Login extends React.Component {
                     name="userName"
                     id="user"
                     onChange={this.onChange.bind(this)}
+                    
                   />
                 ) : (
                   <Input
@@ -113,6 +114,11 @@ class Login extends React.Component {
                     name="password"
                     id="password"
                     onChange={this.onChange.bind(this)}
+                    onKeyDown={function(e){
+                      if(e.key==='Enter'){
+                        document.getElementById("myBtn").click();
+                      }
+                    }}
                   />
                 ) : (
                   <Input
@@ -121,6 +127,11 @@ class Login extends React.Component {
                     id="password"
                     onChange={this.onChange.bind(this)}
                     invalid
+                    onKeyDown={function(e){
+                      if(e.key==='Enter'){
+                        document.getElementById("myBtn").click();
+                      }
+                    }}
                   />
                 )}
               </Col>
@@ -136,7 +147,11 @@ class Login extends React.Component {
             </FormGroup>
             <br />
             <FormGroup check row>
-              <Button onClick={this.onSave.bind(this)} color="primary">
+              <Button
+                onClick={this.onSave.bind(this)}
+                color="primary"
+                id="myBtn"
+              >
                 Submit
               </Button>
             </FormGroup>

@@ -2,6 +2,7 @@ import axios from "axios";
 export const type = "UPDATE_USER";
 
 const updateUserAction = (data) => (dispatch) => {
+console.log(data)
   const QUOTE_SERVICE_URL = `http://localhost:${
     process.env.PORT || "8080"
   }/api/user/profile/${data.id}`;

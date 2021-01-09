@@ -5,13 +5,6 @@ const passport = require("../auth/passport");
 
 let autenticate = passport.authenticate("jwt", { session: false });
 
-router.post("/itineraries", autenticate, function (req, res) {
-  let itineraryRequested = req.body;
-  itineraryModel.find({ _id: itineraryRequested }).then(function (datos) {
-    return res.send(datos);
-  });
-});
-
 router.get("/itineraries/:idCity", autenticate, (req, res) => {
   let itineraryRequested = req.params.idCity;
   itineraryModel

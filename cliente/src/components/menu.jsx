@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle , faAddressCard , faStar , faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 
 import outLogin from "../redux/actions/logoutAction";
 
@@ -39,6 +39,7 @@ const Menu = (props) => {
             <NavItem>
               <Link to="/profile" style={{ textDecoration: "none" }}>
                 <Button color="danger" block className="mt-1">
+                  <FontAwesomeIcon  icon={faAddressCard} className="mr-2" />
                   Profile
                 </Button>
               </Link>
@@ -46,11 +47,12 @@ const Menu = (props) => {
             <NavItem>
               <Link to="/favorite" style={{ textDecoration: "none" }}>
                 <Button color="info" block className="mt-1">
+                <FontAwesomeIcon  icon={faStar} className="mr-2" />
                   Favorites
                 </Button>
               </Link>
             </NavItem>
-            <NavItem>
+            <NavItem >
               <Link to="/" style={{ textDecoration: "none" }} onClick={toggle}>
                 <Button
                   color="dark"
@@ -59,7 +61,9 @@ const Menu = (props) => {
                   onClick={() => {
                     props.outLogin(props.loginReducer.currentUser);
                   }}
+                  
                 >
+                  <FontAwesomeIcon  icon={faSignOutAlt} className="mr-2"/>
                   Log out
                 </Button>
               </Link>

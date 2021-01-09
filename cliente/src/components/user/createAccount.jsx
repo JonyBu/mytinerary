@@ -66,12 +66,12 @@ class createAccount extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <br />
         <h3>Create Account</h3>
         <br />
         <Jumbotron>
-          <Form>
+          <Form >
             <img
               src={imagenUser}
               alt="sin imagen usuario"
@@ -89,7 +89,7 @@ class createAccount extends React.Component {
                   type="file"
                   name="profilePic"
                   id="profilePic"
-                  onChange={this.handleInputImage.bind(this)}
+                  onChange={this.handleInputImage}
                 />
               </Col>
             </FormGroup>
@@ -214,7 +214,7 @@ class createAccount extends React.Component {
           </Form>
         </Jumbotron>
         <Footer />
-      </div>
+      </>
     );
   }
 }

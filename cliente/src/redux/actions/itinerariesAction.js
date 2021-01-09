@@ -1,22 +1,31 @@
+import axios from "axios";
 export const type = "itinerariesAction";
+
 const QUOTE_SERVICE_URL = `http://localhost:${
   process.env.PORT || "8080"
 }/api/itineraries/`;
 
 const itinerariesAction = (idCity) => async (dispatch) => {
-  const res = await fetch(QUOTE_SERVICE_URL + idCity, {
+  await axios.get(QUOTE_SERVICE_URL + idCity, {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: "bearer " + sessionStorage.getItem("token"),
     },
   })
-    .then((response) => response.json())
-    .catch((e) => console.log(e));
-  dispatch({
-    type: type,
-    payload: res,
-  });
+    .then((response) => {
+      dispatch({
+        type: type,
+        payload: response.data,
+      });
+    } )
+    .catch((e) => {
+      console.log(e)
+      dispatch({
+        type: 'ERROR',
+        message: e.message,
+      })
+    });
 };
 
 export default itinerariesAction;

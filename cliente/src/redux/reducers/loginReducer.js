@@ -32,7 +32,7 @@ function reducer(state = initiaState, action) {
       return {
         ...state,
         isUpdated: true,
-      };
+      }; 
     default:
       return state;
   }
