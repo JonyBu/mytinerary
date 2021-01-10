@@ -9,7 +9,7 @@ import { faHeart as faHeartSolid } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons";
 
 import itinerariesAction from "../../redux/actions/itinerariesAction";
-import updateUserAction from "../../redux/actions/updateUserAction";
+import updateUserAction from "../../redux/actions/user/updateUserAction";
 
 import CollapseIt from "./collapse";
 import Rating from "./rating";

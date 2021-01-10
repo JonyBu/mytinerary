@@ -14,7 +14,7 @@ import {
 
 import Footer from "../footer";
 
-import newUser from "../../redux/actions/newUserAction";
+import newUser from "../../redux/actions/user/newUserAction";
 
 import imagenUser from "../../imagenes/usuarios/userLogin.png";
 
@@ -50,7 +50,8 @@ class createAccount extends React.Component {
     const { files } = event.target;
     const localImageUrl = URL.createObjectURL(files[0]);
     document.querySelector("img").src = localImageUrl;
-    this.setState({ profilePic: files[0].name });
+    // this.setState({ profilePic: files[0].name });
+    this.setState({ profilePic: event.target.value });
   };
 
   handleSubmit = (e) => {

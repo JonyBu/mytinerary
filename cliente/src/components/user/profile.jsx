@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import { Card, Jumbotron, CardImg, Col, Row } from "reactstrap";
 
-import getUser from "../../redux/actions/getUserAction";
-import outLogin from "../../redux/actions/logoutAction";
+import getUser from "../../redux/actions/user/getUserAction";
+import outLogin from "../../redux/actions/user/logoutAction";
 
 import Footer from "../footer";
 import ModalUser from "../user/modalProfile";

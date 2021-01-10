@@ -16,7 +16,7 @@ import {
   Alert,
 } from "reactstrap";
 
-import startLogin from "../../redux/actions/loginAction";
+import startLogin from "../../redux/actions/user/loginAction";
 
 import Footer from "../footer";
 

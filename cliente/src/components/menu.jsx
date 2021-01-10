@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle , faAddressCard , faStar , faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 
-import outLogin from "../redux/actions/logoutAction";
+import outLogin from "../redux/actions/user/logoutAction";
 
 import logo from "../imagenes/logo/MYtineraryLogoSolo.png";
 import imgLogo from "../imagenes/logo/MYtineraryLogoSolo.png";

@@ -7,6 +7,17 @@ const { check, validationResult } = require("express-validator");
 const passport = require("../auth/passport");
 const bcrypt = require("bcrypt");
 
+const multer = require("multer");
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../../cliente/src/imagenes/usuarios')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({ storage }).single("profilePic")
+
 router.get(
   "/user/profile",
   passport.authenticate("jwt", { session: false }),
@@ -59,6 +70,7 @@ router.post("/user/login", async function (req, res) {
 
 router.post(
   "/user/createAccount",
+  upload,
   [
     check("email").isEmail(),
     check("checkbox").not().isIn([false]),
@@ -85,6 +97,8 @@ router.post(
       checkbox: req.body.checkbox,
     });
     newModel.save().then(function (datos) {
+      console.log(res.file)
+      console.log(req.file)
       return res.send(datos);
     });
   }

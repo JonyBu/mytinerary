@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faClock, faStar } from "@fortawesome/free-regular-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
-import updateUserAction from "../../redux/actions/updateUserAction";
+import updateUserAction from "../../redux/actions/user/updateUserAction";
 
 class ModalProfile extends React.Component {
   constructor(props) {

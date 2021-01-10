@@ -12,8 +12,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-import commentAction from "../../../../redux/actions/commentAction";
-import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
+import commentAction from "../../../../redux/actions/comment/commentAction";
+import commentActionUpdate from "../../../../redux/actions/comment/commentActionUpdate";
 
 class ModalEdit extends React.Component {
   constructor(props) {

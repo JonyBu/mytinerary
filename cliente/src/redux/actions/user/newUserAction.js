@@ -16,8 +16,23 @@ const newUser = (data) => async (dispatch) => {
     checkbox: data.checkbox,
     itinerariesFav: false,
   };
+
+  var formData = new FormData();
+
+  formData.append("profilePic", data.profilePic);
+  formData.append("userName", data.userName);
+  formData.append("password", data.password);
+  formData.append("email", data.email);
+  formData.append("firstname", data.firstName);
+  formData.append("lastName", data.lastName);
+  formData.append("country", data.country);
+
+  // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+  const config = { headers: { 'Content-Type':'application/x-www-form-urlencoded' } };
+
   await axios
-    .post(QUOTE_SERVICE_URL, userObject)
+    // .post(QUOTE_SERVICE_URL, userObject)
+    .post(QUOTE_SERVICE_URL, formData, config)
     .then((response) => {
       dispatch({
         type: "NEW_USER",

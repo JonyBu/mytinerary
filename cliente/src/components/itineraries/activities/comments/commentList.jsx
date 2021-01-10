@@ -9,8 +9,8 @@ import {
   faThumbsDown,
 } from "@fortawesome/free-regular-svg-icons";
 
-import commentActionUpdate from "../../../../redux/actions/commentActionUpdate";
-import commentActionDelete from "../../../../redux/actions/commentActionDelete";
+import commentActionUpdate from "../../../../redux/actions/comment/commentActionUpdate";
+import commentActionDelete from "../../../../redux/actions/comment/commentActionDelete";
 import Modal from "./modal";
 
 function dateCoverter(dateComment) {
