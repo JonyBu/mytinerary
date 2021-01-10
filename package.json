@@ -35,12 +35,11 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "cd client && npm start",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client": "cd cliente && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "npm run server"
   },
   "author": "",
   "license": "ISC"
