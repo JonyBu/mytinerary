@@ -22,7 +22,7 @@ class Cities extends React.Component {
 
   async componentDidMount() {
     if (
-      this.props.loginReducer.isConnected ||
+      !this.props.loginReducer.isConnected &&
       !sessionStorage.getItem("token")
     ) {
       this.props.history.push("/login");

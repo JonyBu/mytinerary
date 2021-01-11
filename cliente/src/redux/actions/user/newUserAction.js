@@ -5,18 +5,6 @@ const QUOTE_SERVICE_URL = `http://localhost:${
 }/api/user/createAccount`;
 
 const newUser = (data) => async (dispatch) => {
-  const userObject = {
-    profilePic: data.profilePic,
-    userName: data.userName,
-    password: data.password,
-    email: data.email,
-    firstName: data.firstName,
-    lastName: data.lastName,
-    country: data.country,
-    checkbox: data.checkbox,
-    itinerariesFav: false,
-  };
-
   var formData = new FormData();
 
   formData.append("profilePic", data.profilePic);
@@ -27,11 +15,9 @@ const newUser = (data) => async (dispatch) => {
   formData.append("lastName", data.lastName);
   formData.append("country", data.country);
 
-  // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
-  const config = { headers: { 'Content-Type':'application/x-www-form-urlencoded' } };
+  const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
   await axios
-    // .post(QUOTE_SERVICE_URL, userObject)
     .post(QUOTE_SERVICE_URL, formData, config)
     .then((response) => {
       dispatch({

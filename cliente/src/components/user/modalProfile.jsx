@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 import updateUserAction from "../../redux/actions/user/updateUserAction";
+import updateUserImg from "../../redux/actions/user/updateUserImg";
 
 class ModalProfile extends React.Component {
   constructor(props) {
@@ -40,13 +41,25 @@ class ModalProfile extends React.Component {
   };
 
   handleInputChange = (event) => {
-    const newdata = {
-      [event.target.name]: event.target.value,
-      id: this.state.id,
-    };
-    this.setState({
-      newdata,
-    });
+    event.preventDefault();
+    const { files } = event.target;
+    if(event.target.name === "profilePic"){
+      const newdata = {
+        profilePic: files[0],
+        id: this.state.id,
+      }
+      this.setState({
+        newdata
+      })
+    }else{
+      const newdata = {
+        [event.target.name]: event.target.value,
+        id: this.state.id,
+      };
+      this.setState({
+        newdata,
+      });
+    }
   };
 
   handleClick = (event) => {
@@ -54,6 +67,12 @@ class ModalProfile extends React.Component {
     this.props.updateUserAction(this.state.newdata);
     this.toggle();
   };
+
+  handleClickImg = (event) => {
+    event.preventDefault();
+    this.props.updateUserImg(this.state.newdata);
+    this.toggle();
+  }
 
   claseDesde = () => {
     switch (this.state.datos.name) {
@@ -90,9 +109,11 @@ class ModalProfile extends React.Component {
             </Col>
           </ModalBody>
           <ModalFooter>
-            <Button color="success" onClick={this.handleClick}>
+
+            <Button color="success" onClick={this.state.datos.name === "profilePic" ? this.handleClickImg : this.handleClick }>
               Agree
-            </Button>{" "}
+            </Button>
+
             <Button color="secondary" onClick={this.toggle}>
               Cancel
             </Button>
@@ -112,6 +133,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     updateUserAction: (data) => dispatch(updateUserAction(data)),
+    updateUserImg: (data) => dispatch(updateUserImg(data)),
   };
 };
 

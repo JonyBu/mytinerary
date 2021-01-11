@@ -7,29 +7,53 @@ const { check, validationResult } = require("express-validator");
 const passport = require("../auth/passport");
 const bcrypt = require("bcrypt");
 
+const path = require("path")
+
 const multer = require("multer");
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '../../cliente/src/imagenes/usuarios')
-  },
+  destination: path.join(__dirname, '../../cliente/src/imagenes/usuarios'), 
   filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-})
-const upload = multer({ storage }).single("profilePic")
+    cb(null, file.originalname);
+  },
+});
+const upload = multer({ storage }).single("profilePic");
 
-router.get(
-  "/user/profile",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    usuarioModel
-      .findOne({ _id: req.user.id })
-      .then((user) => {
-        res.json(user);
-      })
-      .catch((err) =>
-        res.status(404).json({ error: "User does not exist! " + err })
-      );
+router.post(
+  "/user/createAccount",
+  upload,
+  [
+    check("email").isEmail(),
+    check("checkbox").not().isIn([false]),
+    check("password").isLength({ min: 5 }),
+  ],
+  async function (req, res) {
+    const errors = validationResult(req);
+    var password = req.body.password;
+    var salt = await bcrypt.genSalt(10);
+    var hash = await bcrypt.hash(password, salt);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    // console.log(req.file.originalname)
+
+    var newModel = new usuarioModel({
+      // profilePic: req.body.profilePic,
+      profilePic: req.file.originalname,
+      userName: req.body.userName,
+      password: hash,
+      email: req.body.email,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      country: req.body.country,
+      // checkbox: req.body.checkbox,
+    });
+    console.log(newModel)
+    newModel.save().then(function (datos) {
+      console.log(req.file);
+      console.log(datos)
+      return res.send(datos);
+    });
   }
 );
 
@@ -68,45 +92,28 @@ router.post("/user/login", async function (req, res) {
   });
 });
 
-router.post(
-  "/user/createAccount",
-  upload,
-  [
-    check("email").isEmail(),
-    check("checkbox").not().isIn([false]),
-    check("password").isLength({ min: 5 }),
-  ],
-  async function (req, res) {
-    const errors = validationResult(req);
-    var password = req.body.password;
-    var salt = await bcrypt.genSalt(10);
-    var hash = await bcrypt.hash(password, salt);
-
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
-    var newModel = new usuarioModel({
-      profilePic: req.body.profilePic,
-      userName: req.body.userName,
-      password: hash,
-      email: req.body.email,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      country: req.body.country,
-      checkbox: req.body.checkbox,
-    });
-    newModel.save().then(function (datos) {
-      console.log(res.file)
-      console.log(req.file)
-      return res.send(datos);
-    });
+router.get(
+  "/user/profile",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    usuarioModel
+      .findOne({ _id: req.user.id })
+      .then((user) => {
+        res.json(user);
+      })
+      .catch((err) =>
+        res.status(404).json({ error: "User does not exist! " + err })
+      );
   }
 );
 
-router.put("/user/profile/:_id", async (req, res) => {
+router.put("/user/profile/:_id",upload, async (req, res) => {
   const id = req.params._id;
-  const data = req.body;
+  if(data.profilePic){
+    const data = {profilePic: req.file.originalname,}
+  }else{
+    const data = req.body;
+  }
   await usuarioModel
     .updateOne({ _id: id }, { $set: data })
     .then(() => {

@@ -50,8 +50,7 @@ class createAccount extends React.Component {
     const { files } = event.target;
     const localImageUrl = URL.createObjectURL(files[0]);
     document.querySelector("img").src = localImageUrl;
-    // this.setState({ profilePic: files[0].name });
-    this.setState({ profilePic: event.target.value });
+    this.setState({ profilePic: files[0] });
   };
 
   handleSubmit = (e) => {
@@ -72,7 +71,7 @@ class createAccount extends React.Component {
         <h3>Create Account</h3>
         <br />
         <Jumbotron>
-          <Form >
+          <Form encType="multipart/form-data">
             <img
               src={imagenUser}
               alt="sin imagen usuario"

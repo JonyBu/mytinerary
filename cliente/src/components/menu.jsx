@@ -23,7 +23,7 @@ const Menu = (props) => {
   const [collapsed, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!collapsed);
 
-  if (props.loginReducer.isConected || sessionStorage.getItem("token")) {
+  if (props.loginReducer.isConected && sessionStorage.getItem("token")) {
     return (
       <Navbar color="gray" light className="m-3">
         <Link to="/profile" style={{ textDecoration: "none" }}>

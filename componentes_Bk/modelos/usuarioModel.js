@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
   firsName: String,
   lastName: String,
   country: String,
-  checkbox: Boolean,
+  // checkbox: Boolean,
   itinerariesFav: Array,
   myTineraries: Array,
   // id:String,
