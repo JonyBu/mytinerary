@@ -10,12 +10,15 @@ const bcrypt = require("bcrypt");
 const path = require("path")
 
 const multer = require("multer");
+
 var storage = multer.diskStorage({
+  size: 500000,
   destination: path.join(__dirname, '../../cliente/src/imagenes/usuarios'), 
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
 });
+
 const upload = multer({ storage }).single("profilePic");
 
 router.post(
@@ -38,8 +41,7 @@ router.post(
     // console.log(req.file.originalname)
 
     var newModel = new usuarioModel({
-      // profilePic: req.body.profilePic,
-      profilePic: req.file.originalname,
+      profilePic: req.file.filename,
       userName: req.body.userName,
       password: hash,
       email: req.body.email,
@@ -48,10 +50,7 @@ router.post(
       country: req.body.country,
       // checkbox: req.body.checkbox,
     });
-    console.log(newModel)
     newModel.save().then(function (datos) {
-      console.log(req.file);
-      console.log(datos)
       return res.send(datos);
     });
   }
@@ -108,20 +107,25 @@ router.get(
 );
 
 router.put("/user/profile/:_id",upload, async (req, res) => {
-  const id = req.params._id;
-  if(data.profilePic){
-    const data = {profilePic: req.file.originalname,}
-  }else{
-    const data = req.body;
-  }
-  await usuarioModel
-    .updateOne({ _id: id }, { $set: data })
+    const id = req.params._id;
+    var newModel = {};
+    console.log(req.file)
+    if(req.file.originalname){
+      newModel = {
+        profilePic: req.file.filename,
+      }
+    }else{
+      newModel = req.body
+    }
+    console.log(newModel)
+    await usuarioModel
+    .updateOne({ _id: id }, { $set: newModel })
     .then(() => {
       return res.status(200).json({
         message: "Update succesful " + res,
       });
     })
     .catch((err) => console.log(err));
-});
+  })
 
 module.exports = router;

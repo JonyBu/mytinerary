@@ -46,15 +46,16 @@ class ModalProfile extends React.Component {
     if(event.target.name === "profilePic"){
       const newdata = {
         profilePic: files[0],
-        id: this.state.id,
+        id: this.props.loginReducer.currentUser._id,
       }
       this.setState({
         newdata
       })
+      console.log(newdata)
     }else{
       const newdata = {
         [event.target.name]: event.target.value,
-        id: this.state.id,
+        id: this.props.loginReducer.currentUser._id,
       };
       this.setState({
         newdata,

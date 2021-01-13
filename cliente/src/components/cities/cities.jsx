@@ -21,16 +21,17 @@ class Cities extends React.Component {
   }
 
   async componentDidMount() {
+    console.log(this.props.loginReducer);
     if (
-      !this.props.loginReducer.isConnected &&
-      !sessionStorage.getItem("token")
+      this.props.loginReducer.isConnected &&
+      sessionStorage.getItem("token")
     ) {
-      this.props.history.push("/login");
-    } else {
       if (!this.props.loginReducer.isReady) {
         await this.props.citiesAction();
         this.setState({ filteredCities: this.props.citiesReducer });
       }
+    } else {
+      this.props.history.push("/login");
     }
   }
 
