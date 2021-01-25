@@ -7,13 +7,13 @@ const { check, validationResult } = require("express-validator");
 const passport = require("../auth/passport");
 const bcrypt = require("bcrypt");
 
-const path = require("path")
+const path = require("path");
 
 const multer = require("multer");
 
 var storage = multer.diskStorage({
   size: 500000,
-  destination: path.join(__dirname, '../../cliente/src/imagenes/usuarios'), 
+  destination: path.join(__dirname, "../../cliente/src/imagenes/usuarios"),
   filename: function (req, file, cb) {
     cb(null, file.originalname);
   },
@@ -30,6 +30,18 @@ router.post(
     check("password").isLength({ min: 5 }),
   ],
   async function (req, res) {
+    const userName = req.body.userName;
+    const email = req.body.email;
+    const user = await usuarioModel.findOne({
+      userName,
+      email,
+    });
+    if (user)
+      return res.status(400).json({
+        error: true,
+        message: "ya registrado",
+      });
+
     const errors = validationResult(req);
     var password = req.body.password;
     var salt = await bcrypt.genSalt(10);
@@ -106,19 +118,19 @@ router.get(
   }
 );
 
-router.put("/user/profile/:_id",upload, async (req, res) => {
-    const id = req.params._id;
-    var newModel = {};
-    console.log(req.file)
-    if(req.file.originalname){
-      newModel = {
-        profilePic: req.file.filename,
-      }
-    }else{
-      newModel = req.body
-    }
-    console.log(newModel)
-    await usuarioModel
+router.put("/user/profile/:_id", upload, async (req, res) => {
+  const id = req.params._id;
+  var newModel = {};
+  console.log(req.file);
+  if (req.file.originalname) {
+    newModel = {
+      profilePic: req.file.filename,
+    };
+  } else {
+    newModel = req.body;
+  }
+  console.log(newModel);
+  await usuarioModel
     .updateOne({ _id: id }, { $set: newModel })
     .then(() => {
       return res.status(200).json({
@@ -126,6 +138,6 @@ router.put("/user/profile/:_id",upload, async (req, res) => {
       });
     })
     .catch((err) => console.log(err));
-  })
+});
 
 module.exports = router;
