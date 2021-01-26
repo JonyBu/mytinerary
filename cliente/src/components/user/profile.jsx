@@ -42,6 +42,7 @@ class Profile extends React.Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.loginReducer.isConected) {
       if (nextProps.loginReducer.isUpdated) {
+        this.props.getUser();
         this.setState({
           ...this.state,
           currentUser: this.props.loginReducer.currentUser,

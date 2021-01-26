@@ -15,6 +15,16 @@ router.get("/itineraries/:idCity", autenticate, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.post("/itinerariesFav", (req, res) => {
+  let itineraryRequested = req.body;
+  itineraryModel
+    .find({ title: itineraryRequested })
+    .then((itineraries) => {
+      res.send(itineraries);
+    })
+    .catch((err) => console.log(err));
+});
+
 router.post("/itineraries", function (req, res) {
   var newModel = new itineraryModel({
     title: req.body.title,

@@ -75,10 +75,13 @@ class Itinerary extends React.Component {
           this.state.itineraries.map((itinerary, i) => {
             const clickFav = () => {
               const it = this.props.loginReducer.currentUser.itinerariesFav;
-              it.push(itinerary._id);
+              it.push(itinerary.title);
               const newData = {
-                itinerariesFav: [it],
-                id: this.props.loginReducer.currentUser._id,
+                file: false,
+                data:{
+                  itinerariesFav: [it],
+                  id: this.props.loginReducer.currentUser._id,
+                }
               };
               this.props.updateUserAction(newData);
 
@@ -96,7 +99,7 @@ class Itinerary extends React.Component {
             return (
               <div key={i} >
                 <Card className="izquierda">
-                  {this.state.itFav.includes(itinerary._id) ? (
+                  {this.state.itFav.includes(itinerary.title) ? (
                     <FontAwesomeIcon
                       icon={faHeartSolid}
                       color="red"

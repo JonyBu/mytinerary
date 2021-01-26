@@ -21,10 +21,8 @@ class Cities extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(this.props)
     if (
-      this.props.loginReducer.isConnected ||
-      sessionStorage.getItem("token")
+      this.props.loginReducer.isConected && sessionStorage.getItem("token")
     ) {
       if (this.props.loginReducer.isReady) {
         await this.props.citiesAction();

@@ -43,19 +43,22 @@ class ModalProfile extends React.Component {
   handleInputChange = (event) => {
     event.preventDefault();
     const { files } = event.target;
-    if(event.target.name === "profilePic"){
+    if (event.target.name === "profilePic") {
       const newdata = {
         profilePic: files[0],
         id: this.props.loginReducer.currentUser._id,
-      }
+      };
       this.setState({
-        newdata
-      })
-      console.log(newdata)
-    }else{
+        newdata,
+      });
+      console.log(newdata);
+    } else {
       const newdata = {
-        [event.target.name]: event.target.value,
-        id: this.props.loginReducer.currentUser._id,
+        file: false,
+        data: {
+          [event.target.name]: event.target.value,
+          id: this.props.loginReducer.currentUser._id,
+        },
       };
       this.setState({
         newdata,
@@ -73,15 +76,13 @@ class ModalProfile extends React.Component {
     event.preventDefault();
     this.props.updateUserImg(this.state.newdata);
     this.toggle();
-  }
+  };
 
   claseDesde = () => {
-    switch (this.state.datos.name) {
-      case "profilePic":
-        return "botonEditarImg";
-      default:
-        return "botonEditar ";
+    if (this.state.datos.name === "profilePic") {
+      return "botonEditarImg";
     }
+    return "botonEditar ";
   };
 
   render() {
@@ -110,8 +111,14 @@ class ModalProfile extends React.Component {
             </Col>
           </ModalBody>
           <ModalFooter>
-
-            <Button color="success" onClick={this.state.datos.name === "profilePic" ? this.handleClickImg : this.handleClick }>
+            <Button
+              color="success"
+              onClick={
+                this.state.datos.name === "profilePic"
+                  ? this.handleClickImg
+                  : this.handleClick
+              }
+            >
               Agree
             </Button>
 

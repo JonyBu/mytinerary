@@ -121,15 +121,13 @@ router.get(
 router.put("/user/profile/:_id", upload, async (req, res) => {
   const id = req.params._id;
   var newModel = {};
-  console.log(req.file);
-  if (req.file.originalname) {
+  if (req.body.file === false) {
+    newModel = req.body.data;
+  } else {
     newModel = {
       profilePic: req.file.filename,
     };
-  } else {
-    newModel = req.body;
   }
-  console.log(newModel);
   await usuarioModel
     .updateOne({ _id: id }, { $set: newModel })
     .then(() => {
