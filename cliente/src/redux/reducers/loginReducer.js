@@ -3,6 +3,7 @@ const initiaState = {
   isConected: false,
   isCreated: false,
   isUpdated: [],
+  isReady: []
 };
 
 function reducer(state = initiaState, action) {
@@ -16,6 +17,7 @@ function reducer(state = initiaState, action) {
       return {
         ...state,
         isConected: true,
+        isReady: true
       };
     case "GET_USER":
       return {
@@ -29,11 +31,7 @@ function reducer(state = initiaState, action) {
         isConected: false,
       };
     case "UPDATE_USER":
-      return {
-        ...state,
-        isUpdated: true,
-      };
-    case "UPDATE_USER_IMG":
+    case "UPDATE_IMG":
       return {
         ...state,
         isUpdated: true,
