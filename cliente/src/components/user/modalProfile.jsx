@@ -51,7 +51,6 @@ class ModalProfile extends React.Component {
       this.setState({
         newdata,
       });
-      console.log(newdata);
     } else {
       const newdata = {
         file: false,

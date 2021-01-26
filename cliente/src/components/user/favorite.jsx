@@ -29,8 +29,6 @@ class Favorite extends React.Component {
       itFav: [],
       myFav: 0,
     };
-    console.log(this.state);
-    console.log(props);
   }
 
   async componentDidMount() {
@@ -160,7 +158,6 @@ class Favorite extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     loginReducer: state.loginReducer,
     itinerariesReducer: state.itinerariesReducer,

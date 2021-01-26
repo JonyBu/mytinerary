@@ -134,7 +134,6 @@ class Itinerary extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     itinerariesReducer: state.itinerariesReducer,
     loginReducer: state.loginReducer,
