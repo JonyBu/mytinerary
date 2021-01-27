@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 require("./passPGoogle");
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 router.get(
   "/auth/google",
