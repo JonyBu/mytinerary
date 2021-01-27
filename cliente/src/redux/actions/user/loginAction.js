@@ -6,7 +6,7 @@ const QUOTE_SERVICE_URL = `http://localhost:${
 
 const startLogin = (user) => async (dispatch) => {
   await axios
-    .post(QUOTE_SERVICE_URL, user, {
+    .post('/api/user/login', user, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
