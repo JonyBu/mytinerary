@@ -1,9 +1,13 @@
 import axios from "axios";
 export const type = "ITINERARIES_FAV";
 
-const QUOTE_SERVICE_URL = `http://localhost:${
+let QUOTE_SERVICE_URL = `http://localhost:${
   process.env.PORT || "8080"
 }/api/itinerariesFav/`;
+
+if (process.env.NODE_ENV === "production") {
+  QUOTE_SERVICE_URL = `/api/itinerariesFav/`
+}
 
 const itinerariesFavAction = (title) => async (dispatch) => {
   await axios.post(QUOTE_SERVICE_URL , title, {

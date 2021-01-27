@@ -1,5 +1,9 @@
 export const type = "detailsAction";
-const QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/details/`;
+let QUOTE_SERVICE_URL = `http://localhost:${process.env.PORT || "8080"}/api/details/`;
+
+if (process.env.NODE_ENV === "production") {
+  QUOTE_SERVICE_URL = `/api/details/`
+}
 
 const detailsAction = (itineraryId) => async (dispatch) => {
   const res = await fetch(QUOTE_SERVICE_URL + itineraryId)

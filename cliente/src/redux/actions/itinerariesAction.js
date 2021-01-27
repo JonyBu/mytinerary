@@ -1,9 +1,13 @@
 import axios from "axios";
 export const type = "itinerariesAction";
 
-const QUOTE_SERVICE_URL = `http://localhost:${
+let QUOTE_SERVICE_URL = `http://localhost:${
   process.env.PORT || "8080"
 }/api/itineraries/`;
+
+if (process.env.NODE_ENV === "production") {
+  QUOTE_SERVICE_URL = `/api/itineraries/`
+}
 
 const itinerariesAction = (idCity) => async (dispatch) => {
   await axios.get(QUOTE_SERVICE_URL + idCity, {

@@ -1,7 +1,11 @@
 import axios from "axios";
 export const type = "ADD_COMMENT";
 
-const QUOTE_SERVICE_URL = "http://localhost:8080/api/activities";
+let QUOTE_SERVICE_URL = "http://localhost:8080/api/activities";
+
+if (process.env.NODE_ENV === "production") {
+  QUOTE_SERVICE_URL = `/api/activities/`
+}
 
 const commentAction = (data) => (dispatch) => {
   const userObject = {
