@@ -1,6 +1,6 @@
-const express = require("express");
-const router = express.Router();
-const passport = require("passport");
+let express = require("express");
+let router = express.Router();
+let passport = require("passport");
 require("./passPGoogle");
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
