@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 const server = `${process.env.USER}:${process.env.PASSWORD}@mytinerary-ehihp.mongodb.net`;
 const database = `${process.env.DBNAME}?retryWrites=true&w=majority`; 
 const MONGODB_URI = `mongodb+srv://${server}/${database}`;
+
 class Database {
   constructor() {
     this._connect();

@@ -54,7 +54,6 @@ class Login extends React.Component {
     var state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
-
   };
 
   onSave = (e) => {
@@ -63,9 +62,11 @@ class Login extends React.Component {
   };
 
   signGoogle = () => {
-    window.location.href = `http://localhost:${
-      process.env.PORT || "8080"
-    }/api/auth/google`;
+    let QUOTE_SERVICE_URL = `http://localhost:8080/api/auth/google`;
+    if (process.env.NODE_ENV === "production") {
+      QUOTE_SERVICE_URL = `/api/auth/google`;
+    }
+    window.location.href = QUOTE_SERVICE_URL;
   };
 
   render() {
@@ -90,7 +91,6 @@ class Login extends React.Component {
                     name="userName"
                     id="user"
                     onChange={this.onChange.bind(this)}
-                    
                   />
                 ) : (
                   <Input
@@ -114,8 +114,8 @@ class Login extends React.Component {
                     name="password"
                     id="password"
                     onChange={this.onChange.bind(this)}
-                    onKeyDown={function(e){
-                      if(e.key==='Enter'){
+                    onKeyDown={function (e) {
+                      if (e.key === "Enter") {
                         document.getElementById("myBtn").click();
                       }
                     }}
@@ -127,8 +127,8 @@ class Login extends React.Component {
                     id="password"
                     onChange={this.onChange.bind(this)}
                     invalid
-                    onKeyDown={function(e){
-                      if(e.key==='Enter'){
+                    onKeyDown={function (e) {
+                      if (e.key === "Enter") {
                         document.getElementById("myBtn").click();
                       }
                     }}

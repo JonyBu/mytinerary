@@ -3,9 +3,11 @@ require("./componentes_Bk/conexion/database");
 const bodyParser = require("body-parser");
 var cors = require("cors");
 var express = require("express");
+
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 const app = express();
 const path = require("path")
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,13 +19,13 @@ const routerActivities = require("./componentes_Bk/controladores/controladorActi
 const routerDetails = require("./componentes_Bk/controladores/controladorDetails");
 const routerUser = require("./componentes_Bk/controladores/controladorUser");
 const passport = require("./componentes_Bk/auth/passport");
-// const authApi = require("./componentes_BK/auth/authApi");
+const authApi = require("./componentes_BK/auth/authApi");
 
 app.use(passport.initialize());
 require("./componentes_Bk/auth/passport");
 
 // app.use("/api", passport.authenticate("jwt",{session:false}),routerCity);
-// app.use("/api", authApi);
+app.use("/api", authApi);
 app.use("/api", routerCity);
 app.use("/api", routerItinerary);
 app.use("/api", routerActivities);
