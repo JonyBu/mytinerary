@@ -23,7 +23,7 @@ app.use(passport.initialize());
 require("./componentes_Bk/auth/passport");
 
 // app.use("/api", passport.authenticate("jwt",{session:false}),routerCity);
-app.use("/api", authApi);
+// app.use("/api", authApi);
 app.use("/api", routerCity);
 app.use("/api", routerItinerary);
 app.use("/api", routerActivities);
