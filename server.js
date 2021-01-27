@@ -25,12 +25,12 @@ app.use(passport.initialize());
 require("./componentes_Bk/auth/passport");
 
 // app.use("/api", passport.authenticate("jwt",{session:false}),routerCity);
-app.use("/api", authApi);
 app.use("/api", routerCity);
 app.use("/api", routerItinerary);
 app.use("/api", routerActivities);
 app.use("/api", routerDetails);
 app.use("/api", routerUser);
+app.use("/api", authApi);
 
 
 if (process.env.NODE_ENV === "production") {
