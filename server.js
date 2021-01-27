@@ -17,7 +17,7 @@ const routerActivities = require("./componentes_Bk/controladores/controladorActi
 const routerDetails = require("./componentes_Bk/controladores/controladorDetails");
 const routerUser = require("./componentes_Bk/controladores/controladorUser");
 const passport = require("./componentes_Bk/auth/passport");
-const authApi = require("./componentes_BK/auth/authApi");
+// const authApi = require("./componentes_BK/auth/authApi");
 
 app.use(passport.initialize());
 require("./componentes_Bk/auth/passport");
