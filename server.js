@@ -13,6 +13,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const publicPath = path.join(__dirname,'..','public');
+app.use(express.static(publicPath));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+});
+
+var port = process.env.PORT || "8080";
+
 const routerCity = require("./componentes_Bk/controladores/controladorCity");
 const routerItinerary = require("./componentes_Bk/controladores/controladorItinerary");
 const routerActivities = require("./componentes_Bk/controladores/controladorActivities");
@@ -25,12 +34,12 @@ app.use(passport.initialize());
 require("./componentes_Bk/auth/passport");
 
 // app.use("/api", passport.authenticate("jwt",{session:false}),routerCity);
+app.use("/api", authApi);
 app.use("/api", routerCity);
 app.use("/api", routerItinerary);
 app.use("/api", routerActivities);
 app.use("/api", routerDetails);
 app.use("/api", routerUser);
-app.use("/api", authApi);
 
 
 if (process.env.NODE_ENV === "production") {
@@ -42,14 +51,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const publicPath = path.join(__dirname,'..','public');
-app.use(express.static(publicPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
-
-var port = process.env.PORT || "8080";
 
 app.listen(port, () => {
   console.log("servidor escuchando puerto ", port);
