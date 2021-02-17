@@ -23,7 +23,7 @@ class details extends React.Component {
     return (
       <Slider className="slider-wrapper">
         {this.state.details.map((item, index) => {
-          const imagen = require(`../../imagenes/detalles/London/${item.activityPic}.jpg`)
+          const imagen = require(`../../imagenes/detalles/${item.activityPic}`)
             .default;
           return (
             <div

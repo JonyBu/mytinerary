@@ -3,6 +3,7 @@ import axios from "axios";
 const updateUserImg = (data) => async (dispatch) => {
 
   var formData = new FormData();
+  formData.append("userName" , data.userName);
   formData.append("profilePic", data.profilePic);
 
   const config = { headers: { "Content-Type": "multipart/form-data" } };

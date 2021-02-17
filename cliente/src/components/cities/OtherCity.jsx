@@ -18,7 +18,7 @@ const OtherCity = () => (
         </Link>
       </Col>
       <Col>
-        <Link className="botonItinerary" style={{ textDecoration: "none" }}>
+        <Link to="/addIt" className="botonItinerary" style={{ textDecoration: "none" }}>
           <FontAwesomeIcon
             icon={faPlus}
             color="lightgreen"

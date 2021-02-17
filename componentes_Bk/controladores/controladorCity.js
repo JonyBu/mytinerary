@@ -36,4 +36,20 @@ router.post("/cities", function (req, res) {
   });
 });
 
+router.put("/cities/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  console.log(req.body)
+  var newModel = req.body.data;
+  console.log(newModel)
+  await cityModel
+    .updateOne({ _id: id }, { $set: newModel })
+    .then(() => {
+      return res.status(200).json({
+        message: "Update succesful " + res,
+      });
+    })
+    .catch((err) => console.log(err));
+});
+
 module.exports = router;

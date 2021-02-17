@@ -1,4 +1,5 @@
 require("./componentes_Bk/conexion/database");
+require("./componentes_Bk/auth/passport");
 
 const bodyParser = require("body-parser");
 var cors = require("cors");
@@ -18,14 +19,13 @@ const routerItinerary = require("./componentes_Bk/controladores/controladorItine
 const routerActivities = require("./componentes_Bk/controladores/controladorActivities");
 const routerDetails = require("./componentes_Bk/controladores/controladorDetails");
 const routerUser = require("./componentes_Bk/controladores/controladorUser");
-const passport = require("./componentes_Bk/auth/passport");
-// const authApi = require("./componentes_BK/auth/authApi");
+const passport = require("./componentes_Bk/auth/passport")
+const authApi = require("./componentes_Bk/auth/authApi")
 
 app.use(passport.initialize());
-require("./componentes_Bk/auth/passport");
 
 // app.use("/api", passport.authenticate("jwt",{session:false}),routerCity);
-// app.use("/api", authApi);
+app.use("/api", authApi);
 app.use("/api", routerCity);
 app.use("/api", routerItinerary);
 app.use("/api", routerActivities);
@@ -42,12 +42,12 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const publicPath = path.join(__dirname,'..','public');
-app.use(express.static(publicPath));
+// const publicPath = path.join(__dirname,'..','public');
+// app.use(express.static(publicPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(publicPath, 'index.html'));
+// });
 
 var port = process.env.PORT || "8080";
 

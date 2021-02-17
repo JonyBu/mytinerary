@@ -11,6 +11,7 @@ let itinerarySchema = new mongoose.Schema({
   hashtag: Array,
   userPic: String,
   userName: String,
+  cityName: String,
   countryName: String,
   idCity: mongoose.Schema.Types.ObjectId,
 });

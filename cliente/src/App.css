@@ -183,6 +183,10 @@ input[type="radio"] {
   font-size: 1.5vh;
 }
 
+#detailsPic{
+  max-width: 90%;
+}
+
 @media (max-width: 575px) {
   .imagenProfile {
     padding-right: 15px;

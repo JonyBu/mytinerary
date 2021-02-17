@@ -11,7 +11,11 @@ function reducer(state = defaultCity, action) {
         cities: action.payload,
         isReady: true,
       };
-
+    case "UPDATE_CITIES":
+      return {
+        ...state,
+        cities: action.payload,
+      };
     default:
       return state;
   }

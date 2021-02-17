@@ -19,6 +19,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      myTineraries: [],
       currentUser: [],
       isConected: [],
       imagen: img,
@@ -57,6 +58,11 @@ class Profile extends React.Component {
     event.preventDefault();
     this.props.outLogin(this.state);
   };
+
+  getMyIt = (e) => {
+    e.preventDefault();
+    this.props.itinerariesAction(this.props.loginReducer.currentUser.myTineraries)
+  }
 
   render() {
     return (
@@ -125,6 +131,12 @@ class Profile extends React.Component {
               </Col>
             </Row>
           </Card>
+          {/* <Card>
+           {console.log(this.state.currentUser.myTineraries)}
+            {this.state.myTineraries.map((myIt, i) => (
+              <div key={i}>{myIt}</div>
+            ))}
+          </Card> */}
         </Jumbotron>
 
         <Row>

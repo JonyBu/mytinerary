@@ -15,7 +15,9 @@ var storage = multer.diskStorage({
   size: 500000,
   destination: path.join(__dirname, "../../cliente/src/imagenes/usuarios"),
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    const ext = file.originalname.split(".");
+    const name = req.body.userName.replace(/\s+/g, "");
+    cb(null, `${name}.${ext[1]}`);
   },
 });
 

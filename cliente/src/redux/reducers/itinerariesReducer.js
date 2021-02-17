@@ -1,5 +1,6 @@
 const defaultItinerary = {
   itineraries: [],
+  newItinerary: [],
   itFav: [],
   error: [],
   message: [],
@@ -22,6 +23,12 @@ function reducer(state = defaultItinerary, action) {
       return {
         ...state,
         itFav: action.payload,
+        error: false,
+      };
+    case "ADD_ITINERARY":
+      return {
+        ...state,
+        newItinerary: action.payload,
         error: false,
       };
     default:
