@@ -1,16 +1,19 @@
 require("./componentes_Bk/conexion/database");
 require("./componentes_Bk/auth/passport");
 
-const bodyParser = require("body-parser");
-var cors = require("cors");
-var express = require("express");
 
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+var express = require("express");
+var cors = require("cors");
 
 const app = express();
 const path = require("path")
 
+const bodyParser = require("body-parser");
+
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+
 app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
