@@ -1,21 +1,21 @@
 require("./componentes_Bk/conexion/database");
 require("./componentes_Bk/auth/passport");
 
-
-var express = require("express");
 var cors = require("cors");
 
-const app = express();
+var express = require("express");
 const path = require("path")
-
 const bodyParser = require("body-parser");
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
+const app = express();
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'cliente/build')));
 
 const routerCity = require("./componentes_Bk/controladores/controladorCity");
 const routerItinerary = require("./componentes_Bk/controladores/controladorItinerary");
