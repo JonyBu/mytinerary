@@ -17,10 +17,11 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const ext = file.originalname.split(".");
     let name = req.body.userName;
-   /* if(name !== undefined){
+    if(name !== undefined || name !== null ){
         name.replace(/\s+/g, "");
+    }else{
+      name = "default";
     }
-    */
     cb(null, `${name}.${ext[1]}`);
   },
 });
