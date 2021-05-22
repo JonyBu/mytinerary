@@ -78,7 +78,7 @@ class Login extends React.Component {
           register
         </Alert>
 
-        <Jumbotron>
+        <Jumbotron className="jumbotron">
           <Form>
             <FormGroup row>
               <Label for="user" sm={3}>

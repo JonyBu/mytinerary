@@ -67,7 +67,7 @@ class Cities extends React.Component {
               <Button
                 block
                 outline
-                className={this.cityDisponible(city.itineraries)}
+                className={`${this.cityDisponible(city.itineraries)} buttonCityList`} 
                 color="danger"
               >
                 {city.name} - {city.country}

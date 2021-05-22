@@ -6,4 +6,5 @@ import "./App.css";
 import "./slider-animations.css";
 import "./slider.css";
 
+
 ReactDOM.render(<App />, document.getElementById("root"));

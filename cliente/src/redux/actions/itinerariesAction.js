@@ -10,7 +10,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const itinerariesAction = (idCity) => async (dispatch) => {
-  console.log(idCity)
   await axios.get(QUOTE_SERVICE_URL + idCity, {
     headers: {
       "Content-Type": "application/json",

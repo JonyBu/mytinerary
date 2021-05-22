@@ -86,6 +86,10 @@ html {
   color: darkgreen;
 }
 
+.buttonCityList {
+  width: 100%;
+}
+
 input[type="radio"] {
   display: none;
 }

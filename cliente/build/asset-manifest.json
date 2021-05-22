@@ -1,19 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.8456d2b7.chunk.css",
-    "main.js": "/static/js/main.47b09f24.chunk.js",
-    "main.js.map": "/static/js/main.47b09f24.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.4d25ba2e.js",
-    "runtime-main.js.map": "/static/js/runtime-main.4d25ba2e.js.map",
-    "static/css/2.8190cd13.chunk.css": "/static/css/2.8190cd13.chunk.css",
-    "static/js/2.24ac8b1e.chunk.js": "/static/js/2.24ac8b1e.chunk.js",
-    "static/js/2.24ac8b1e.chunk.js.map": "/static/js/2.24ac8b1e.chunk.js.map",
+    "main.css": "/static/css/main.cd8a7386.chunk.css",
+    "main.js": "/static/js/main.922cca09.chunk.js",
+    "main.js.map": "/static/js/main.922cca09.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.11f320ca.js",
+    "runtime-main.js.map": "/static/js/runtime-main.11f320ca.js.map",
+    "static/css/2.e1264c54.chunk.css": "/static/css/2.e1264c54.chunk.css",
+    "static/js/2.2ad25ba9.chunk.js": "/static/js/2.2ad25ba9.chunk.js",
+    "static/js/2.2ad25ba9.chunk.js.map": "/static/js/2.2ad25ba9.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.8190cd13.chunk.css.map": "/static/css/2.8190cd13.chunk.css.map",
-    "static/css/main.8456d2b7.chunk.css.map": "/static/css/main.8456d2b7.chunk.css.map",
-    "static/js/2.24ac8b1e.chunk.js.LICENSE.txt": "/static/js/2.24ac8b1e.chunk.js.LICENSE.txt",
-    "static/media/0.jpg": "/static/media/0.50e8498b.jpg",
-    "static/media/11-1.jpg": "/static/media/11-1.e7f8b16d.jpg",
+    "static/css/2.e1264c54.chunk.css.map": "/static/css/2.e1264c54.chunk.css.map",
+    "static/css/main.cd8a7386.chunk.css.map": "/static/css/main.cd8a7386.chunk.css.map",
+    "static/js/2.2ad25ba9.chunk.js.LICENSE.txt": "/static/js/2.2ad25ba9.chunk.js.LICENSE.txt",
     "static/media/Bubblewrap.jpg": "/static/media/Bubblewrap.a1c461cc.jpg",
     "static/media/CastilloWindsor.jpg": "/static/media/CastilloWindsor.e54a2724.jpg",
     "static/media/Colbert.jpg": "/static/media/Colbert.c0db721c.jpg",
@@ -27,6 +25,7 @@
     "static/media/ShakespeareGlobe.jpg": "/static/media/ShakespeareGlobe.8c72db0b.jpg",
     "static/media/SkylightRooftop.jpg": "/static/media/SkylightRooftop.5e338dea.jpg",
     "static/media/Sushisamba.jpg": "/static/media/Sushisamba.96840a36.jpg",
+    "static/media/admin.jpg": "/static/media/admin.e28418d4.jpg",
     "static/media/amsterdam.f55b57ad.jpg": "/static/media/amsterdam.f55b57ad.jpg",
     "static/media/amsterdam1.4162b723.jpg": "/static/media/amsterdam1.4162b723.jpg",
     "static/media/amsterdam2.cbdd0849.jpg": "/static/media/amsterdam2.cbdd0849.jpg",
@@ -34,7 +33,6 @@
     "static/media/barcelona1.fea5d11e.jpg": "/static/media/barcelona1.fea5d11e.jpg",
     "static/media/barcelona2.4b22e4e6.jpg": "/static/media/barcelona2.4b22e4e6.jpg",
     "static/media/cityss.7b0f6e25.jpg": "/static/media/cityss.7b0f6e25.jpg",
-    "static/media/homer4.jpg": "/static/media/homer4.a31df937.jpg",
     "static/media/iconosLogo.99214ffd.png": "/static/media/iconosLogo.99214ffd.png",
     "static/media/ny.2fc7d538.jpg": "/static/media/ny.2fc7d538.jpg",
     "static/media/ny1.639c950f.jpg": "/static/media/ny1.639c950f.jpg",
@@ -48,10 +46,10 @@
     "static/media/wrongWay.d9e4b87a.jpg": "/static/media/wrongWay.d9e4b87a.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.4d25ba2e.js",
-    "static/css/2.8190cd13.chunk.css",
-    "static/js/2.24ac8b1e.chunk.js",
-    "static/css/main.8456d2b7.chunk.css",
-    "static/js/main.47b09f24.chunk.js"
+    "static/js/runtime-main.11f320ca.js",
+    "static/css/2.e1264c54.chunk.css",
+    "static/js/2.2ad25ba9.chunk.js",
+    "static/css/main.cd8a7386.chunk.css",
+    "static/js/main.922cca09.chunk.js"
   ]
 }
