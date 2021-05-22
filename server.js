@@ -8,7 +8,7 @@ var cors = require("cors");
 const express = require("express");
 const bodyParser = require("body-parser");
 
-const path = require("path")
+const app = express();
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -17,8 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 8080;
 
-const app = express();
-
+const path = require("path")
 
 app.use(express.static(path.join(__dirname, 'cliente/build')));
 
