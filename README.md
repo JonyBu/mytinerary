@@ -2,6 +2,11 @@
 ## HEROKU
 https://app-mytinerary.herokuapp.com/
 
+# Login and Signin
+Se puede registrar como nuevo usuario o loguaerse con la cuenta de prueba
+usuario: admin
+contraseña: admin
+
 ## Image Project
 # HOME
 ![Captura](https://i.imgur.com/dATmyI4.jpg)
