@@ -1,19 +1,24 @@
 require("./componentes_Bk/conexion/database");
 require("./componentes_Bk/auth/passport");
 
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+
 var cors = require("cors");
 
-var express = require("express");
-const path = require("path")
+const express = require("express");
 const bodyParser = require("body-parser");
 
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
-
-const app = express();
+const path = require("path")
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+const port = process.env.PORT || 8080;
+
+const app = express();
+
 
 app.use(express.static(path.join(__dirname, 'cliente/build')));
 
@@ -52,7 +57,6 @@ if (process.env.NODE_ENV === "production") {
 //   res.sendFile(path.join(publicPath, 'index.html'));
 // });
 
-var port = process.env.PORT || "8080";
 
 app.listen(port, () => {
   console.log("servidor escuchando puerto ", port);

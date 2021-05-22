@@ -84,7 +84,7 @@ const ImageCarousel = () => {
       >
         <Container>
           <Row>
-            {item.map((image, i) => {
+            {item.map((image) => {
               return (
                 <Col
                   xs={{ size: 6 }}
