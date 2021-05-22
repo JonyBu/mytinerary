@@ -40,8 +40,8 @@
     "client": "cd cliente && npm start",
     "server": "nodemon server.js",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix cliente && npm run build --prefix cliente"
+    "start": "node server.js"
+    //"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix cliente && npm run build --prefix cliente"
   },
   "author": "",
   "license": "ISC"
