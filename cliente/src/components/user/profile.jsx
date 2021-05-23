@@ -9,7 +9,6 @@ import outLogin from "../../redux/actions/user/logoutAction";
 
 import Footer from "../footer";
 import ModalUser from "../user/modalProfile";
-// import Menu from "../menu";
 
 import img from "../../imagenes/usuarios/user.png";
 import imgfondo from "../../imagenes/fondo/sello.jpg";
@@ -74,7 +73,6 @@ class Profile extends React.Component {
           alt="imagen logo mytinerary"
           className="img-user-menu m-3"
         />
-        {/* <Menu /> */}
         <Jumbotron fluid style={{ backgroundImage: `url(${imgfondo})` }}>
           <Card className="border-dark m-3">
             <Row className="rowProfile ">
@@ -144,12 +142,6 @@ class Profile extends React.Component {
               </Col>
             </Row>
           </Card>
-          {/* <Card>
-           {console.log(this.state.currentUser.myTineraries)}
-            {this.state.myTineraries.map((myIt, i) => (
-              <div key={i}>{myIt}</div>
-            ))}
-          </Card> */}
         </Jumbotron>
 
         <Row>

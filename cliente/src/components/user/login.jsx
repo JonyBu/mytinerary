@@ -108,7 +108,7 @@ class Login extends React.Component {
                 Password:
               </Label>
               <Col sm={9}>
-                {this.state.error === "invisible" ? (
+                { this.state.error === "invisible" ? (
                   <Input
                     type="password"
                     name="password"
@@ -120,7 +120,8 @@ class Login extends React.Component {
                       }
                     }}
                   />
-                ) : (
+                ) : 
+                (
                   <Input
                     type="password"
                     name="password"
@@ -133,7 +134,8 @@ class Login extends React.Component {
                       }
                     }}
                   />
-                )}
+                )
+                }
               </Col>
             </FormGroup>
             <FormGroup row>
