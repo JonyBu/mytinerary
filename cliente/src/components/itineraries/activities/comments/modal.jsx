@@ -80,7 +80,7 @@ class ModalEdit extends React.Component {
             onClick={this.toggle}
           />
         ) : (
-          <Button color="info" className="" onClick={this.toggle}>
+          <Button color="info" className="btn-comment" onClick={this.toggle}>
             {this.props.from}
           </Button>
         )}

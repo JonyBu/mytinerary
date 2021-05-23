@@ -25,7 +25,7 @@ const Menu = (props) => {
 
   if (props.loginReducer.isConected && sessionStorage.getItem("token")) {
     return (
-      <Navbar color="gray" light className="m-3">
+      <Navbar color="gray" light className="mt-3 mb-3 navbarMenu">
         <Link to="/profile" style={{ textDecoration: "none" }}>
           {props.loginReducer.currentUser.userName}
         </Link>
@@ -35,7 +35,7 @@ const Menu = (props) => {
         <NavbarToggler onClick={toggle} />
 
         <Collapse isOpen={!collapsed} navbar>
-          <Nav className="mr-auto" navbar>
+          <Nav className="" navbar>
             <NavItem>
               <Link to="/profile" style={{ textDecoration: "none" }}>
                 <Button color="danger" block className="mt-1">
@@ -74,12 +74,12 @@ const Menu = (props) => {
     );
   } else {
     return (
-      <Navbar color="faded" light>
+      <Navbar color="faded" light className="navbarMenu">
         <NavbarBrand href="/login" className="">
           <FontAwesomeIcon icon={faUserCircle} size="2x" color="#394E56" />
         </NavbarBrand>
         <img src={logo} alt="Logo Mytinerary" className="img-user-menu" />
-        <NavbarToggler onClick={toggle} className="mr-2" />
+        <NavbarToggler onClick={toggle} className="" />
         <Collapse isOpen={!collapsed} navbar>
           <Nav navbar>
             <NavItem>

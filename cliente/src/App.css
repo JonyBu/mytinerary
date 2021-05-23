@@ -1,3 +1,8 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
 #logo {
   max-width: 30em;
   width: 100%;
@@ -21,7 +26,7 @@ html {
   display: block;
   text-align: center;
   max-width: 800px;
-  margin: 1em auto;
+  margin: 0 auto;
   padding: 0.5em 1em;
   background-color: #f1f1f1;
   font-family: "Poppins", sans-serif;
@@ -149,22 +154,36 @@ input[type="radio"] {
 .img-user-menu {
   max-width: 15em;
   margin: auto;
-  width: 100%;
   height: auto;
 }
 
 .imagenLogin {
   height: 9em;
+  margin: 2em auto;
+  width: 100%;
 }
 
+.img-fluid{
+  object-fit: cover;
+}
+
+.btn-comment{
+  font-size: 0.8em;
+}
+
+.user-itinerary{
+    text-align: center;
+    display: grid;
+}
+/*
 .botonEditar {
   position: absolute;
   right: 2em;
 }
-
+*/
 .botonEditarImg {
   position: absolute;
-  right: 1em;
+  right: 1.5em;
   top: 1em;
 }
 
@@ -191,9 +210,47 @@ input[type="radio"] {
   max-width: 90%;
 }
 
+.table{
+  display: initial;
+}
+
+.table th, .table td {
+  vertical-align: middle;
+  text-align: left;
+  border-top: 1px solid #DC2B00;
+}
+
+.text-orange {
+  color: #DC2B00;
+}
+
+.invisible {
+  display: none;
+  height: 10px;
+}
+
+
 @media (max-width: 575px) {
+  .navbar {
+    padding: 0;
+  }
+
   .imagenProfile {
     padding-right: 15px;
     max-width: 20em;
   }
+
+  .navbarMenu {
+    justify-content: space-evenly;
+  }
+  
+  .navbarMenu img{
+    width: 11em;
+  }
+
+  .navbar-brand {
+    margin-right: 0;
+  }
+
 }
+

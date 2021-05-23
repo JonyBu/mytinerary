@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { Card, Jumbotron, CardImg, Col, Row } from "reactstrap";
+import { Card, Jumbotron, CardImg, Col, Row, Table } from "reactstrap";
 
 import getUser from "../../redux/actions/user/getUserAction";
 import outLogin from "../../redux/actions/user/logoutAction";
@@ -29,8 +29,8 @@ class Profile extends React.Component {
   async componentDidMount() {
     await this.props.getUser();
     if (this.props.loginReducer.isConected) {
-      const imagenProfile = require(`../../imagenes/usuarios/${this.props.loginReducer.currentUser.profilePic}`)
-        .default;
+      const imagenProfile =
+        require(`../../imagenes/usuarios/${this.props.loginReducer.currentUser.profilePic}`).default;
       this.setState({
         ...this.state,
         imagen: imagenProfile,
@@ -61,8 +61,10 @@ class Profile extends React.Component {
 
   getMyIt = (e) => {
     e.preventDefault();
-    this.props.itinerariesAction(this.props.loginReducer.currentUser.myTineraries)
-  }
+    this.props.itinerariesAction(
+      this.props.loginReducer.currentUser.myTineraries
+    );
+  };
 
   render() {
     return (
@@ -92,42 +94,53 @@ class Profile extends React.Component {
                 />
               </Col>
               <Col className="m-auto p-0 colRelative" xs="12" sm="6">
-                <h4 className="m-3">WELCOME</h4>
+                <h4 className="m-3 text-orange">WELCOME</h4>
+                <Table>
+                    <tr>
+                      <td className="border-top-0 text-orange">User:</td>
+                      <td className="border-top-0">{this.state.currentUser.userName}</td>
+                      <td className="border-top-0">
+                        <ModalUser
+                          id={this.state.currentUser._id}
+                          datos={{
+                            type: "text",
+                            name: "userName",
+                            placeholder: "User Name",
+                          }}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="text-orange">Email:</td>
+                      <td>{this.state.currentUser.email}</td>
+                      <td>
+                        <ModalUser
+                          id={this.state.currentUser._id}
+                          datos={{
+                            type: "email",
+                            name: "email",
+                            placeholder: "Email",
+                          }}
+                        />
+                      </td>
+                    </tr>
 
-                <p>
-                  User: {this.state.currentUser.userName}
-                  <ModalUser
-                    id={this.state.currentUser._id}
-                    datos={{
-                      type: "text",
-                      name: "userName",
-                      placeholder: "User Name",
-                    }}
-                  />{" "}
-                </p>
-
-                <p>
-                  Email: {this.state.currentUser.email}{" "}
-                  <ModalUser
-                    id={this.state.currentUser._id}
-                    datos={{
-                      type: "email",
-                      name: "email",
-                      placeholder: "Email",
-                    }}
-                  />
-                </p>
-                <p>
-                  Country: {this.state.currentUser.country}{" "}
-                  <ModalUser
-                    id={this.state.currentUser._id}
-                    datos={{
-                      type: "text",
-                      name: "country",
-                      placeholder: "Country",
-                    }}
-                  />
-                </p>
+                    <tr>
+                      <td className="text-orange">Country: </td>
+                      <td>{this.state.currentUser.country}</td>
+                      <td>
+                        <ModalUser
+                          id={this.state.currentUser._id}
+                          datos={{
+                            type: "text",
+                            name: "country",
+                            placeholder: "Country",
+                          }}
+                        />
+                      </td>
+                    </tr>
+                </Table>
+                
               </Col>
             </Row>
           </Card>

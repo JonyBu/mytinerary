@@ -25,7 +25,7 @@ const CollapseIt = (props) => {
           <h5>Description</h5>
           <hr />
           <Row>
-            <Col sm="2" style={{ textAlign: "center" }}>
+            <Col sm="2" className="user-itinerary" >
               <img
                 className="img-user-description"
                 src={imagen}

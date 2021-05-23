@@ -72,7 +72,7 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <img src={img} className="imagenLogin m-4" alt="Logo Mytinerary"></img>
+        <img src={img} className="imagenLogin " alt="Logo Mytinerary"></img>
         <Alert color="danger" className={this.state.error}>
           Authentication failed, check the data entered and try again or
           register

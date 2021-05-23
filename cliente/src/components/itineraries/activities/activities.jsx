@@ -45,7 +45,7 @@ class activities extends React.Component {
       <Card className="izquierda mt-3 mb-3 p-3">
         <Row>
           <Col>
-            <h5>Comments</h5>
+            <h5 className="h5-text">Comments</h5>
           </Col>
           <Col className="botonComment">
             <Modal idItinerary={this.state.Itinerary._id} from="Add Comment" />
